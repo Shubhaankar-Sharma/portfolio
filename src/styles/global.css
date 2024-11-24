@@ -1,0 +1,60 @@
+/* src/styles/global.css */
+@import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-vt323 text-main-text text-body;
+  }
+
+  h1 {
+    @apply text-h1 font-normal;
+  }
+
+  h2 {
+    @apply text-h2 font-normal;
+  }
+
+  a {
+    @apply text-link hover:opacity-80 transition-opacity;
+  }
+}
+
+/* Noise texture overlay */
+/* src/styles/global.css */
+.noise-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("/noise.png");
+  opacity: 0.08; /* Reduced opacity for lighter effect */
+  pointer-events: none;
+  z-index: 1;
+  mix-blend-mode: multiply;
+}
+
+.worn-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("/paper-torn.png");
+  background-size: 100% 100%;
+  opacity: 0.6; /* Increased opacity for more visible torn effect */
+  pointer-events: none;
+  z-index: 2;
+  mix-blend-mode: soft-light; /* This helps blend the torn effect better */
+}
+
+@layer utilities {
+  .text-dynamic {
+    font-size: clamp(1.25rem, 1.8vw, 1.75rem);
+    line-height: 1.6;
+  }
+}
