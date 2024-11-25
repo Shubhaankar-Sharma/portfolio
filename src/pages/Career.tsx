@@ -10,6 +10,7 @@ interface TimelineItemProps {
   startDate: string;
   endDate?: string;
   children?: ReactNode;
+  url: string;
 }
 
 interface DropdownProps {
@@ -25,6 +26,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
   startDate,
   endDate,
   children,
+  url,
 }) => {
   return (
     <div className="relative">
@@ -45,14 +47,16 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
         {/* Header */}
         <div className="flex items-start justify-between mb-4">
           <div>
-            <h3 className="text-body flex items-center gap-4">
-              {title}
-              <img
-                src={logo}
-                alt={`${title} logo`}
-                className="w-8 h-8 object-contain"
-              />
-            </h3>
+            <a href={url} className="text-secondary-text">
+              <h3 className="text-body flex items-center gap-4">
+                {title}
+                <img
+                  src={logo}
+                  alt={`${title} logo`}
+                  className="w-8 h-8 object-contain"
+                />
+              </h3>
+            </a>
             <p className="text-secondary-text">{subtitle}</p>
             {extraContent}
           </div>
@@ -89,15 +93,17 @@ const Course: React.FC<CourseProps> = ({
   return (
     // course title and course code -> (description, instructor) in dropdown
     <div>
-      <p className="text-body">
+      <p className="text-2xl">
         {title} ({courseCode})
       </p>
       <Dropdown label="details">
-      <div className="pl-4 text-secondary-text">
-        <p className="text-xl">{description}</p>
-        {instructor && (
-          <p className="text-xl text-secondary-text">Instructor: {instructor}</p>
-        )}
+        <div className="pl-4 text-secondary-text">
+          <p className="text-xl">{description}</p>
+          {instructor && (
+            <p className="text-xl text-secondary-text">
+              Instructor: {instructor}
+            </p>
+          )}
         </div>
       </Dropdown>
     </div>
@@ -111,7 +117,7 @@ interface CourseListProps {
 const CourseList: React.FC<CourseListProps> = ({ courses }) => {
   return (
     // courses are mapped with their department name as the key, give dropdowns for each department
-    <div className="space-y-4">
+    <div className="space-y-4 text-2xl">
       {Array.from(courses.entries()).map(([department, courseList]) => (
         <Dropdown label={department}>
           {courseList.map((course) => (
@@ -182,7 +188,7 @@ const courses: Map<string, CourseProps[]> = new Map([
         description:
           "Learnt about software engineering principles, including software requirements, design, testing, and project management. Also developed a huge project where he had to create a custom database and a query language for it using agile methodologies done in group of 2 in typescript",
         instructor: "Nick Bradley",
-      }
+      },
     ],
   ],
   [
@@ -202,7 +208,7 @@ const courses: Map<string, CourseProps[]> = new Map([
           "Learnt about integral calculus, including definite and indefinite integrals, and applications of integrals. ",
         // instructor: "i don't remember",
       },
-      { 
+      {
         title: "Calculus III",
         courseCode: "MATH 200",
         description:
@@ -210,7 +216,7 @@ const courses: Map<string, CourseProps[]> = new Map([
       },
       {
         title: "Mathematical Proof",
-        courseCode: "MATH 220", 
+        courseCode: "MATH 220",
         description:
           "Learnt about mathematical proof techniques, including direct proof, proof by contradiction, and proof by induction. Also learnt about set theory and functions",
       },
@@ -219,8 +225,8 @@ const courses: Map<string, CourseProps[]> = new Map([
         courseCode: "MATH 221",
         description:
           "Learnt about matrix algebra, including matrix operations, determinants, and eigenvalues. Also learnt about linear transformations and their applications",
-      }
-    ]
+      },
+    ],
   ],
   [
     "Electives",
@@ -259,16 +265,16 @@ const courses: Map<string, CourseProps[]> = new Map([
         title: "Learning German I",
         courseCode: "GERM 100",
         description:
-          "Learnt about basic German language principles, including vocabulary, grammar, and pronunciation."
+          "Learnt about basic German language principles, including vocabulary, grammar, and pronunciation.",
       },
       {
         title: "Introduction to Philosophy",
         courseCode: "PHIL 101",
         description:
           "Read philosophies around topics such as the nature and scope of human knowledge, the existence of God, and the relationship between mind and body. Philosophers studied: Socrates, Plato, Aristotle, Descartes, Hume, and Kant.",
-      }
-    ]
-  ]
+      },
+    ],
+  ],
 ]);
 const Dropdown: React.FC<DropdownProps> = ({ label, children }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -314,6 +320,7 @@ const Career: React.FC = () => {
           logo={ubclogo}
           startDate="Sep 2022"
           endDate="Apr 2026"
+          url="https://www.ubc.ca/"
         >
           <div className="space-y-4">
             <div>
@@ -348,13 +355,41 @@ const Career: React.FC = () => {
           logo={horizonlogo}
           startDate="Sep 2021"
           endDate="Sep 2024"
+          url="https://horizon.io/"
         >
           <div className="space-y-2">
             <Dropdown label="impact + projects">
-              <p>Project details coming soon...</p>
+              {/* bullet point things i did */}
+              <ul className="list-disc pl-4 text-xl">
+                <li>
+                  Worked on migrating <a href="https://sequence.info/" target="_blank">Sequence's</a> infrastructure to Kubernetes and Pulumi
+                </li>
+                <li>
+                  Worked on shipping a highly scalable search and filtering for sequence's metadata service that indexes all Collectibles on an EVM blockchain and allows custom filtering using a collection's properties
+                </li>
+                <li>
+                  Worked on an webhook notification system that notifies users of custom events happening on all suppoerted EVMs.
+                </li>
+                <li>
+                  Maintained and worked on the sequence's metadata service to make it lazily index metadata and handle around 1.5k requests per minute
+                </li>
+                <li>
+                  Worked on <a href="https://github.com/0xsequence/ethwal/pull/9" target="_blank">ethwal's filter index</a>, this was a very elegant design thought by Marcin Górzyński, which allowed us to store all kinds of custom events from EVMs in bitmaps and perform very complex filtering operations in them to find historical transaction data containing information we need.
+                </li>
+              </ul>
             </Dropdown>
             <Dropdown label="things i learnt">
-              <p>Learning details coming soon...</p>
+              <ul className="list-disc pl-4 text-xl">
+                <li>
+                  Optimizing code for scale - Working in the sequence team, I really understood how to see the scale. When writing code for the indexer I never worried about mutex operations, I abused those operations, but Marcin helped me realise that when we have around 7k transactions being processed in each indexer, the amount of overhead such a simple thing would add is a lot. After this I was always really carefull about writing code keeping in mind the scale.
+                </li>
+                <li>
+                  SQL Query Optimization - I wrote very slow queries, not caring about indexes and how postgres plans queries which is very un-intuitive, once a query of mine on the production db was performing in 2 seconds on my local machine but 1 minute on the kubernetes container in prod - after Maciej debugged, he finally explained how much of a difference a HDD and SSD makes - a simple line change so that postgres uses the right index and using vectors for searching, made the query perform in a second. This is just one of the many instances I learnt about sql optimization
+                </li>
+                <li>
+                  Project Layout - The sequence go service's had a very elegant project layout, it was very easy to navigate the code, and to add a feature you didn't even need to know anything about the codebase, you just had to know where to put the code and how to write tests for it. This was a very good learning experience for me, and I have tried to replicate this in my personal projects.
+                </li>
+              </ul>
             </Dropdown>
           </div>
         </TimelineItem>
