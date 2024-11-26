@@ -302,7 +302,7 @@ const Career: React.FC = () => {
     <div className="max-w-4xl">
       <div className="mb-12 flex items-start justify-between">
         <h1>my career so far</h1>
-        <a href="/resume.pdf" className="text-link hover:opacity-80">
+        <a href="/resume.pdf" className="text-link hover:opacity-80" target="_blank">
           view resume
         </a>
       </div>
