@@ -264,7 +264,7 @@ const Hacking = () => {
 
   projects = projects.sort((a, b) => b.year - a.year);
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className="max-w-4xl mx-auto p-8">
       <h1 className="mb-8 text-4xl">Hacking</h1>
       <p className="text-xl mb-8">
         Hacking in this context means building projects - "hacking something together". <br />

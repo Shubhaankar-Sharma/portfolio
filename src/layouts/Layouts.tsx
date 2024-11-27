@@ -1,9 +1,9 @@
-// src/layouts/LandingLayout.tsx
 import { ReactNode } from 'react';
 import { Footer } from '../components/Footer';
 import airmailstamp from '../assets/images/airmailstamp.svg';
 import postboxstamp from '../assets/images/postboxstamp.svg';
 import OverlappingCircles from '../components/OverlappingCircles';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 interface LayoutProps {
   children: ReactNode;
@@ -20,12 +20,12 @@ export const LandingLayout = ({ children }: LayoutProps) => {
         <img 
           src={postboxstamp} 
           alt="Post Box Stamp" 
-          className="w-32" // Increased from w-24
+          className="w-24 md:w-32" // Responsive size
         />
         <img 
           src={airmailstamp} 
           alt="Air Mail Stamp" 
-          className="w-32" // Increased from w-24
+          className="w-24 md:w-32" // Responsive size
         />
       </div>
 
@@ -41,12 +41,6 @@ export const LandingLayout = ({ children }: LayoutProps) => {
     </div>
   );
 };
-
-// src/layouts/PageLayout.tsx
-import { useNavigate, useLocation } from 'react-router-dom';
-interface LayoutProps {
-  children: ReactNode;
-}
 
 export const PageLayout = ({ children }: LayoutProps) => {
   const navigate = useNavigate();
@@ -69,7 +63,7 @@ export const PageLayout = ({ children }: LayoutProps) => {
     const rightLink = currentIndex < paths.length - 1 ? paths[currentIndex + 1] : '';
     return {
       left: leftLink === '/' ? 'Home' : leftLink.charAt(1).toUpperCase() + leftLink.slice(2),
-      right: rightLink.charAt(1).toUpperCase() + rightLink.slice(2),
+      right: rightLink ? rightLink.charAt(1).toUpperCase() + rightLink.slice(2) : '',
     };
   };
 
@@ -95,7 +89,7 @@ export const PageLayout = ({ children }: LayoutProps) => {
       </div>
 
       {/* Main content */}
-      <div className="flex-grow relative z-10 px-8 py-2 mt-12">
+      <div className="flex-grow relative z-10 px-4 py-2 mt-12 md:px-8 md:py-2">
         {children}
       </div>
 
