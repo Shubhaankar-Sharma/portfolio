@@ -15,8 +15,6 @@ export const Footer = () => {
         return ['home', 'contact'];
       case '/about':
         return ['home', 'contact'];
-      case '/contact':
-        return ['home', 'about me'];
       default:
         return ['home', 'contact'];
     }
@@ -28,6 +26,8 @@ export const Footer = () => {
       case 'home':
         return '/';
       case 'about me':
+        return '/about';
+      case 'contact':
         return '/about';
       case 'github':
         return 'https://github.com';

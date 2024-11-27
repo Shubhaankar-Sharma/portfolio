@@ -377,6 +377,49 @@ const Career: React.FC = () => {
           </div>
         </TimelineItem>
       </section>
+      <section className="mb-16">
+        <h2 className="text-3xl mb-8">The Tech I Have Been Using</h2>
+        <div className="space-y-4 text-xl">
+          <div>
+            <h3 className="text-2xl mb-2">Languages</h3>
+            <ul className="flex flex-wrap gap-4">
+              <li><a href="https://golang.org/" target="_blank" rel="noopener noreferrer" className="text-link hover:underline">Golang</a></li>
+              <li><a href="https://isocpp.org/" target="_blank" rel="noopener noreferrer" className="text-link hover:underline">C++</a></li>
+              <li><a href="https://www.java.com/" target="_blank" rel="noopener noreferrer" className="text-link hover:underline">Java</a></li>
+              <li><a href="https://www.python.org/" target="_blank" rel="noopener noreferrer" className="text-link hover:underline">Python</a></li>
+              <li><a href="https://julialang.org/" target="_blank" rel="noopener noreferrer" className="text-link hover:underline">Julia</a></li>
+              <li><a href="https://www.typescriptlang.org/" target="_blank" rel="noopener noreferrer" className="text-link hover:underline">TypeScript</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-2xl mb-2">Frameworks and Libraries</h3>
+            <ul className="flex flex-wrap gap-4">
+              <li><a href="https://github.com/go-chi/chi" target="_blank" rel="noopener noreferrer" className="text-link hover:underline">Chi</a></li>
+              <li><a href="https://github.com/webrpc/webrpc" target="_blank" rel="noopener noreferrer" className="text-link hover:underline">WebRPC</a></li>
+              <li><a href="https://github.com/lib/pq" target="_blank" rel="noopener noreferrer" className="text-link hover:underline">lib/pq</a></li>
+              <li><a href="https://www.djangoproject.com/" target="_blank" rel="noopener noreferrer" className="text-link hover:underline">Django</a></li>
+              <li><a href="https://flutter.dev/" target="_blank" rel="noopener noreferrer" className="text-link hover:underline">Flutter</a></li>
+              <li><a href="https://reactjs.org/" target="_blank" rel="noopener noreferrer" className="text-link hover:underline">React</a></li>
+              <li><a href="https://pandas.pydata.org/" target="_blank" rel="noopener noreferrer" className="text-link hover:underline">Pandas</a></li>
+              <li><a href="https://numpy.org/" target="_blank" rel="noopener noreferrer" className="text-link hover:underline">Numpy</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-2xl mb-2">Tools & Infra</h3>
+            <ul className="flex flex-wrap gap-4">
+              <li><a href="https://kubernetes.io/" target="_blank" rel="noopener noreferrer" className="text-link hover:underline">Kubernetes</a></li>
+              <li><a href="https://www.postgresql.org/" target="_blank" rel="noopener noreferrer" className="text-link hover:underline">Postgres</a></li>
+              <li><a href="https://redis.io/" target="_blank" rel="noopener noreferrer" className="text-link hover:underline">Redis</a></li>
+              <li><a href="https://www.pulumi.com/" target="_blank" rel="noopener noreferrer" className="text-link hover:underline">Pulumi</a></li>
+              <li><a href="https://git-scm.com/" target="_blank" rel="noopener noreferrer" className="text-link hover:underline">Git</a></li>
+              <li><a href="https://www.docker.com/" target="_blank" rel="noopener noreferrer" className="text-link hover:underline">Docker</a></li>
+            </ul>
+          </div>
+          <p className="text-lg mt-4">
+            Thanks to the developers for making my life simpler.
+          </p>
+        </div>
+      </section>
     </div>
   );
 };
