@@ -344,13 +344,13 @@ const Career: React.FC = () => {
                   Worked on migrating <a href="https://sequence.info/" target="_blank" className="text-link hover:underline">Sequence's</a> infrastructure to Kubernetes and Pulumi
                 </li>
                 <li>
-                  Worked on shipping a highly scalable search and filtering for Sequence's metadata service that indexes all Collectibles on an EVM blockchain and allows custom filtering using a collection's properties
+                  Shipped a highly scalable search and filtering used in the sequence marketplace that indexes all Collectibles on an EVM blockchain and allows custom filtering using a collection's properties
                 </li>
                 <li>
-                  Worked on a webhook notification system that notifies users of custom events happening on all supported EVMs.
+                  Wrote and Shipped a webhook notification system that notifies users of custom events happening on all supported EVMs.
                 </li>
                 <li>
-                  Maintained and worked on Sequence's metadata service to make it lazily index metadata and handle around 1.5k requests per minute
+                  Maintained Sequence's metadata service, made it lazily index metadata and handle around 1.5k requests per minute
                 </li>
                 <li>
                   Worked on <a href="https://github.com/0xsequence/ethwal/pull/9" target="_blank" className="text-link hover:underline">ethwal's filter index</a>, this was a very elegant design thought by Marcin Górzyński, which allowed us to store all kinds of custom events from EVMs in bitmaps and perform very complex filtering operations in them to find historical transaction data containing information we need.
@@ -370,7 +370,7 @@ const Career: React.FC = () => {
                 <strong>Project Layout: </strong> Sequence's Go services had a very elegant project layout, it was very easy to navigate the code, and to add a feature you didn't even need to know anything about the codebase, you just had to know where to put the code and how to write tests for it. This was a very good learning experience for me, and I have tried to replicate this in my personal projects.
                 </li>
                 <li>
-                <strong>Nothing is impossible: </strong> <a href="https://twitter.com/peterk" target="_blank">Peter Kieltyka</a>, the company's founder and CEO - I was in total awe when I saw that the guy was as deep in tech as any of the developers, familiar with all the different codebases as much as the maintainers of those projects, maintaining huge libraries on github, was still able to manage the company and do everything basically. Similarly I saw many people there who seemed to have supernatural abilities a few of them being <a href="https://ari.computer/" target="_blank">Ari</a>, <a href="https://github.com/c2h5oh" target="_blank">Maciej</a>, <a href="https://github.com/marino39">Marcin</a>. <br />They were just so good at what they did while still being able to do anything thrown at them as good as an expert. <br /> If you form assumptions about what you can and can't do, you are really limiting yourself which seems obvious but its really difficult to not form an image of yourself in your head.
+                <strong>Reject Artificial Bounds: </strong> <a href="https://twitter.com/peterk" target="_blank">Peter Kieltyka</a>, the company's founder and CEO - I was in total awe when I saw that the guy was as deep in tech as any of the developers, familiar with all the different codebases as much as the maintainers of those projects, maintaining huge libraries on github, was still able to manage the company and do everything basically. Similarly I saw many people there who seemed to have supernatural abilities a few of them being <a href="https://ari.computer/" target="_blank">Ari</a>, <a href="https://github.com/c2h5oh" target="_blank">Maciej</a>, <a href="https://github.com/marino39">Marcin</a>. <br />They were just so good at what they did while still being able to do anything thrown at them as good as an expert. <br /> If you form assumptions about what you can and can't do, you are really limiting yourself which seems obvious but its really difficult to not form an image of yourself in your head.
                 </li>
               </ul>
             </div>
