@@ -29,50 +29,29 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
   url,
 }) => {
   return (
-    <div className="relative">
-      {/* Timeline vertical line */}
-      {endDate && (
-        <div
-          className="absolute left-0 w-px bg-secondary-text"
-          style={{
-            top: "2rem",
-            bottom: 0,
-            opacity: 0.2,
-          }}
-        />
-      )}
-
-      {/* Content */}
-      <div>
-        {/* Header */}
-        <div className="flex items-start justify-between mb-4">
-          <div>
-            <a href={url} className="text-secondary-text">
-              <h3 className="text-body flex items-center gap-4">
-                {title}
+    <div className="mb-12">
+      <div className="flex items-center justify-between mb-2">
+        <div>
+          <a href={url} className="text-link hover:underline">
+            <h3 className="text-2xl flex items-center gap-4">
+              {title}
+              {logo && (
                 <img
                   src={logo}
                   alt={`${title} logo`}
                   className="w-8 h-8 object-contain"
                 />
-              </h3>
-            </a>
-            <p className="text-secondary-text">{subtitle}</p>
-            {extraContent}
-          </div>
-          <div className="text-secondary-text">{startDate}</div>
+              )}
+            </h3>
+          </a>
+          <p className="text-xl text-secondary-text">{subtitle}</p>
+          {extraContent}
         </div>
-
-        {/* Children with vertical spacing */}
-        <div className="pl-8 relative">
-          {children}
-          {endDate && (
-            <div className="absolute right-0 top-full text-secondary-text pt-2">
-              {endDate}
-            </div>
-          )}
+        <div className="text-xl text-secondary-text">
+          {startDate} - {endDate}
         </div>
       </div>
+      <div className="mt-4">{children}</div>
     </div>
   );
 };
@@ -91,21 +70,18 @@ const Course: React.FC<CourseProps> = ({
   instructor,
 }) => {
   return (
-    // course title and course code -> (description, instructor) in dropdown
-    <div>
-      <p className="text-2xl">
+    <div className="mb-4">
+      <p className="text-xl">
         {title} ({courseCode})
       </p>
-      <Dropdown label="details">
-        <div className="pl-4 text-secondary-text">
-          <p className="text-xl">{description}</p>
-          {instructor && (
-            <p className="text-xl text-secondary-text">
-              Instructor: {instructor}
-            </p>
-          )}
-        </div>
-      </Dropdown>
+      <div className="pl-4 text-secondary-text">
+        <p className="text-lg">{description}</p>
+        {instructor && (
+          <p className="text-lg text-secondary-text">
+            Instructor: {instructor}
+          </p>
+        )}
+      </div>
     </div>
   );
 };
@@ -116,12 +92,11 @@ interface CourseListProps {
 
 const CourseList: React.FC<CourseListProps> = ({ courses }) => {
   return (
-    // courses are mapped with their department name as the key, give dropdowns for each department
-    <div className="space-y-4 text-2xl">
+    <div className="space-y-4 text-xl">
       {Array.from(courses.entries()).map(([department, courseList]) => (
-        <Dropdown label={department}>
+        <Dropdown key={department} label={department}>
           {courseList.map((course) => (
-            <Course {...course} />
+            <Course key={course.courseCode} {...course} />
           ))}
         </Dropdown>
       ))}
@@ -276,14 +251,20 @@ const courses: Map<string, CourseProps[]> = new Map([
     ],
   ],
 ]);
+
 const Dropdown: React.FC<DropdownProps> = ({ label, children }) => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    setIsOpen(!isOpen);
+  };
 
   return (
     <div>
       <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 text-link hover:opacity-80 transition-opacity"
+        onClick={handleClick}
+        className="flex items-center gap-2 text-link hover:underline"
         type="button"
       >
         <span>›</span>
@@ -299,21 +280,21 @@ const Dropdown: React.FC<DropdownProps> = ({ label, children }) => {
 
 const Career: React.FC = () => {
   return (
-    <div className="max-w-4xl">
+    <div className="max-w-4xl mx-auto p-8">
       <div className="mb-12 flex items-start justify-between">
-        <h1>my career so far</h1>
-        <a href="/resume.pdf" className="text-link hover:opacity-80" target="_blank">
-          view resume
+        <h1 className="text-4xl">My Career So Far</h1>
+        <a href="/resume.pdf" className="text-link hover:underline text-xl" target="_blank">
+          Resume
         </a>
       </div>
 
       <section className="mb-16">
-        <h2 className="mb-8">Education</h2>
+        <h2 className="text-3xl mb-8">Education</h2>
         <TimelineItem
           title="University of British Columbia"
           subtitle="Bachelor of Science"
           extraContent={
-            <p className="text-secondary-text">
+            <p className="text-secondary-text text-xl">
               Computer Science and Mathematics
             </p>
           }
@@ -325,7 +306,7 @@ const Career: React.FC = () => {
           <div className="space-y-4">
             <div>
               <p className="text-secondary-text mb-2">Awards</p>
-              <div className="space-y-1">
+              <div className="space-y-1 text-xl">
                 <div className="flex items-center gap-2">
                   <span className="text-link">›</span>
                   <span>Dean's Honor List (2023)</span>
@@ -339,16 +320,14 @@ const Career: React.FC = () => {
 
             <div>
               <p className="text-secondary-text mb-2">Courses</p>
-              <Dropdown label="click to explore courses i've taken">
-                <CourseList courses={courses} />
-              </Dropdown>
+              <CourseList courses={courses} />
             </div>
           </div>
         </TimelineItem>
       </section>
 
       <section className="mb-16">
-        <h2 className="mb-8">Experience</h2>
+        <h2 className="text-3xl mb-8">Experience</h2>
         <TimelineItem
           title="Horizon Blockchain Games Inc."
           subtitle="Backend Developer (Part-time)"
@@ -357,44 +336,49 @@ const Career: React.FC = () => {
           endDate="Sep 2024"
           url="https://horizon.io/"
         >
-          <div className="space-y-2">
-            <Dropdown label="impact + projects">
-              {/* bullet point things i did */}
-              <ul className="list-disc pl-4 text-xl">
+          <div className="space-y-4">
+            <div>
+              <p className="text-secondary-text mb-2">Impact + Projects</p>
+              <ul className="list-disc pl-4 text-lg">
                 <li>
-                  Worked on migrating <a href="https://sequence.info/" target="_blank">Sequence's</a> infrastructure to Kubernetes and Pulumi
+                  Worked on migrating <a href="https://sequence.info/" target="_blank" className="text-link hover:underline">Sequence's</a> infrastructure to Kubernetes and Pulumi
                 </li>
                 <li>
-                  Worked on shipping a highly scalable search and filtering for sequence's metadata service that indexes all Collectibles on an EVM blockchain and allows custom filtering using a collection's properties
+                  Worked on shipping a highly scalable search and filtering for Sequence's metadata service that indexes all Collectibles on an EVM blockchain and allows custom filtering using a collection's properties
                 </li>
                 <li>
-                  Worked on an webhook notification system that notifies users of custom events happening on all suppoerted EVMs.
+                  Worked on a webhook notification system that notifies users of custom events happening on all supported EVMs.
                 </li>
                 <li>
-                  Maintained and worked on the sequence's metadata service to make it lazily index metadata and handle around 1.5k requests per minute
+                  Maintained and worked on Sequence's metadata service to make it lazily index metadata and handle around 1.5k requests per minute
                 </li>
                 <li>
-                  Worked on <a href="https://github.com/0xsequence/ethwal/pull/9" target="_blank">ethwal's filter index</a>, this was a very elegant design thought by Marcin Górzyński, which allowed us to store all kinds of custom events from EVMs in bitmaps and perform very complex filtering operations in them to find historical transaction data containing information we need.
-                </li>
-              </ul>
-            </Dropdown>
-            <Dropdown label="things i learnt">
-              <ul className="list-disc pl-4 text-xl">
-                <li>
-                  Optimizing code for scale - Working in the sequence team, I really understood how to see the scale. When writing code for the indexer I never worried about mutex operations, I abused those operations, but Marcin helped me realise that when we have around 7k transactions being processed in each indexer, the amount of overhead such a simple thing would add is a lot. After this I was always really carefull about writing code keeping in mind the scale.
-                </li>
-                <li>
-                  SQL Query Optimization - I wrote very slow queries, not caring about indexes and how postgres plans queries which is very un-intuitive, once a query of mine on the production db was performing in 2 seconds on my local machine but 1 minute on the kubernetes container in prod - after Maciej debugged, he finally explained how much of a difference a HDD and SSD makes - a simple line change so that postgres uses the right index and using vectors for searching, made the query perform in a second. This is just one of the many instances I learnt about sql optimization
-                </li>
-                <li>
-                  Project Layout - The sequence go service's had a very elegant project layout, it was very easy to navigate the code, and to add a feature you didn't even need to know anything about the codebase, you just had to know where to put the code and how to write tests for it. This was a very good learning experience for me, and I have tried to replicate this in my personal projects.
+                  Worked on <a href="https://github.com/0xsequence/ethwal/pull/9" target="_blank" className="text-link hover:underline">ethwal's filter index</a>, this was a very elegant design thought by Marcin Górzyński, which allowed us to store all kinds of custom events from EVMs in bitmaps and perform very complex filtering operations in them to find historical transaction data containing information we need.
                 </li>
               </ul>
-            </Dropdown>
+            </div>
+            <div>
+              <p className="text-secondary-text mb-2">Some things I learnt</p>
+              <ul className="list-disc pl-4 text-lg">
+                <li>
+                  <strong> Optimizing code for scale: </strong> Working in the Sequence team, I really understood how to see the scale. When writing code for the indexer I never worried about mutex operations, I abused those operations, but Marcin helped me realize that when we have around 7k transactions being processed in each indexer, the amount of overhead such a simple thing would add is a lot. After this I was always really careful about writing code keeping in mind the scale.
+                </li>
+                <li>
+                <strong>DB Optimization: </strong> I wrote very slow queries, not caring about indexes and how Postgres plans queries which is very un-intuitive. Once a query of mine on the production DB was performing in 2 seconds on my local machine but 1 minute on the Kubernetes container in prod - after Maciej debugged, he finally explained how much of a difference a HDD and SSD makes - a simple line change so that Postgres uses the right index and using vectors for searching, made the query perform in a second. This is just one of the many instances I learnt about SQL optimization.
+                </li>
+                <li>
+                <strong>Project Layout: </strong> Sequence's Go services had a very elegant project layout, it was very easy to navigate the code, and to add a feature you didn't even need to know anything about the codebase, you just had to know where to put the code and how to write tests for it. This was a very good learning experience for me, and I have tried to replicate this in my personal projects.
+                </li>
+                <li>
+                <strong>Nothing is impossible: </strong> <a href="https://twitter.com/peterk" target="_blank">Peter Kieltyka</a>, the company's founder and CEO - I was in total awe when I saw that the guy was as deep in tech as any of the developers, familiar with all the different codebases as much as the maintainers of those projects, maintaining huge libraries on github, was still able to manage the company and do everything basically. Similarly I saw many people there who seemed to have supernatural abilities a few of them being <a href="https://ari.computer/" target="_blank">Ari</a>, <a href="https://github.com/c2h5oh" target="_blank">Maciej</a>, <a href="https://github.com/marino39">Marcin</a>. <br />They were just so good at what they did while still being able to do anything thrown at them as good as an expert. <br /> If you form assumptions about what you can and can't do, you are really limiting yourself which seems obvious but its really difficult to not form an image of yourself in your head.
+                </li>
+              </ul>
+            </div>
           </div>
         </TimelineItem>
       </section>
     </div>
   );
 };
+
 export default Career;

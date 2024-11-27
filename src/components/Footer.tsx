@@ -10,15 +10,15 @@ export const Footer = () => {
       case '/':
         return ['', 'contact'];
       case '/career':
-        return ['home', 'hacking', 'about me', 'contact'];
+        return ['home', 'contact'];
       case '/hacking':
-        return ['home', 'career', 'about me', 'contact'];
+        return ['home', 'contact'];
       case '/about':
-        return ['home', 'career', 'hacking', 'contact'];
+        return ['home', 'contact'];
       case '/contact':
-        return ['home', 'career', 'hacking', 'about me'];
+        return ['home', 'about me'];
       default:
-        return ['home', 'career', 'hacking', 'contact'];
+        return ['home', 'contact'];
     }
   };
 
@@ -43,8 +43,8 @@ export const Footer = () => {
   const links = getLinks();
 
   return (
-    <footer className="fixed bottom-4 left-0 right-0 z-20 px-16">
-      <div className="flex justify-between max-w-[1920px] mx-auto">
+    <footer className="mt-auto py-4">
+      <div className="flex justify-between max-w-[1920px] mx-auto px-16 font-vt323">
         {links.map((link) => (
           <Link
             key={link}

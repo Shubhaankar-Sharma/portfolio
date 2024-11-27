@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { FaLink } from 'react-icons/fa';
 import ReactMarkdown from 'react-markdown';
 
 interface ProjectProps {
@@ -31,16 +30,26 @@ const Project: React.FC<ProjectProps> = ({ title, description, images, ytvideos,
     window.location.hash = id;
   };
 
+  const renderLink = (props: { href?: string; children?: React.ReactNode }) => {
+    return (
+      <a href={props.href} target="_blank" rel="noopener noreferrer" className="text-link hover:underline">
+        {props.children}
+      </a>
+    );
+  };
+
   return (
     <div id={title.toLowerCase().replace(/\s+/g, '-')} className="mb-8">
       <div className="flex items-center mb-2">
-        <h2 className="text-2xl font-bold">{title}</h2>
-        <button onClick={handleAnchorClick} className="ml-2 text-gray-500 hover:text-gray-700">
-          <FaLink />
+        <button onClick={handleAnchorClick} className="mr-2 text-gray-500 hover:text-gray-700">
+          #
         </button>
+        <h2 className="text-xl font-bold">{title}</h2>
       </div>
       <p className="text-xl text-gray-500 mb-4">{year}</p>
-      <ReactMarkdown className="text-xl mb-4">{description}</ReactMarkdown>
+      <ReactMarkdown components={{ a: renderLink }} className="text-xl mb-4">
+        {description}
+      </ReactMarkdown>
       {/* horizontal scroll element with images and ytvideos embed */}
       <div className="flex overflow-x-auto">
         {/* allow users to open image in a bigger view */}
@@ -213,13 +222,21 @@ Built a distributed file system on a blockchain from scratch with no dependencie
   {
     title: "doomsday-messenger - Low Power Radio Mesh Network",
     description: `
-Built a messenger using an RFM95 LoRa module, that could send messages to other devices in a mesh network.
+Built a messenger using an RFM95 LoRa module and ESP32, that could send end to end encrypted messages to other devices in a mesh network.
+This project is still in progress, the blog is updated regularly.
+
+The final goal was to create a blackberry-esque messenger that could work without the internet and on just a solar panel.
+
+Hook it to a ham radio and you have a doomsday messenger that can send messages across the world.
 
 [Project Blog](https://streams.place/spongeboi/doomsday-messenger)
+
+Demo video coming soon.
     `,
     year: 2024,
     link: "https://streams.place/spongeboi/doomsday-messenger",
     linkTitle: "Project Blog",
+    images: ["https://i.ibb.co/j6Md6tc/image.png", "https://i.ibb.co/23HR3VS/image.png"]
   },
   {
     title: "go-chi/httplog/v2 - a http logger middleware for golang",
@@ -248,9 +265,11 @@ const Hacking = () => {
   projects = projects.sort((a, b) => b.year - a.year);
   return (
     <div className="max-w-4xl mx-auto">
-      <h1 className="mb-8">hacking</h1>
-      <p className="text-body mb-8">
-        This is a log of all the projects I've worked on
+      <h1 className="mb-8 text-4xl">Hacking</h1>
+      <p className="text-xl mb-8">
+        Hacking in this context means building projects - "hacking something together". <br />
+        I found that when I built something I didn't know anything about, and its very obscure, there's a certain rush I got when I finally got it to work. <br />
+        This is a log of all the projects and libraries I've worked on:
       </p>
       {projects.map((project, index) => (
         <Project key={index} {...project} />

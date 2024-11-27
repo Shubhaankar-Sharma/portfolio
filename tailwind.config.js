@@ -22,6 +22,7 @@ export default {
       },
       fontFamily: {
         'vt323': ['VT323', 'monospace'],
+        'eb-garamond': ['EB Garamond', 'serif'],
       },
     },
   },
