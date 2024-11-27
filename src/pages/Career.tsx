@@ -283,7 +283,7 @@ const Career: React.FC = () => {
     <div className="max-w-4xl mx-auto p-8">
       <div className="mb-12 flex items-start justify-between">
         <h1 className="text-4xl">My Career So Far</h1>
-        <a href="/resume.pdf" className="text-link hover:underline text-xl" target="_blank">
+        <a href="https://spongeboi.com/resume.pdf" className="text-link hover:underline text-xl" target="_blank">
           Resume
         </a>
       </div>
