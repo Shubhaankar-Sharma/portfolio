@@ -74,12 +74,12 @@ export const PageLayout = ({ children }: LayoutProps) => {
       {/* Navigation Bar */}
       <div className="fixed top-0 left-0 right-0 z-20 flex justify-between items-center p-6 text-lg text-secondary-text backdrop-blur-md sm:backdrop-blur-none">
         {leftName && (
-          <a href={left} className="hover:underline">
+          <a href={left} className="hover:underline text-secondary-text">
             &larr; {leftName}
           </a>
         )}
         {rightName && (
-          <a href={right} className="hover:underline">
+          <a href={right} className="hover:underline text-secondary-text">
             {rightName} &rarr;
           </a>
         )}
