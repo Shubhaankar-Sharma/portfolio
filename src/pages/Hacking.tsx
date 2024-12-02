@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import ReactMarkdown from 'react-markdown';
-import 'react-responsive-modal/styles.css';
-import { Modal } from 'react-responsive-modal';
+import React, { useEffect, useState } from "react";
+import ReactMarkdown from "react-markdown";
+import "react-responsive-modal/styles.css";
+import { Modal } from "react-responsive-modal";
 
 interface ProjectProps {
   title: string;
@@ -13,7 +13,13 @@ interface ProjectProps {
   year: number;
 }
 
-const Project: React.FC<ProjectProps> = ({ title, description, images, ytvideos, year }) => {
+const Project: React.FC<ProjectProps> = ({
+  title,
+  description,
+  images,
+  ytvideos,
+  year,
+}) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
@@ -28,55 +34,69 @@ const Project: React.FC<ProjectProps> = ({ title, description, images, ytvideos,
   };
 
   const handleAnchorClick = () => {
-    const id = title.toLowerCase().replace(/\s+/g, '-');
+    const id = title.toLowerCase().replace(/\s+/g, "-");
     window.location.hash = id;
   };
 
   const renderLink = (props: { href?: string; children?: React.ReactNode }) => {
     return (
-      <a href={props.href} target="_blank" rel="noopener noreferrer" className="text-link hover:underline">
+      <a
+        href={props.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-link hover:underline"
+      >
         {props.children}
       </a>
     );
   };
 
   return (
-    <div id={title.toLowerCase().replace(/\s+/g, '-')} className="mb-8">
-      <div className="flex items-center mb-2">
-        <button onClick={handleAnchorClick} className="mr-2 text-gray-500 hover:text-gray-700">
+    <div id={title.toLowerCase().replace(/\s+/g, "-")} className="mb-8">
+      <div className="flex items-start mb-2">
+        <button
+          onClick={handleAnchorClick}
+          className="mr-2 text-gray-500 hover:text-gray-700"
+        >
           #
         </button>
-        <h2 className="text-xl font-bold">{title}</h2>
+        <h2 className="text-xl font-bold pt-2">{title}</h2>
       </div>
       <p className="text-xl text-gray-500 mb-4">{year}</p>
       <ReactMarkdown components={{ a: renderLink }} className="text-xl mb-4">
         {description}
       </ReactMarkdown>
       <div className="flex flex-wrap gap-4">
-        {images && images.map((image, index) => (
-          <img
-            key={index}
-            src={image}
-            alt={title}
-            className="w-64 h-64 cursor-pointer object-cover"
-            onClick={() => openModal(image)}
-          />
-        ))}
-        {ytvideos && ytvideos.map((video, index) => (
-          <div key={index} className="w-full md:w-64 h-64">
-            <iframe
-              src={video}
-              title={title}
-              className="w-full h-full"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
+        {images &&
+          images.map((image, index) => (
+            <img
+              key={index}
+              src={image}
+              alt={title}
+              className="w-64 h-64 cursor-pointer object-cover"
+              onClick={() => openModal(image)}
             />
-          </div>
-        ))}
+          ))}
+        {ytvideos &&
+          ytvideos.map((video, index) => (
+            <div key={index} className="w-full md:w-64 h-64">
+              <iframe
+                src={video}
+                title={title}
+                className="w-full h-full"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+          ))}
       </div>
 
       <Modal open={isModalOpen} onClose={closeModal} center>
-        <img src={selectedImage || ''} alt={title} className="max-w-full max-h-full" />
+        <img
+          src={selectedImage || ""}
+          alt={title}
+          className="max-w-full max-h-full"
+        />
       </Modal>
     </div>
   );
@@ -91,7 +111,10 @@ When I was 13, I built a robot using Arduino LDR sensors and ultrasonic sensors.
 I have very terrible photos of this project since I was a kid :p.
     `,
     year: 2017,
-    images: ["https://i.ibb.co/1bQzLWJ/line-follower-2.jpg", "https://i.ibb.co/09VYsrb/line-follower.jpg"]
+    images: [
+      "https://i.ibb.co/1bQzLWJ/line-follower-2.jpg",
+      "https://i.ibb.co/09VYsrb/line-follower.jpg",
+    ],
   },
   {
     title: "Automatic Plant Watering System",
@@ -101,7 +124,7 @@ I built an automatic plant watering system using Arduino. It measured the moistu
 Due to me being a 13-year-old, I again have very poor images.
     `,
     year: 2017,
-    images: ["https://i.ibb.co/c3TpNmC/plant-watering.jpg"]
+    images: ["https://i.ibb.co/c3TpNmC/plant-watering.jpg"],
   },
   {
     title: "Online Multiplayer Ping Pong",
@@ -113,7 +136,11 @@ I built a multiplayer ping pong game when I was 16, from scratch using just Pyga
     year: 2020,
     link: "https://medium.com/analytics-vidhya/basics-for-network-communication-on-python-af3f677af42c",
     linkTitle: "Blog Post for the Project",
-    images: ["https://miro.medium.com/v2/resize:fit:720/format:webp/1*30RoLEq__QUzH-Y7NgPVAA.png", "https://miro.medium.com/v2/resize:fit:720/format:webp/1*SsjVfEn2C9XWotEuyA9uBQ.png", "https://miro.medium.com/v2/resize:fit:720/format:webp/1*urY5gucYctSz_vEd-4maXw.png"]
+    images: [
+      "https://miro.medium.com/v2/resize:fit:720/format:webp/1*30RoLEq__QUzH-Y7NgPVAA.png",
+      "https://miro.medium.com/v2/resize:fit:720/format:webp/1*SsjVfEn2C9XWotEuyA9uBQ.png",
+      "https://miro.medium.com/v2/resize:fit:720/format:webp/1*urY5gucYctSz_vEd-4maXw.png",
+    ],
   },
   {
     title: "goware/firewall",
@@ -164,7 +191,10 @@ So we built an app that takes in documents and simplifies them to a more underst
 [Devpost Link](https://devpost.com/software/simpl-ai)
     `,
     year: 2022,
-    images: ["https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/002/254/914/datas/gallery.jpg", "https://i.postimg.cc/1RprSfYf/Tech-Diagram-drawio.png"],
+    images: [
+      "https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/002/254/914/datas/gallery.jpg",
+      "https://i.postimg.cc/1RprSfYf/Tech-Diagram-drawio.png",
+    ],
     link: "https://devpost.com/software/simpl-ai",
     linkTitle: "Devpost Link",
   },
@@ -200,7 +230,10 @@ We built a decentralized file storage app, that used Shamir key splitting to sto
     year: 2023,
     link: "https://peersafe.tech/",
     linkTitle: "Website",
-    images: ["https://i.ibb.co/YXCLLQF/image.png", "https://i.ibb.co/3NjDc48/image.png"]
+    images: [
+      "https://i.ibb.co/YXCLLQF/image.png",
+      "https://i.ibb.co/3NjDc48/image.png",
+    ],
   },
   {
     title: "rfs-blockchain - a distributed file system on a blockchain",
@@ -228,7 +261,9 @@ With it you can ask Claude to search your notes, and it will use them to give an
 [Github Repo](https://github.com/Shubhaankar-Sharma/obsidian-brain)
     `,
     images: ["https://pbs.twimg.com/media/Gdcer4rakAAYF8S?format=jpg"],
-    ytvideos: ["https://www.loom.com/embed/6708b08ac06e4c2d9f816cab152181ec?sid=a6f0b9cc-0864-4490-982a-6e3e505d9379"]
+    ytvideos: [
+      "https://www.loom.com/embed/6708b08ac06e4c2d9f816cab152181ec?sid=a6f0b9cc-0864-4490-982a-6e3e505d9379",
+    ],
   },
   {
     title: "doomsday-messenger - Low Power Radio Mesh Network",
@@ -247,7 +282,10 @@ Demo video coming soon.
     year: 2024,
     link: "https://streams.place/spongeboi/doomsday-messenger",
     linkTitle: "Project Blog",
-    images: ["https://i.ibb.co/j6Md6tc/image.png", "https://i.ibb.co/23HR3VS/image.png"]
+    images: [
+      "https://i.ibb.co/j6Md6tc/image.png",
+      "https://i.ibb.co/23HR3VS/image.png",
+    ],
   },
   {
     title: "go-chi/httplog/v2 - a http logger middleware for golang",
@@ -259,7 +297,7 @@ Refactored the go-chi/httplog middleware to use slog, the new inbuilt Go library
     year: 2024,
     link: "https://github.com/go-chi/httplog/pull/26",
     linkTitle: "Github",
-  }
+  },
 ];
 
 const Hacking = () => {
@@ -268,7 +306,7 @@ const Hacking = () => {
     if (hash) {
       const element = document.getElementById(hash);
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
+        element.scrollIntoView({ behavior: "smooth" });
       }
     }
   }, []);
@@ -278,8 +316,11 @@ const Hacking = () => {
     <div className="max-w-4xl mx-auto p-8">
       <h1 className="mb-8 text-4xl">Hacking</h1>
       <p className="text-xl mb-8">
-        Hacking in this context means building projects - "hacking something together". <br />
-        I found that when I built something I didn't know anything about, and its very obscure, there's a certain rush I got when I finally got it to work. <br />
+        Hacking in this context means building projects - "hacking something
+        together". <br />
+        I found that when I built something I didn't know anything about, and
+        its very obscure, there's a certain rush I got when I finally got it to
+        work. <br />
         This is a log of all the projects and libraries I've worked on:
       </p>
       {projects.map((project, index) => (

@@ -1,11 +1,16 @@
 // src/App.tsx
-import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import { LandingLayout, PageLayout } from './layouts/Layouts';
-import Home from './pages/Home';
-import Career from './pages/Career';
-import Hacking from './pages/Hacking';
-import About from './pages/About';
+import React, { useEffect } from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
+import { LandingLayout, PageLayout } from "./layouts/Layouts";
+import Home from "./pages/Home";
+import Career from "./pages/Career";
+import Hacking from "./pages/Hacking";
+import About from "./pages/About";
 
 const LayoutWrapper = ({ children }: { children: React.ReactNode }) => {
   const location = useLocation();
@@ -16,7 +21,7 @@ const LayoutWrapper = ({ children }: { children: React.ReactNode }) => {
   }, [location]);
 
   // Use LandingLayout only for home page
-  if (location.pathname === '/') {
+  if (location.pathname === "/") {
     return <LandingLayout>{children}</LandingLayout>;
   }
 
