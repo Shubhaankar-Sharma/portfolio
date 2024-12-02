@@ -3,7 +3,7 @@ import { Footer } from "../components/Footer";
 import airmailstamp from "../assets/images/airmailstamp.svg";
 import postboxstamp from "../assets/images/postboxstamp.svg";
 import OverlappingCircles from "../components/OverlappingCircles";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 interface LayoutProps {
   children: ReactNode;
@@ -74,14 +74,14 @@ export const PageLayout = ({ children }: LayoutProps) => {
       {/* Navigation Bar */}
       <div className="fixed top-0 left-0 right-0 z-20 flex justify-between items-center p-6 text-lg text-secondary-text backdrop-blur-md sm:backdrop-blur-none">
         {leftName && (
-          <a href={left} className="hover:underline text-secondary-text">
+          <Link to={left} className="hover:underline text-secondary-text">
             &larr; {leftName}
-          </a>
+          </Link>
         )}
         {rightName && (
-          <a href={right} className="hover:underline text-secondary-text">
+          <Link to={right} className="hover:underline text-secondary-text">
             {rightName} &rarr;
-          </a>
+          </Link>
         )}
       </div>
 
