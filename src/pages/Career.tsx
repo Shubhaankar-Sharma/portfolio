@@ -683,6 +683,26 @@ const Career: React.FC = () => {
                   Docker
                 </a>
               </li>
+              <li>
+                <a
+                  href="https://grafana.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-link hover:underline"
+                >
+                  Grafana
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://prometheus.io/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-link hover:underline"
+                >
+                  Prometheus
+                </a>
+              </li>
             </ul>
           </div>
           <p className="text-lg mt-4">
