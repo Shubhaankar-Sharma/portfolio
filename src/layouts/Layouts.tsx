@@ -72,7 +72,7 @@ export const PageLayout = ({ children }: LayoutProps) => {
       <div className="noise-overlay" />
 
       {/* Navigation Bar */}
-      <div className="fixed top-0 left-0 right-0 z-20 flex justify-between items-center p-6 text-lg text-secondary-text backdrop-blur-md">
+      <div className="fixed top-0 left-0 right-0 z-20 flex justify-between items-center p-6 text-lg text-secondary-text backdrop-blur-md sm:backdrop-blur-none">
         {leftName && (
           <a href={left} className="hover:underline">
             &larr; {leftName}
