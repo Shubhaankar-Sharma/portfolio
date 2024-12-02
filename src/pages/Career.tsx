@@ -413,6 +413,8 @@ const Career: React.FC = () => {
               <li><a href="https://www.pulumi.com/" target="_blank" rel="noopener noreferrer" className="text-link hover:underline">Pulumi</a></li>
               <li><a href="https://git-scm.com/" target="_blank" rel="noopener noreferrer" className="text-link hover:underline">Git</a></li>
               <li><a href="https://www.docker.com/" target="_blank" rel="noopener noreferrer" className="text-link hover:underline">Docker</a></li>
+              <li><a href="https://grafana.com/" target="_blank" rel="noopener noreferrer" className="text-link hover:underline">Grafana</a></li>
+              <li><a href="https://prometheus.io/" target="_blank" rel="noopener noreferrer" className="text-link hover:underline">Prometheus</a></li>
             </ul>
           </div>
           <p className="text-lg mt-4">
