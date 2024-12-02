@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
+import 'react-responsive-modal/styles.css';
+import { Modal } from 'react-responsive-modal';
 
 interface ProjectProps {
   title: string;
@@ -50,40 +52,32 @@ const Project: React.FC<ProjectProps> = ({ title, description, images, ytvideos,
       <ReactMarkdown components={{ a: renderLink }} className="text-xl mb-4">
         {description}
       </ReactMarkdown>
-      {/* horizontal scroll element with images and ytvideos embed */}
-      <div className="flex overflow-x-auto">
-        {/* allow users to open image in a bigger view */}
+      <div className="flex flex-wrap gap-4">
         {images && images.map((image, index) => (
           <img
             key={index}
             src={image}
             alt={title}
-            className="w-64 h-64 mr-4 cursor-pointer object-cover"
+            className="w-64 h-64 cursor-pointer object-cover"
             onClick={() => openModal(image)}
           />
         ))}
-        {/* allow users to play the video in a modal */}
         {ytvideos && ytvideos.map((video, index) => (
-          <iframe key={index} src={video} title={title} className="w-64 h-64 mr-4" />
+          <div key={index} className="w-full md:w-64 h-64">
+            <iframe
+              src={video}
+              title={title}
+              className="w-full h-full"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
         ))}
       </div>
 
-      {isModalOpen && (
-        <div
-          className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-50"
-          onClick={closeModal}
-        >
-          <div className="relative" onClick={(e) => e.stopPropagation()}>
-            <button
-              className="absolute top-0 right-0 mt-2 mr-2 text-white"
-              onClick={closeModal}
-            >
-              &times;
-            </button>
-            <img src={selectedImage || ''} alt={title} className="max-w-full max-h-full" />
-          </div>
-        </div>
-      )}
+      <Modal open={isModalOpen} onClose={closeModal} center>
+        <img src={selectedImage || ''} alt={title} className="max-w-full max-h-full" />
+      </Modal>
     </div>
   );
 };
@@ -218,6 +212,23 @@ Built a distributed file system on a blockchain from scratch with no dependencie
     year: 2023,
     link: "https://github.com/Shubhaankar-Sharma/rfs-blockchain",
     linkTitle: "Github Repo",
+  },
+  {
+    title: "obsidian-brain - Give claude access to your obsidian vault",
+    year: 2024,
+    description: `
+I wrote a MCP (Model Context Protocol) Server for Obsidian, which is a note-taking app.
+
+This MCP allows you to give access to your Obsidian vault to a third party, like Claude or any other Chatbots that support MCP.
+
+Used BM25, NLP and Vector Search to make the search so that it gives relevant context to LLMs.
+
+With it you can ask Claude to search your notes, and it will use them to give answers, store conversations and create notes in obsidian.
+
+[Github Repo](https://github.com/Shubhaankar-Sharma/obsidian-brain)
+    `,
+    images: ["https://pbs.twimg.com/media/Gdcer4rakAAYF8S?format=jpg"],
+    ytvideos: ["https://www.loom.com/embed/6708b08ac06e4c2d9f816cab152181ec?sid=a6f0b9cc-0864-4490-982a-6e3e505d9379"]
   },
   {
     title: "doomsday-messenger - Low Power Radio Mesh Network",

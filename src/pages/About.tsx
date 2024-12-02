@@ -7,13 +7,13 @@ const About: React.FC = () => {
         WIP... stuff about my inspiration... my love for music, sitcoms, stratocasters... some philosophy... things I found interesting... travel... pictures
       </p>
       <div className="flex space-x-4 mt-8">
-        <a href="https://github.com/your-github-username" target="_blank" rel="noopener noreferrer" className="text-link hover:opacity-80">
+        <a href="https://github.com/Shubhaankar-Sharma" target="_blank" rel="noopener noreferrer" className="text-link hover:opacity-80">
           <FaGithub size={32} />
         </a>
-        <a href="https://twitter.com/your-twitter-handle" target="_blank" rel="noopener noreferrer" className="text-link hover:opacity-80">
+        <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer" className="text-link hover:opacity-80">
           <FaTwitter size={32} />
         </a>
-        <a href="mailto:hi@spongeboi.com" className="text-link hover:opacity-80">
+        <a href="mailto:shubhaankar@hotmail.com" className="text-link hover:opacity-80">
           <FaEnvelope size={32} />
         </a>
       </div>
