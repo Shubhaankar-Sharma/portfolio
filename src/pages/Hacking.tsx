@@ -51,8 +51,23 @@ const Project: React.FC<ProjectProps> = ({
     );
   };
 
+
+  const id = title.toLowerCase().replace(/\s+/g, "-");
+
+  useEffect(() => {
+    if (window.location.hash === `#${id}`) {
+      setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
+    }
+  }, [id]);
+
+
   return (
-    <div id={title.toLowerCase().replace(/\s+/g, "-")} className="mb-8">
+    <div id={id} className="mb-8">
       <div className="flex items-start mb-2">
         <button
           onClick={handleAnchorClick}
@@ -302,13 +317,26 @@ Refactored the go-chi/httplog middleware to use slog, the new inbuilt Go library
 
 const Hacking = () => {
   useEffect(() => {
-    const hash = window.location.hash.substring(1);
-    if (hash) {
-      const element = document.getElementById(hash);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
+    const handleHashChange = () => {
+      const hash = window.location.hash.substring(1);
+      if (hash) {
+        const element = document.getElementById(hash);
+        if (element) {
+          setTimeout(() => {
+            element.scrollIntoView({ behavior: "smooth" });
+          }, 100);
+        }
       }
-    }
+    };
+
+    // Handle initial load
+    handleHashChange();
+
+    // Add event listener for hash changes
+    window.addEventListener('hashchange', handleHashChange);
+
+    // Cleanup
+    return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
   projects = projects.sort((a, b) => b.year - a.year);
