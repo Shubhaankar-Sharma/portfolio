@@ -11,32 +11,30 @@ interface LayoutProps {
 
 export const LandingLayout = ({ children }: LayoutProps) => {
   return (
-    <div className="relative min-h-screen flex flex-col bg-landing-bg">
+    <div className="relative h-screen flex flex-col bg-landing-bg">
+      {/* Overlay effects */}
       <div className="noise-overlay" />
       <div className="worn-overlay" />
 
-      {/* Stamps Container - increased sizes */}
+      {/* Stamps Container */}
       <div className="absolute top-8 right-8 flex flex-col gap-4 z-20">
-        <img
-          src={postboxstamp}
-          alt="Post Box Stamp"
-          className="w-24 md:w-32" // Responsive size
-        />
-        <img
-          src={airmailstamp}
-          alt="Air Mail Stamp"
-          className="w-24 md:w-32" // Responsive size
-        />
+        <img src={postboxstamp} alt="Post Box Stamp" className="w-24 md:w-32" />
+        <img src={airmailstamp} alt="Air Mail Stamp" className="w-24 md:w-32" />
       </div>
 
       {/* Main content */}
-      <div className="relative z-10 flex-grow flex flex-col">
-        {children}
-        <div className="flex-grow flex items-center justify-center -mt-10 sm:mt-0">
+      <div className="relative z-10 flex flex-col flex-grow overflow-hidden">
+        <div className="flex-grow">
+          {children}
+        </div>
+
+        {/* Push OverlappingCircles down */}
+        <div className="flex items-center justify-center -mt-10 sm:mt-0">
           <OverlappingCircles />
         </div>
       </div>
 
+      {/* Footer */}
       <Footer />
     </div>
   );
