@@ -281,6 +281,19 @@ With it you can ask Claude to search your notes, and it will use them to give an
     ],
   },
   {
+    title: "cal - a stupidly simple smart calorie tracker",
+    description: `
+Needed a calorie tracker that was simple and didn't require me to input everything I ate very precisely. So I built one that uses an llm to approximate the calories in the food you ate.
+A very simple project but very useful for me.
+
+Going to build a rag pipeline for it to fetch ready-made food items from the internet + add image support for approximating portion sizes.
+
+[Website](https://cal.spongeboi.com/)
+    `,
+    year: 2024,
+    images: ["https://pbs.twimg.com/media/GdVdWRyaoAEk62m?format=jpg&name=small"],
+  },
+  {
     title: "doomsday-messenger - Low Power Radio Mesh Network",
     description: `
 Built a messenger using an RFM95 LoRa module and ESP32, that could send end to end encrypted messages to other devices in a mesh network.

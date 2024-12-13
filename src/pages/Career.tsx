@@ -570,12 +570,12 @@ const Career: React.FC = () => {
               </li>
               <li>
                 <a
-                  href="https://www.djangoproject.com/"
+                  href="https://fastapi.tiangolo.com/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-link hover:underline"
                 >
-                  Django
+                  fastAPI
                 </a>
               </li>
               <li>
@@ -596,6 +596,26 @@ const Career: React.FC = () => {
                   className="text-link hover:underline"
                 >
                   React
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://expressjs.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-link hover:underline"
+                >
+                  Express
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://nextjs.org/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-link hover:underline"
+                >
+                  Next.js
                 </a>
               </li>
               <li>
