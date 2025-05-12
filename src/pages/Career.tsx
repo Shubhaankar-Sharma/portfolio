@@ -316,7 +316,7 @@ const Career: React.FC = () => {
           subtitle="Bachelor of Science"
           extraContent={
             <p className="text-secondary-text text-xl">
-              Computer Science and Mathematics
+              Computer Science
             </p>
           }
           logo={ubclogo}
