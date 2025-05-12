@@ -1,6 +1,7 @@
 import React, { useState, ReactNode } from "react";
 import horizonlogo from "../assets/images/horizonlogo.png";
 import ubclogo from "../assets/images/ubclogo.png";
+import systopiaLogo from "../assets/images/systopia.png";
 
 interface TimelineItemProps {
   title: string;
@@ -325,7 +326,7 @@ const Career: React.FC = () => {
         >
           <div className="space-y-4">
             <div>
-              <p className="text-secondary-text mb-2">Awards</p>
+              <p className="subsection-header text-secondary-text">Awards</p>
               <div className="space-y-1 text-xl">
                 <div className="flex items-center gap-2">
                   <span className="text-link">›</span>
@@ -335,11 +336,15 @@ const Career: React.FC = () => {
                   <span className="text-link">›</span>
                   <span>Science Scholarship Award (2024)</span>
                 </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-link">›</span>
+                  <span>Work Learn International Undergraduate Research Award (2025)</span>
+                </div>
               </div>
             </div>
 
             <div>
-              <p className="text-secondary-text mb-2">Courses</p>
+              <p className="subsection-header text-secondary-text">Courses</p>
               <CourseList courses={courses} />
             </div>
           </div>
@@ -348,6 +353,35 @@ const Career: React.FC = () => {
 
       <section className="mb-16">
         <h2 className="text-3xl mb-8">Experience</h2>
+        <TimelineItem
+          title="University of British Columbia - Systopia Labs"
+          subtitle="Research Internship"
+          logo={systopiaLogo}
+          startDate="Jan 2024"
+          endDate="Present"
+          url="https://systopia.cs.ubc.ca/"
+        >
+          <div className="space-y-4">
+            <div>
+              <p className="subsection-header text-secondary-text">Research Focus</p>
+              <ul className="list-disc pl-4 text-lg">
+                <li>
+                  Working under Dr. Arpan Gujarati on two concurrent research papers:
+                </li>
+                <li className="ml-8">
+                  <strong>Real-time Guarantees for Edge Computing:</strong> Collaborating with Philip Schowitz on latency analysis of NVIDIA Holoscan SDK, focusing on providing real-time guarantees for edge applications in hospital environments. Evaluating system response times and processing overhead for medical inference systems.
+                </li>
+                <li className="ml-8">
+                  <strong>GPU Scheduling Optimization:</strong> In collaboration with NVIDIA, researching GPU scheduling strategies using NVIDIA's Green Context API to improve maximum latency guarantees for edge computing ML applications.
+                </li>
+                <li>
+                  Currently supported by the Work Learn International Undergraduate Research Award (WL IURA) for the summer term
+                </li>
+              </ul>
+            </div>
+          </div>
+        </TimelineItem>
+
         <TimelineItem
           title="Horizon Blockchain Games Inc."
           subtitle="Backend Developer (Part-time)"
@@ -358,7 +392,7 @@ const Career: React.FC = () => {
         >
           <div className="space-y-4">
             <div>
-              <p className="text-secondary-text mb-2">Impact + Projects</p>
+              <p className="subsection-header text-secondary-text">Impact + Projects</p>
               <ul className="list-disc pl-4 text-lg">
                 <li>
                   Worked on migrating{" "}
@@ -403,7 +437,7 @@ const Career: React.FC = () => {
               </ul>
             </div>
             <div>
-              <p className="text-secondary-text mb-2">Some things I learnt</p>
+              <p className="subsection-header text-secondary-text">Some things I learnt</p>
               <ul className="list-disc pl-4 text-lg">
                 <li>
                   <strong> Optimizing code for scale: </strong> Working in the
@@ -735,3 +769,16 @@ const Career: React.FC = () => {
 };
 
 export default Career;
+
+<style>
+  {`
+    .subsection-header {
+      font-size: 0.75rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      margin-top: 1rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+  `}
+</style>
