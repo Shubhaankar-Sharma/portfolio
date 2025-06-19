@@ -6,3 +6,4 @@ dist
 .code
 .env
 .cursor
+.next/

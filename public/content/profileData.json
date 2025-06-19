@@ -214,6 +214,18 @@
       "name": "Projects",
       "items": [
         {
+          "id": "lilgrad-2025",
+          "year": "2025",
+          "heading": "lilgrad",
+          "url": "https://github.com/Shubhaankar-Sharma/lilgrad",
+          "collaborators": [],
+          "description": "- Micrograd-like neural network library built from scratch in Python and NumPy\n- Implemented in numpy and python from scratch without inspiration from existing libraries\n- Currently supports ReLU and Softmax activations with cross-entropy loss\n- Future plans include GPU support for accelerated computation",
+          "attachments": [],
+          "type": "projects",
+          "technologies": ["Python", "NumPy", "Neural Networks"],
+          "logo": null
+        },
+        {
           "id": "obsidian-brain-2024",
           "year": "2024",
           "heading": "obsidian-brain",
