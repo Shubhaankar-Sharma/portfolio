@@ -1,0 +1,298 @@
+{
+  "general": {
+    "profilePhoto": "/content/media/profilePhoto.jpg",
+    "username": "spongeboi",
+    "displayName": "Shubhaankar Sharma",
+    "profession": "Backend Dev",
+    "location": "Vancouver, Canada",
+    "pronouns": "he/him",
+    "byline": "CS & Math student at UBC building distributed systems, cryptography tools, and helpful software",
+    "about": "I'm passionate about building systems that solve real problems. My approach is guided by \"rejecting artificial bounds\" - a philosophy I learned from mentors who showed me that exceptional versatility is possible when you focus on continuous learning and building.\n\nFrom Arduino projects at 13 to distributed systems research at university, I enjoy tackling challenging, often obscure problems. I believe in contributing to communities and creating tools that help people work more effectively.\n\nCurrently doing research on real-time guarantees for edge computing.",
+    "status": {
+      "text": null,
+      "emoji": null,
+      "timestamp": null
+    },
+    "sectionOrder": [
+      "workExperience",
+      "education",
+      "openSourceWork",
+      "projects",
+      "awards",
+      "contact"
+    ]
+  },
+  "exhibitions": [],
+  "talks": [],
+  "writing": [],
+  "features": [],
+  "volunteering": [],
+  "certifications": [],
+  "allCollections": [
+    {
+      "name": "Work Experience",
+      "items": [
+        {
+          "id": "ubc-research-intern-2024",
+          "year": "May 2025 — Present",
+          "heading": "Research Intern at University of British Columbia - Systopia Labs",
+          "url": "https://systopia.cs.ubc.ca/",
+          "collaborators": [],
+          "description": "- Working under **Dr. Arpan Gujarati** in collaboration with **NVIDIA** on **real time systems research** related to the Holoscan SDK (AI applications in Hospitals and Surgery Tables)\n- This internship is supported by the Work Learn International Undergraduate Research Award",
+          "attachments": [],
+          "type": "workExperience",
+          "title": "Research Intern",
+          "company": "University of British Columbia - Systopia Labs",
+          "location": "Vancouver",
+          "logo": "/content/media/systopia.png",
+          "technologies": [
+            "C++",
+            "CUDA",
+            "NVIDIA Holoscan SDK",
+            "Real-time Systems",
+            "Edge Computing"
+          ]
+        },
+        {
+          "id": "v8RvXgMtXcEUSADc05Zc",
+          "year": "Sep 2021 — Sep 2024",
+          "heading": "Backend Developer at Sequence Inc",
+          "url": "https://sequence.xyz/",
+          "collaborators": [],
+          "description": "- Migrated Sequence infrastructure to Kubernetes and Pulumi\n- Built scalable search/filtering for blockchain marketplace\n- Developed webhook notification system for EVM events\n- Maintained metadata service handling 1.5k requests/minute\n- Contributed to ethwal's filter index optimization",
+          "attachments": [],
+          "type": "workExperience",
+          "title": "Backend Developer",
+          "company": "Sequence Inc",
+          "location": "Toronto",
+          "logo": "/content/media/sequencelogo.png",
+          "technologies": [
+            "Go",
+            "Kubernetes",
+            "Pulumi",
+            "PostgreSQL",
+            "Redis",
+            "gRPC",
+            "Docker",
+            "Blockchain",
+            "EVM"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Education",
+      "items": [
+        {
+          "id": "r7Rc7spEtvrhGvmuzPRV",
+          "year": "Sep 2022 — Apr 2026",
+          "heading": "Bachelor of Science in Computer Science at University of British Columbia",
+          "url": "https://ubc.ca",
+          "collaborators": [],
+          "description": "- Majoring in Computer Science with focus on distributed systems and cryptography\n- Key courses: Systems Programming, Algorithms, Databases, Software Engineering\n- Additional coursework: Numerical Computation, Linear Algebra, Calculus",
+          "attachments": [],
+          "type": "education",
+          "degree": "Bachelor of Science in Computer Science",
+          "school": "University of British Columbia",
+          "location": "Vancouver",
+          "logo": "/content/media/ubclogo.png",
+          "technologies": [
+            "C",
+            "C++",
+            "Java",
+            "Python",
+            "SQL",
+            "Assembly",
+            "Algorithms",
+            "Data Structures",
+            "Distributed Systems"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Awards",
+      "items": [
+        {
+          "id": "work-learn-award-2025",
+          "year": "2025",
+          "heading": "Work Learn International Undergraduate Research Award",
+          "url": null,
+          "collaborators": [],
+          "description": "Received research award for work on real-time guarantees for edge computing at UBC Systopia Labs.",
+          "attachments": [],
+          "type": "awards",
+          "institution": "University of British Columbia"
+        },
+        {
+          "id": "deans-honor-list-2023",
+          "year": "2023",
+          "heading": "Dean's Honor List",
+          "url": null,
+          "collaborators": [],
+          "description": "Recognized for academic excellence at University of British Columbia.",
+          "attachments": [],
+          "type": "awards",
+          "institution": "University of British Columbia"
+        },
+        {
+          "id": "science-scholarship-2024",
+          "year": "2024",
+          "heading": "Science Scholarship Award",
+          "url": null,
+          "collaborators": [],
+          "description": "Merit-based scholarship for outstanding performance in Computer Science studies.",
+          "attachments": [],
+          "type": "awards",
+          "institution": "University of British Columbia"
+        },
+        {
+          "id": "hack-valley-2022",
+          "year": "2022",
+          "heading": "2nd Place - Hack the Valley UofT",
+          "url": null,
+          "collaborators": [],
+          "description": "Second place finish at University of Toronto's Hack the Valley hackathon for simpl.ai project.",
+          "attachments": [],
+          "type": "awards",
+          "institution": "University of Toronto"
+        }
+      ]
+    },
+    {
+      "name": "Open Source Work",
+      "items": [
+        {
+          "id": "ethwal-contrib-2024",
+          "year": "2024",
+          "heading": "ethwal",
+          "url": "https://github.com/0xsequence/ethwal",
+          "collaborators": [],
+          "description": "- Contributed filter index optimization to Ethereum wallet library\n- Improved performance of Ethereum transaction filtering",
+          "attachments": [],
+          "type": "openSourceWork",
+          "technologies": ["Go", "Ethereum"],
+          "logo": null
+        },
+        {
+          "id": "sequence-infra-2023-2024",
+          "year": "2023-2024",
+          "heading": "Sequence Infrastructure",
+          "url": "https://github.com/0xsequence",
+          "collaborators": [],
+          "description": "- Open source contributions to Web3 gaming infrastructure and tooling\n- Infrastructure improvements and developer tools\n- Various Sequence ecosystem projects",
+          "attachments": [],
+          "type": "openSourceWork",
+          "technologies": ["Go", "Kubernetes", "Web3"],
+          "logo": null
+        }
+      ]
+    },
+    {
+      "name": "Projects",
+      "items": [
+        {
+          "id": "obsidian-brain-2024",
+          "year": "2024",
+          "heading": "obsidian-brain",
+          "url": "https://github.com/Shubhaankar-Sharma/obsidian-brain",
+          "collaborators": [],
+          "description": "- MCP Server for Obsidian with BM25, NLP, and Vector Search capabilities\n- Advanced search and knowledge management system for Obsidian notes",
+          "attachments": [],
+          "type": "projects",
+          "technologies": ["Go", "NLP", "Vector Search"],
+          "logo": null
+        },
+        {
+          "id": "doomsday-messenger-2024",
+          "year": "2024",
+          "heading": "doomsday-messenger",
+          "url": "https://github.com/Shubhaankar-Sharma/doomsday-messenger",
+          "collaborators": [],
+          "description": "- LoRa mesh network for end-to-end encrypted messaging\n- Decentralized communication system for scenarios without internet infrastructure\n- Built for emergency and off-grid communication",
+          "attachments": [],
+          "type": "projects",
+          "technologies": ["LoRa", "Encryption", "Mesh Network"],
+          "logo": null
+        },
+        {
+          "id": "peersafe-2023",
+          "year": "2023",
+          "heading": "peersafe",
+          "url": "https://github.com/Shubhaankar-Sharma/peersafe",
+          "collaborators": [],
+          "description": "- P2P end-to-end encrypted file storage with Shamir key splitting\n- Distributed file storage system across multiple peers\n- Focuses on security and redundancy",
+          "attachments": [],
+          "type": "projects",
+          "technologies": ["Go", "P2P", "Cryptography"],
+          "logo": null
+        },
+        {
+          "id": "rfs-blockchain-2023",
+          "year": "2023",
+          "heading": "rfs-blockchain",
+          "url": "https://github.com/Shubhaankar-Sharma/rfs-blockchain",
+          "collaborators": [],
+          "description": "- Distributed file system on blockchain built from scratch\n- Custom blockchain implementation for decentralized file storage\n- Includes consensus mechanisms and file integrity guarantees",
+          "attachments": [],
+          "type": "projects",
+          "technologies": ["Go", "Blockchain", "Distributed Systems"],
+          "logo": null
+        },
+        {
+          "id": "simpl-ai-2022",
+          "year": "2022",
+          "heading": "simpl.ai",
+          "url": null,
+          "collaborators": [],
+          "description": "- 2nd place at Hack the Valley UofT hackathon\n- Document simplification using BART transformer model\n- AI-powered tool for better readability and comprehension",
+          "attachments": [],
+          "type": "projects",
+          "technologies": ["Python", "ML", "BART"],
+          "logo": null
+        }
+      ]
+    },
+
+    {
+      "name": "Contact",
+      "items": [
+        {
+          "id": "email-contact",
+          "platform": "Email",
+          "handle": "shubhaankar@hotmail.com",
+          "url": "mailto:shubhaankar@hotmail.com",
+          "type": "contact"
+        },
+        {
+          "id": "github-contact",
+          "platform": "GitHub",
+          "handle": "Shubhaankar-Sharma",
+          "url": "https://github.com/Shubhaankar-Sharma",
+          "type": "contact"
+        },
+        {
+          "id": "resume-contact",
+          "platform": "Resume",
+          "handle": "Download PDF",
+          "url": "/content/media/resume.pdf",
+          "type": "contact"
+        },
+        {
+          "id": "linkedin-contact",
+          "platform": "LinkedIn",
+          "handle": "shubhaankar-sharma",
+          "url": "https://www.linkedin.com/in/shubhaankar-sharma/",
+          "type": "contact"
+        },
+        {
+          "id": "x-contact",
+          "platform": "X",
+          "handle": "__spongeboi",
+          "url": "https://x.com/__spongeboi",
+          "type": "contact"
+        }
+      ]
+    }
+  ]
+}
