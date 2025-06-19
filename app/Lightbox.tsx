@@ -194,7 +194,6 @@ const LightboxImage: React.FC<LightboxImageProps> = ({
     <video
       src={media.url}
       autoPlay
-      muted
       playsInline
       loop/>
 

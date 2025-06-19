@@ -171,14 +171,31 @@
 
   .experience {
     flex-direction: column;
+    gap: 8px;
   }
 
   .year {
     min-width: auto;
-    margin-bottom: 8px;
+    margin-bottom: 12px;
+    font-size: 14px;
   }
 
   .year::before {
     content: "";
+  }
+
+  .year span {
+    position: static;
+    white-space: normal;
+    word-break: break-word;
+  }
+
+  .titleRow {
+    gap: 8px;
+  }
+
+  .title {
+    font-size: 16px;
+    line-height: 1.3;
   }
 }
