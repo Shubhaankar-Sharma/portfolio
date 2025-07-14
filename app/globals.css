@@ -8,6 +8,11 @@
   --wash1: #e5e5e5;
   --wash2: #f2f2f2;
   --transparentBorder: rgba(0, 0, 0, 0.05);
+  --squiggle-blue: #3B82F6;
+  --squiggle-purple: #8B5CF6;
+  --squiggle-red: #EF4444;
+  --squiggle-green: #10B981;
+  --squiggle-orange: #F59E0B;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -19,6 +24,11 @@
     --wash1: #4E4E4E;
     --wash2: #383838;
     --transparentBorder: rgb(255 255 255 / 0.1);
+    --squiggle-blue: #60A5FA;
+    --squiggle-purple: #A78BFA;
+    --squiggle-red: #F87171;
+    --squiggle-green: #34D399;
+    --squiggle-orange: #FBBF24;
   }
 }
 
@@ -53,4 +63,45 @@ a {
   html {
     color-scheme: dark;
   }
+}
+
+/* Squiggly underline styles */
+.squiggle-blue {
+  text-decoration: underline;
+  text-decoration-color: var(--squiggle-blue);
+  text-decoration-style: wavy;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+.squiggle-purple {
+  text-decoration: underline;
+  text-decoration-color: var(--squiggle-purple);
+  text-decoration-style: wavy;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+.squiggle-red {
+  text-decoration: underline;
+  text-decoration-color: var(--squiggle-red);
+  text-decoration-style: wavy;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+.squiggle-green {
+  text-decoration: underline;
+  text-decoration-color: var(--squiggle-green);
+  text-decoration-style: wavy;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+.squiggle-orange {
+  text-decoration: underline;
+  text-decoration-color: var(--squiggle-orange);
+  text-decoration-style: wavy;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
 }

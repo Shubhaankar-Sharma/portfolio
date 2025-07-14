@@ -35,13 +35,22 @@ const Profile: React.FC<ProfileProps> = ({
       : null}
 
       {cv.allCollections.map((collection: any, index: number) => {
+        // Different colors for different sections
+        let sectionSquiggleClass = "squiggle-blue"; // default
+        if (collection.name === "Work Experience") sectionSquiggleClass = "squiggle-blue";
+        else if (collection.name === "Education") sectionSquiggleClass = "squiggle-purple";
+        else if (collection.name === "Open Source Work") sectionSquiggleClass = "squiggle-green";
+        else if (collection.name === "Projects") sectionSquiggleClass = "squiggle-orange";
+        else if (collection.name === "Awards") sectionSquiggleClass = "squiggle-red";
+        else if (collection.name === "Links") sectionSquiggleClass = "squiggle-blue";
+        
         return (
           <section key={collection.name} className={styles.profileSection}>
-            <h3>{collection.name}</h3>
-            <div className={collection.name === "Contact" ? styles.contacts : styles.experiences}>
+            <h3 className={sectionSquiggleClass}>{collection.name}</h3>
+            <div className={collection.name === "Links" ? styles.contacts : styles.experiences}>
               {collection.items.map((experience: any, itemIndex: number) => {
 
-                if (collection.name === "Contact") {
+                if (collection.name === "Links") {
                   return <ContactItem key={experience.id || experience.url || itemIndex} experience={experience}/>
                 }
 
@@ -120,6 +129,16 @@ type ContactItemProps = {
 const ContactItem: React.FC<ContactItemProps> = ({
   experience
 }) => {
+  // Different colors for different contact types
+  let squiggleClass = "squiggle-blue"; // default
+  if (experience.platform === "GitHub") squiggleClass = "squiggle-purple";
+  else if (experience.platform === "Email") squiggleClass = "squiggle-red";
+  else if (experience.platform === "LinkedIn") squiggleClass = "squiggle-blue";
+  else if (experience.platform === "Resume") squiggleClass = "squiggle-orange";
+  else if (experience.platform === "X") squiggleClass = "squiggle-purple";
+  else if (experience.platform === "Notes") squiggleClass = "squiggle-green";
+  else if (experience.platform === "Photography") squiggleClass = "squiggle-purple";
+  
   return (
     <div className={styles.experience}>
       <div className={styles.year}>
@@ -127,7 +146,7 @@ const ContactItem: React.FC<ContactItemProps> = ({
       </div>
       <div className={styles.experienceContent}>
         <div className={styles.title}>
-          <a href={experience.url} target="_blank">{experience.handle}</a><span className={styles.linkArrow}>&#xfeff;<Arrow12/></span>
+          <a href={experience.url} target="_blank" className={squiggleClass}>{experience.handle}</a><span className={styles.linkArrow}>&#xfeff;<Arrow12 fill="var(--grey1)"/></span>
         </div>
       </div>
     </div>

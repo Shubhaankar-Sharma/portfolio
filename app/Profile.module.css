@@ -1,8 +1,8 @@
 .profile {
   width: 100%;
-  max-width: 540px;
+  max-width: 720px;
   margin: 0 auto;
-  padding: clamp(24px, calc((100vw - 540px) / 2), 72px) 0;
+  padding: clamp(24px, calc((100vw - 720px) / 2), 72px) 0;
 }
 
 .profileHeader {
@@ -78,7 +78,7 @@
 }
 
 .description p a {
-  border-bottom: 1px solid var(--wash1);
+  border-bottom: none;
 }
 
 .year {
@@ -108,7 +108,7 @@
 }
 
 .title a:hover {
-  border-bottom: 1px solid;
+  border-bottom: none;
 }
 
 .linkArrow {

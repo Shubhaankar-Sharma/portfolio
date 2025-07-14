@@ -461,7 +461,7 @@
     },
 
     {
-      "name": "Contact",
+      "name": "Links",
       "items": [
         {
           "id": "email-contact",
@@ -496,6 +496,20 @@
           "platform": "X",
           "handle": "__spongeboi",
           "url": "https://x.com/__spongeboi",
+          "type": "contact"
+        },
+        {
+          "id": "notes-contact",
+          "platform": "Notes",
+          "handle": "notes.spongeboi.com",
+          "url": "https://notes.spongeboi.com",
+          "type": "contact"
+        },
+        {
+          "id": "flickr-contact",
+          "platform": "Photography",
+          "handle": "Flickr Album",
+          "url": "https://flickr.com/photos/spongeboi/albums/72177720327477170/",
           "type": "contact"
         }
       ]
