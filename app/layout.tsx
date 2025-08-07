@@ -1,21 +1,26 @@
 import type { Metadata } from "next";
-import { Inter } from 'next/font/google'
-import { promises as fs } from 'fs';
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Footer from "@/components/footer";
+import Nav from "@/components/nav";
+import { ThemeProvider } from "@/components/theme-provider";
+import Script from "next/script";
 
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
-})
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
 
-export async function generateMetadata(): Promise<Metadata> {
-  const file = await fs.readFile(process.cwd() + '/public/content/profileData.json', 'utf8');
-  const cv = JSON.parse(file);
-  return {
-    title: cv.general.displayName,
-    description: cv.general.byline || '',
-  };
-}
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+export const metadata: Metadata = {
+  title: "Shubhaankar Sharma",
+  description:
+    "Portfolio of Shubhaankar Sharma. CS student at UBC researching Distributed Systems and ML",
+};
 
 export default function RootLayout({
   children,
@@ -23,9 +28,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${inter.variable} font-sans`}>
-        {children}
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
+      <Script
+        defer
+        src="https://cloud.umami.is/script.js"
+        data-website-id="5457805a-0169-41e3-b6ce-6ca2025c6dac"
+      />
+      <body className="antialiased">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          forcedTheme="dark"
+          disableTransitionOnChange
+        >
+          <div className="max-w-screen-md mx-auto pt-10 md:pt-16">
+            {children}
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   );
