@@ -16,6 +16,7 @@
     "sectionOrder": [
       "workExperience",
       "education",
+      "papers",
       "openSourceWork",
       "projects",
       "awards",
@@ -33,8 +34,28 @@
       "name": "Work Experience",
       "items": [
         {
+          "id": "planetscale-intern-2025",
+          "year": "Sep 2025 — Present",
+          "heading": "Software Engineering Intern at PlanetScale",
+          "url": "https://planetscale.com/",
+          "collaborators": [],
+          "description": "- Working on **neki**, PlanetScale's sharded Postgres system\n- Contributing to distributed database infrastructure and sharding architecture",
+          "attachments": [],
+          "type": "workExperience",
+          "title": "Software Engineering Intern",
+          "company": "PlanetScale",
+          "location": "Remote",
+          "logo": "/content/media/planetscale.png",
+          "technologies": [
+            "Go",
+            "PostgreSQL",
+            "Distributed Systems",
+            "Database Sharding"
+          ]
+        },
+        {
           "id": "ubc-research-intern-2024",
-          "year": "May 2025 — Present",
+          "year": "May 2025 — Sep 2025",
           "heading": "Research Intern at University of British Columbia - Systopia Labs",
           "url": "https://systopia.cs.ubc.ca/",
           "collaborators": [],
@@ -97,6 +118,22 @@
           "school": "University of British Columbia",
           "location": "Vancouver",
           "logo": "/content/media/ubclogo.png"
+        }
+      ]
+    },
+    {
+      "name": "Papers",
+      "items": [
+        {
+          "id": "rtss-2025-paper",
+          "year": "2025",
+          "heading": "Faster, Exact, More General Response-time Analysis for NVIDIA Holoscan Applications",
+          "url": "https://2025.rtss.org/",
+          "collaborators": [],
+          "description": "Accepted at the 46th IEEE Real-Time Systems Symposium (RTSS 2025)\n\n**Authors**: Philip Schowitz (The University of British Columbia), Shubhaankar Sharma (The University of British Columbia), Soham Sinha (NVIDIA), Bruce Shepherd (The University of British Columbia), Arpan Gujarati (The University of British Columbia)",
+          "attachments": [],
+          "type": "papers",
+          "venue": "IEEE RTSS 2025"
         }
       ]
     },

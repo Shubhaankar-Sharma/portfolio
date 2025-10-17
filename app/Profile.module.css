@@ -1,8 +1,8 @@
 .profile {
   width: 100%;
-  max-width: 720px;
+  max-width: 900px;
   margin: 0 auto;
-  padding: clamp(24px, calc((100vw - 720px) / 2), 72px) 0;
+  padding: clamp(24px, calc((100vw - 900px) / 2), 48px) 24px;
 }
 
 .profileHeader {
@@ -65,9 +65,10 @@
 }
 
 .experience {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 180px 1fr 32px;
   column-gap: 36px;
+  align-items: baseline;
 }
 
 .description {
@@ -84,26 +85,13 @@
 .year {
   color: var(--grey3);
   font-variant-numeric: tabular-nums;
-  position: relative;
-  flex-shrink: 0;
-  min-width: 120px;
-}
-
-.year::before {
-  content: "Sep 0000 — Present";
-  visibility: hidden;
-}
-
-.year span {
-  position: absolute;
-  left: 0;
   white-space: nowrap;
 }
 
+
 .titleRow {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  align-items: flex-start;
   gap: 12px;
 }
 
@@ -120,13 +108,13 @@
 }
 
 .logo {
-  flex-shrink: 0;
   width: 32px;
   height: 32px;
   border-radius: 6px;
   overflow: hidden;
   background-color: transparent;
   padding: 3px;
+  align-self: baseline;
 }
 
 .logo img {
@@ -170,24 +158,16 @@
   }
 
   .experience {
-    flex-direction: column;
+    grid-template-columns: 1fr;
     gap: 8px;
   }
 
+  .experience .logo {
+    display: none;
+  }
+
   .year {
-    min-width: auto;
-    margin-bottom: 12px;
     font-size: 14px;
-  }
-
-  .year::before {
-    content: "";
-  }
-
-  .year span {
-    position: static;
-    white-space: normal;
-    word-break: break-word;
   }
 
   .titleRow {

@@ -39,6 +39,7 @@ const Profile: React.FC<ProfileProps> = ({
         let sectionSquiggleClass = "squiggle-blue"; // default
         if (collection.name === "Work Experience") sectionSquiggleClass = "squiggle-blue";
         else if (collection.name === "Education") sectionSquiggleClass = "squiggle-purple";
+        else if (collection.name === "Papers") sectionSquiggleClass = "squiggle-cyan";
         else if (collection.name === "Open Source Work") sectionSquiggleClass = "squiggle-green";
         else if (collection.name === "Projects") sectionSquiggleClass = "squiggle-orange";
         else if (collection.name === "Awards") sectionSquiggleClass = "squiggle-red";
@@ -84,18 +85,13 @@ const ProfileItem: React.FC<ProfileItemProps> = ({
   return (
     <div className={styles.experience}>
       <div className={styles.year}>
-        <span>{experience.year}</span>
+        {experience.year}
       </div>
       <div className={styles.experienceContent}>
         <div className={styles.titleRow}>
           <div className={styles.title}>
             {title}
           </div>
-          {experience.logo ?
-            <div className={styles.logo}>
-              <Image src={experience.logo} alt="" width={32} height={32} />
-            </div>
-          : null}
         </div>
         {experience.location ?
         <div className={styles.location}>{experience.location}</div>
@@ -119,6 +115,11 @@ const ProfileItem: React.FC<ProfileItemProps> = ({
           <Attachments attachments={experience.attachments}/>
         : null}
       </div>
+      {experience.logo ?
+        <div className={styles.logo}>
+          <Image src={experience.logo} alt="" width={32} height={32} />
+        </div>
+      : <div></div>}
     </div>
   )
 }
