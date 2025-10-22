@@ -26,7 +26,7 @@ const Profile: React.FC<ProfileProps> = ({
       </div>
 
       {cv.general.about ?
-        <section className={`${styles.profileSection} ${styles.about}`}>
+        <section id="about" className={`${styles.profileSection} ${styles.about}`}>
           <h3>About</h3>
           <div className={styles.description}>
             <RichText text={cv.general.about}/>
@@ -37,16 +37,19 @@ const Profile: React.FC<ProfileProps> = ({
       {cv.allCollections.map((collection: any, index: number) => {
         // Different colors for different sections
         let sectionSquiggleClass = "squiggle-blue"; // default
-        if (collection.name === "Work Experience") sectionSquiggleClass = "squiggle-blue";
+        if (collection.name === "Experience") sectionSquiggleClass = "squiggle-blue";
         else if (collection.name === "Education") sectionSquiggleClass = "squiggle-purple";
         else if (collection.name === "Papers") sectionSquiggleClass = "squiggle-cyan";
         else if (collection.name === "Open Source Work") sectionSquiggleClass = "squiggle-green";
         else if (collection.name === "Projects") sectionSquiggleClass = "squiggle-orange";
         else if (collection.name === "Awards") sectionSquiggleClass = "squiggle-red";
         else if (collection.name === "Links") sectionSquiggleClass = "squiggle-blue";
-        
+
+        // Create ID from collection name (lowercase, replace spaces with hyphens)
+        const sectionId = collection.name.toLowerCase().replace(/\s+/g, '-');
+
         return (
-          <section key={collection.name} className={styles.profileSection}>
+          <section key={collection.name} id={sectionId} className={styles.profileSection}>
             <h3 className={sectionSquiggleClass}>{collection.name}</h3>
             <div className={collection.name === "Links" ? styles.contacts : styles.experiences}>
               {collection.items.map((experience: any, itemIndex: number) => {
@@ -117,7 +120,13 @@ const ProfileItem: React.FC<ProfileItemProps> = ({
       </div>
       {experience.logo ?
         <div className={styles.logo}>
-          <Image src={experience.logo} alt="" width={32} height={32} />
+          <Image
+            src={experience.logo}
+            alt=""
+            width={32}
+            height={32}
+            style={experience.logo === '/content/media/ubclogo.png' ? { filter: 'brightness(0) saturate(100%) invert(13%) sepia(70%) saturate(1000%) hue-rotate(162deg) brightness(95%) contrast(98%)' } : undefined}
+          />
         </div>
       : <div></div>}
     </div>
@@ -130,16 +139,6 @@ type ContactItemProps = {
 const ContactItem: React.FC<ContactItemProps> = ({
   experience
 }) => {
-  // Different colors for different contact types
-  let squiggleClass = "squiggle-blue"; // default
-  if (experience.platform === "GitHub") squiggleClass = "squiggle-purple";
-  else if (experience.platform === "Email") squiggleClass = "squiggle-red";
-  else if (experience.platform === "LinkedIn") squiggleClass = "squiggle-blue";
-  else if (experience.platform === "Resume") squiggleClass = "squiggle-orange";
-  else if (experience.platform === "X") squiggleClass = "squiggle-purple";
-  else if (experience.platform === "Notes") squiggleClass = "squiggle-green";
-  else if (experience.platform === "Photography") squiggleClass = "squiggle-purple";
-  
   return (
     <div className={styles.experience}>
       <div className={styles.year}>
@@ -147,7 +146,7 @@ const ContactItem: React.FC<ContactItemProps> = ({
       </div>
       <div className={styles.experienceContent}>
         <div className={styles.title}>
-          <a href={experience.url} target="_blank" className={squiggleClass}>{experience.handle}</a><span className={styles.linkArrow}>&#xfeff;<Arrow12 fill="var(--grey1)"/></span>
+          <a href={experience.url} target="_blank">{experience.handle}</a><span className={styles.linkArrow}>&#xfeff;<Arrow12 fill="var(--grey1)"/></span>
         </div>
       </div>
     </div>

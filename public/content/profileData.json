@@ -31,7 +31,7 @@
   "certifications": [],
   "allCollections": [
     {
-      "name": "Work Experience",
+      "name": "Experience",
       "items": [
         {
           "id": "planetscale-intern-2025",
@@ -398,25 +398,6 @@
           ],
           "type": "projects",
           "technologies": ["Python", "NLP", "BART", "React", "FastAPI"],
-          "logo": null
-        },
-        {
-          "id": "authdeck-2022",
-          "year": "2022",
-          "heading": "authdeck",
-          "url": "https://devfolio.co/projects/authdeck-9399",
-          "collaborators": [],
-          "description": "- Decentralized identity verification based on reputation scores\n- Two-way solution to verify humanity without losing anonymity\n- EthIndia grantee ($5k) and top project at buildspace S1 demo day",
-          "attachments": [
-            {
-              "url": "/content/media/authdeck.png",
-              "type": "image",
-              "width": 1920,
-              "height": 1080
-            }
-          ],
-          "type": "projects",
-          "technologies": ["Solidity", "Web3", "Typescript"],
           "logo": null
         },
         {
