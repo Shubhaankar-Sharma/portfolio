@@ -1,0 +1,29 @@
+{
+  "recommendations": [
+    {
+      "title": "In Rainbows",
+      "artist": "Radiohead",
+      "year": "2007",
+      "albumArt": "https://upload.wikimedia.org/wikipedia/en/1/14/Inrainbowscover.png",
+      "note": "Perfect album, no skips",
+      "links": {
+        "spotify": "https://open.spotify.com/album/5vkqYmiPBYLaalcmjujWxK",
+        "appleMusic": "https://music.apple.com/us/album/in-rainbows/1109714933",
+        "tidal": "https://tidal.com/browse/album/17522267",
+        "youtube": "https://music.youtube.com/playlist?list=OLAK5uy_nkuHJaJIQdKb1aXLaQ9Y2fYvVQxGmKNkY"
+      }
+    },
+    {
+      "title": "Blonde",
+      "artist": "Frank Ocean",
+      "year": "2016",
+      "albumArt": "https://upload.wikimedia.org/wikipedia/en/a/a0/Blonde_-_Frank_Ocean.jpeg",
+      "note": "Beautiful, introspective album",
+      "links": {
+        "spotify": "https://open.spotify.com/album/3mH6qwIy9crq0I9YQbOuDf",
+        "appleMusic": "https://music.apple.com/us/album/blonde/1146195596",
+        "youtube": "https://music.youtube.com/playlist?list=OLAK5uy_lrKKgTBKcx8D2V7ZLYvT7f8_4u3mTJ-1M"
+      }
+    }
+  ]
+}

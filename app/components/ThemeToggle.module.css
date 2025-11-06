@@ -1,0 +1,51 @@
+.toggle {
+  position: fixed;
+  top: 32px;
+  right: 32px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-family: var(--font-ibm-plex-mono);
+  z-index: 1000;
+}
+
+.toggle button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-size: 13px;
+  font-family: var(--font-ibm-plex-mono);
+  transition: color 0.15s ease;
+}
+
+.active {
+  color: var(--grey1);
+  font-weight: 500;
+}
+
+.inactive {
+  color: var(--grey3);
+}
+
+.inactive:hover {
+  color: var(--grey2);
+}
+
+.separator {
+  color: var(--grey3);
+  user-select: none;
+}
+
+@media (max-width: 768px) {
+  .toggle {
+    top: 20px;
+    right: 20px;
+    font-size: 12px;
+  }
+
+  .toggle button {
+    font-size: 12px;
+  }
+}

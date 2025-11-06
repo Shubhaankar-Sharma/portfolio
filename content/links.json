@@ -1,0 +1,76 @@
+{
+  "onMyDesk": [
+    {
+      "title": "Access Path Selection in a Relational Database Management System",
+      "url": "https://cs.stanford.edu/people/chrismre/cs345/rl/selinger-etal-1979.pdf",
+      "authors": "Selinger et al.",
+      "year": "1979",
+      "note": "Classic query optimization paper - reading for database systems course"
+    }
+  ],
+  "futureReading": [
+    {
+      "title": "The Google File System",
+      "url": "https://static.googleusercontent.com/media/research.google.com/en//archive/gfs-sosp2003.pdf",
+      "authors": "Ghemawat et al.",
+      "year": "2003",
+      "note": "Want to understand distributed storage"
+    }
+  ],
+  "categories": [
+    {
+      "name": "Research Papers",
+      "subcategories": [
+        {
+          "name": "Systems",
+          "links": [
+            {
+              "title": "Access Path Selection in a Relational Database Management System",
+              "url": "https://cs.stanford.edu/people/chrismre/cs345/rl/selinger-etal-1979.pdf",
+              "authors": "Selinger et al.",
+              "year": "1979",
+              "note": "The foundational paper on query optimization"
+            }
+          ]
+        },
+        {
+          "name": "AI/ML",
+          "links": [
+            {
+              "title": "Attention Is All You Need",
+              "url": "https://arxiv.org/abs/1706.03762",
+              "authors": "Vaswani et al.",
+              "year": "2017"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Blogs",
+      "links": [
+        {
+          "title": "Dan Luu's Blog",
+          "url": "https://danluu.com/",
+          "note": "Systems, performance, and industry takes"
+        },
+        {
+          "title": "PlanetScale Blog",
+          "url": "https://planetscale.com/blog",
+          "note": "Database engineering and MySQL"
+        }
+      ]
+    },
+    {
+      "name": "Substacks",
+      "links": [
+        {
+          "title": "Platformer",
+          "url": "https://www.platformer.news/",
+          "author": "Casey Newton",
+          "note": "Tech policy and platforms"
+        }
+      ]
+    }
+  ]
+}

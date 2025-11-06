@@ -1,0 +1,7 @@
+{
+  "id": "6nuj84",
+  "text": "While Holoscan has benchmarks, ensuring predictable real-time behavior requires deeper timing analysis. Dr. Arpan Gujarati's research group previously published work on statically analyzing CPU-based systems, developing an algorithmic approach to determine maximum end-to-end time given worst-case response times (WCRTs) of individual nodes in the application graph. In 2024-2025, this analysis was improved, and got accepted at RTSS 2025.",
+  "articleSlug": "gpu-scheduling-edge-ai",
+  "articleTitle": "Predictable GPU Scheduling for Real-Time Edge AI",
+  "createdAt": "2025-10-22T23:18:18.076Z"
+}

@@ -1,0 +1,7 @@
+{
+  "id": "aqmcnd",
+  "text": "appropriately managing GPU streaming multiprocessor (SM) allocation, we can make event processing consistent along the pipeline. With limited cache/queue sizes in Holoscan, the default policy drops frames because unbalanced stages process at mismatched rates, causing queue overflow at b",
+  "articleSlug": "gpu-scheduling-edge-ai",
+  "articleTitle": "Predictable GPU Scheduling for Real-Time Edge AI",
+  "createdAt": "2025-10-22T23:33:27.298Z"
+}

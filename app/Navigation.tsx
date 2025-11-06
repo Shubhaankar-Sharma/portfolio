@@ -11,46 +11,48 @@ const Navigation: React.FC<NavigationProps> = ({ sections }) => {
   const [activeSection, setActiveSection] = useState<string>("");
 
   useEffect(() => {
-    let isScrolling: NodeJS.Timeout;
-    const visibleSections = new Map<string, number>();
+    let lastUpdate = 0;
+    const UPDATE_INTERVAL = 100; // Only update every 100ms
 
     const observer = new IntersectionObserver(
       (entries) => {
-        // Update the visible sections map
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            visibleSections.set(entry.target.id, entry.intersectionRatio);
-          } else {
-            visibleSections.delete(entry.target.id);
+        const now = Date.now();
+        if (now - lastUpdate < UPDATE_INTERVAL) {
+          return; // Skip this update if too soon
+        }
+        lastUpdate = now;
+
+        // Find the most visible section
+        let maxRatio = 0;
+        let bestSection = "";
+
+        // Query all sections to get their current intersection state
+        sections.forEach((sectionId) => {
+          const element = document.getElementById(sectionId);
+          if (!element) return;
+
+          const rect = element.getBoundingClientRect();
+          const viewportHeight = window.innerHeight;
+
+          // Calculate how much of the section is visible
+          const visibleTop = Math.max(0, rect.top);
+          const visibleBottom = Math.min(viewportHeight, rect.bottom);
+          const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+          const ratio = visibleHeight / rect.height;
+
+          if (ratio > maxRatio && ratio > 0) {
+            maxRatio = ratio;
+            bestSection = sectionId;
           }
         });
 
-        // Clear previous debounce
-        clearTimeout(isScrolling);
-
-        // Debounce to prevent rapid switching
-        isScrolling = setTimeout(() => {
-          if (visibleSections.size === 0) return;
-
-          // Find the section with highest intersection ratio
-          let maxRatio = 0;
-          let bestSection = "";
-
-          visibleSections.forEach((ratio, sectionId) => {
-            if (ratio > maxRatio) {
-              maxRatio = ratio;
-              bestSection = sectionId;
-            }
-          });
-
-          if (bestSection) {
-            setActiveSection(bestSection);
-          }
-        }, 50); // 50ms debounce
+        if (bestSection && bestSection !== activeSection) {
+          setActiveSection(bestSection);
+        }
       },
       {
-        threshold: [0, 0.25, 0.5, 0.75, 1],
-        rootMargin: "-10% 0px -10% 0px",
+        threshold: [0, 0.5, 1],
+        rootMargin: "0px",
       }
     );
 
@@ -62,7 +64,6 @@ const Navigation: React.FC<NavigationProps> = ({ sections }) => {
     });
 
     return () => {
-      clearTimeout(isScrolling);
       sections.forEach((section) => {
         const element = document.getElementById(section);
         if (element) {

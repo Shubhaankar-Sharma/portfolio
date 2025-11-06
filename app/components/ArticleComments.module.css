@@ -1,0 +1,200 @@
+.commentsSection {
+  margin-top: 100px;
+  padding-top: 40px;
+  border-top: 1px solid var(--transparentBorder);
+  max-width: 640px;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--grey2);
+  margin-bottom: 32px;
+  letter-spacing: -0.01em;
+}
+
+.commentForm {
+  margin-bottom: 56px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 8px;
+  border: 1px solid var(--transparentBorder);
+}
+
+.input,
+.textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--transparentBorder);
+  font-size: 15px;
+  font-family: inherit;
+  background: transparent;
+  color: var(--grey2);
+  transition: all 0.2s ease;
+  line-height: 1.6;
+  border-radius: 4px;
+}
+
+.input {
+  margin-bottom: 16px;
+  font-size: 14px;
+}
+
+.input::placeholder,
+.textarea::placeholder {
+  color: var(--grey3);
+}
+
+.input:focus,
+.textarea:focus {
+  outline: none;
+  color: var(--grey1);
+  border-color: var(--grey3);
+  background: rgba(255, 255, 255, 0.01);
+}
+
+.input:focus::placeholder,
+.textarea:focus::placeholder {
+  opacity: 0.5;
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 100px;
+  margin-bottom: 16px;
+  line-height: 1.7;
+}
+
+.submitButton {
+  background-color: var(--grey1);
+  color: var(--background);
+  border: none;
+  padding: 10px 20px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+  align-self: flex-start;
+  letter-spacing: 0.01em;
+  border-radius: 4px;
+}
+
+.submitButton:hover:not(:disabled) {
+  background-color: var(--grey2);
+  transform: translateY(-1px);
+}
+
+.submitButton:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.commentsList {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.loading,
+.emptyState {
+  color: var(--grey3);
+  font-size: 15px;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.comment {
+  padding: 20px 0;
+  border-bottom: 1px solid var(--transparentBorder);
+}
+
+.comment:last-child {
+  border-bottom: none;
+}
+
+.commentHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.author {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--grey1);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.author:hover {
+  color: var(--grey2);
+  text-decoration: underline;
+}
+
+.date {
+  font-size: 12px;
+  color: var(--grey3);
+}
+
+.commentText {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--grey2);
+  white-space: pre-wrap;
+}
+
+@media (max-width: 768px) {
+  .commentsSection {
+    margin-top: 80px;
+    padding-top: 0;
+  }
+
+  .title {
+    font-size: 12px;
+    margin-bottom: 32px;
+  }
+
+  .input {
+    font-size: 13px;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+  }
+
+  .textarea {
+    font-size: 15px;
+    min-height: 80px;
+    margin-bottom: 16px;
+    line-height: 1.6;
+  }
+
+  .submitButton {
+    font-size: 12px;
+  }
+
+  .commentForm {
+    margin-bottom: 48px;
+  }
+
+  .commentsList {
+    gap: 28px;
+  }
+
+  .comment {
+    padding: 16px 0;
+  }
+
+  .author {
+    font-size: 13px;
+  }
+
+  .commentText {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+}

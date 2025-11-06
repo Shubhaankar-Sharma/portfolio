@@ -79,7 +79,12 @@
 }
 
 .description p a {
-  border-bottom: none;
+  border-bottom: 1px solid var(--grey3);
+  transition: border-color 0.15s ease;
+}
+
+.description p a:hover {
+  border-bottom-color: var(--grey1);
 }
 
 .year {

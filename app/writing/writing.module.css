@@ -1,0 +1,298 @@
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: clamp(48px, 8vw, 80px) 24px;
+}
+
+.homeLink {
+  position: fixed;
+  left: 32px;
+  top: 32px;
+  font-size: 13px;
+  color: var(--grey3);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  font-family: var(--font-ibm-plex-mono), monospace;
+  transition: color 0.15s ease;
+  z-index: 10;
+}
+
+.homeLink:hover {
+  color: var(--grey1);
+}
+
+.header {
+  margin-bottom: 48px;
+  border-bottom: 1px solid var(--transparentBorder);
+  padding-bottom: 24px;
+}
+
+.header h1 {
+  font-size: 28px;
+  font-weight: 400;
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  color: var(--grey2);
+  font-size: 15px;
+  line-height: 1.6;
+  max-width: 600px;
+}
+
+.rssLink {
+  display: inline-block;
+  margin-top: 16px;
+  font-size: 13px;
+  color: var(--grey3);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.rssLink:hover {
+  color: var(--grey1);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--transparentBorder);
+  transition: opacity 0.15s ease;
+}
+
+.item:hover {
+  opacity: 0.7;
+}
+
+.item:last-child {
+  border-bottom: none;
+}
+
+.date {
+  font-size: 13px;
+  color: var(--grey3);
+  font-variant-numeric: tabular-nums;
+  margin-bottom: 8px;
+  font-family: var(--font-ibm-plex-mono), monospace;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 400;
+  margin-bottom: 6px;
+  color: var(--grey1);
+  line-height: 1.4;
+}
+
+.description {
+  font-size: 14px;
+  color: var(--grey2);
+  line-height: 1.6;
+}
+
+
+.currentSection,
+.futureSection {
+  margin-bottom: 48px;
+}
+
+.currentSection .linksList,
+.futureSection .linksList {
+  padding-left: 0;
+  border: 1px solid var(--transparentBorder);
+  border-radius: 4px;
+  padding: 12px;
+}
+
+.linksSection {
+  margin-bottom: 48px;
+}
+
+.linksSectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.expandButton {
+  font-size: 12px;
+  color: var(--grey3);
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  font-family: var(--font-ibm-plex-mono), monospace;
+  transition: color 0.15s ease;
+  padding: 0;
+}
+
+.expandButton:hover {
+  color: var(--grey1);
+}
+
+.writingSection {
+  margin-bottom: 32px;
+}
+
+.sectionTitle {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 20px;
+  color: var(--grey1);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 12px;
+}
+
+.folders {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.folder {
+  border-bottom: 1px solid var(--transparentBorder);
+}
+
+.folderHeader,
+.subfolderHeader {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-ibm-plex-sans);
+  font-size: 14px;
+  color: var(--grey1);
+  text-align: left;
+  transition: opacity 0.15s ease;
+}
+
+.folderHeader:hover,
+.subfolderHeader:hover {
+  opacity: 0.7;
+}
+
+.subfolderHeader {
+  padding-left: 20px;
+  font-size: 13px;
+}
+
+.folderIcon {
+  font-size: 10px;
+  color: var(--grey3);
+  width: 12px;
+  display: inline-block;
+}
+
+.folderName {
+  font-weight: 500;
+}
+
+.folderContent {
+  padding-bottom: 8px;
+}
+
+.subfolder {
+  border-top: 1px solid var(--transparentBorder);
+}
+
+.linksList {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding-left: 40px;
+  padding-bottom: 12px;
+}
+
+.linkItem {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--transparentBorder);
+  transition: opacity 0.15s ease;
+}
+
+.linkItem:hover {
+  opacity: 0.7;
+}
+
+.linkItem:last-child {
+  border-bottom: none;
+}
+
+.linkTitle {
+  font-size: 13px;
+  color: var(--grey1);
+  margin-bottom: 3px;
+}
+
+.linkMeta {
+  font-size: 12px;
+  color: var(--grey3);
+  font-family: var(--font-ibm-plex-mono), monospace;
+}
+
+.linkNote {
+  font-size: 12px;
+  color: var(--grey2);
+  font-style: italic;
+  margin-top: 2px;
+}
+
+.empty {
+  padding: 32px 0;
+  color: var(--grey3);
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .homeLink {
+    left: 20px;
+    top: 20px;
+  }
+
+  .container {
+    padding: clamp(48px, 8vw, 96px) 20px;
+  }
+
+  .header {
+    margin-bottom: 48px;
+    padding-bottom: 24px;
+  }
+
+  .header h1 {
+    font-size: 24px;
+  }
+
+  .subtitle {
+    font-size: 14px;
+  }
+
+  .item {
+    padding: 20px 0;
+  }
+
+  .title {
+    font-size: 16px;
+  }
+
+  .description {
+    font-size: 13px;
+  }
+}

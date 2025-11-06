@@ -1,0 +1,73 @@
+.navigation {
+  position: fixed;
+  right: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100;
+  max-height: 80vh;
+  overflow-y: auto;
+  scrollbar-width: none;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.navigation.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.navigation.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.navigation::-webkit-scrollbar {
+  display: none;
+}
+
+.navItems {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.navItem {
+  background: none;
+  border: none;
+  padding: 4px 0;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  text-align: right;
+}
+
+.navLabel {
+  font-size: 12px;
+  color: var(--grey3);
+  white-space: nowrap;
+  transition: color 0.2s ease;
+  font-weight: 400;
+  display: block;
+  text-align: right;
+}
+
+.navItem:hover .navLabel {
+  color: var(--grey2);
+}
+
+.navItem.active .navLabel {
+  color: var(--grey1);
+  font-weight: 500;
+}
+
+.navItem.subheading .navLabel {
+  font-size: 11px;
+  padding-right: 12px;
+}
+
+/* Hide on smaller screens to avoid overlap with content */
+@media (max-width: 1200px) {
+  .navigation {
+    display: none;
+  }
+}

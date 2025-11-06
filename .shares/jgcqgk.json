@@ -1,0 +1,7 @@
+{
+  "id": "jgcqgk",
+  "text": "dge applications? This is extremely important for cyber-physical system (CPS) applications, as timing is part of the application's safety specification. In mission-critical applications like surgical assistance software, inconsistent frame delivery or unpredictable latency can affect reliability and safety.\n\nWhile Holoscan has benchmarks, ensuring predictabl",
+  "articleSlug": "gpu-scheduling-edge-ai",
+  "articleTitle": "Predictable GPU Scheduling for Real-Time Edge AI",
+  "createdAt": "2025-10-22T23:13:48.403Z"
+}

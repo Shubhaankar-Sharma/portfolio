@@ -7,7 +7,7 @@
     "location": "Vancouver, Canada",
     "pronouns": "he/him",
     "byline": "CS student at UBC researching Distributed Systems and ML",
-                   "about": "I'm passionate about building systems that solve real problems. My approach is guided by \"rejecting artificial bounds\" - exceptional versatility is possible when you focus on continuous learning and building.\n\nI've been programming since I was 9, starting with QBasic. I enjoy tackling challenging, often obscure problems. I believe in contributing to communities and creating tools that help people work more effectively.\n\nCurrently doing research on real-time guarantees for edge computing.\n\nAlso :p other than this, I'm a huge cinephile and music nerd. I play guitar and the Blues - my favourite artist is John Mayer. I'm still unsure about my favourite director though (Wes Anderson seems pick me lol maybe Imtiaz Ali).",
+                   "about": "I'm passionate about building systems that solve real problems. My approach is guided by \"rejecting artificial bounds\" - exceptional versatility is possible when you focus on continuous learning and building.\n\nI've been programming since I was 9, starting with QBasic. I enjoy tackling challenging, often obscure problems. I believe in contributing to communities and creating tools that help people work more effectively.\n\nCurrently doing research on real-time guarantees for edge computing.\n\n**Things I maintain here:**\n\n• **[spongeboi's reading group](/writing)** - my virtual reading group with notes on research papers, essays, and technical writing. includes what I'm currently reading, future reading list, and a curated collection of links\n\n• **[music corner](/music)** - music recommendations and thoughts on what I'm listening to\n\nAlso :p other than this, I'm a huge cinephile and music nerd. I play guitar and the Blues - my favourite artist is John Mayer. I'm still unsure about my favourite director though (Wes Anderson seems pick me lol maybe Imtiaz Ali).",
     "status": {
       "text": null,
       "emoji": null,
@@ -128,7 +128,7 @@
           "id": "rtss-2025-paper",
           "year": "2025",
           "heading": "Faster, Exact, More General Response-time Analysis for NVIDIA Holoscan Applications",
-          "url": "https://2025.rtss.org/",
+          "url": "/writing/gpu-scheduling-edge-ai",
           "collaborators": [],
           "description": "Accepted at the 46th IEEE Real-Time Systems Symposium (RTSS 2025)\n\n**Authors**: Philip Schowitz (The University of British Columbia), Shubhaankar Sharma (The University of British Columbia), Soham Sinha (NVIDIA), Bruce Shepherd (The University of British Columbia), Arpan Gujarati (The University of British Columbia)",
           "attachments": [],
@@ -482,6 +482,13 @@
       "name": "Links",
       "items": [
         {
+          "id": "writings-contact",
+          "platform": "Writings",
+          "handle": "Research & Articles",
+          "url": "/writing",
+          "type": "contact"
+        },
+        {
           "id": "email-contact",
           "platform": "Email",
           "handle": "shubhaankar@hotmail.com",
@@ -514,13 +521,6 @@
           "platform": "X",
           "handle": "__spongeboi",
           "url": "https://x.com/__spongeboi",
-          "type": "contact"
-        },
-        {
-          "id": "notes-contact",
-          "platform": "Notes",
-          "handle": "notes.spongeboi.com",
-          "url": "https://notes.spongeboi.com",
           "type": "contact"
         },
         {

@@ -1,13 +1,16 @@
 :root {
   --font-size: 14px;
   --line-height: 1.6;
-  --background: #fdf6e3;
-  --grey1: #073642;
-  --grey2: #586e75;
-  --grey3: #93a1a1;
-  --wash1: #eee8d5;
-  --wash2: #f5f0e1;
-  --transparentBorder: rgba(0, 0, 0, 0.05);
+
+  /* Light mode - chalky, warm tones */
+  --background: #f5f1e8;
+  --grey1: #2b2622;
+  --grey2: #5a534d;
+  --grey3: #8a8379;
+  --wash1: #eae5dc;
+  --wash2: #ebe7de;
+  --transparentBorder: rgba(0, 0, 0, 0.08);
+
   --squiggle-blue: #268bd2;
   --squiggle-purple: #6c71c4;
   --squiggle-red: #dc322f;
@@ -16,22 +19,15 @@
   --squiggle-cyan: #2aa198;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #fdf6e3;
-    --grey1: #073642;
-    --grey2: #586e75;
-    --grey3: #93a1a1;
-    --wash1: #eee8d5;
-    --wash2: #f5f0e1;
-    --transparentBorder: rgba(0, 0, 0, 0.05);
-    --squiggle-blue: #268bd2;
-    --squiggle-purple: #6c71c4;
-    --squiggle-red: #dc322f;
-    --squiggle-green: #859900;
-    --squiggle-orange: #cb4b16;
-    --squiggle-cyan: #2aa198;
-  }
+[data-theme="dark"] {
+  /* Dark mode - chalky, muted tones */
+  --background: #1a1816;
+  --grey1: #e8e2d9;
+  --grey2: #b8b0a7;
+  --grey3: #7a736a;
+  --wash1: #252220;
+  --wash2: #2d2926;
+  --transparentBorder: rgba(255, 255, 255, 0.08);
 }
 
 * {
@@ -41,23 +37,26 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  height: 100%;
+  overflow-y: scroll; /* Force scrollbar to always show */
 }
 
-html,
 body {
+  min-height: 100%;
   max-width: 100vw;
   overflow-x: hidden;
-}
-
-body {
   background-color: var(--background);
-  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--font-ibm-plex-sans), -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: var(--font-size);
   line-height: var(--line-height);
   color: var(--grey1);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+code, pre, .monospace {
+  font-family: var(--font-ibm-plex-mono), 'Monaco', 'Courier New', monospace;
 }
 
 a {
@@ -65,11 +64,6 @@ a {
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-}
 
 /* Squiggly underline styles */
 .squiggle-blue {

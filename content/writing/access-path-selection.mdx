@@ -1,0 +1,50 @@
+---
+title: "Notes: Access Path Selection in a Relational DBMS"
+description: "My notes and understanding from reading Selinger et al.'s foundational paper on query optimization."
+date: "2025-10-26"
+tags: ["databases", "paper notes", "query optimization"]
+---
+
+## Paper Information
+
+**Title:** Access Path Selection in a Relational Database Management System
+**Authors:** Patricia Selinger, Morton Astrahan, Donald Chamberlin, Raymond Lorie, Thomas Price
+**Year:** 1979
+**Conference:** ACM SIGMOD
+
+## Why This Paper?
+
+This paper describes the query optimizer in IBM's System R, one of the first relational database systems. The techniques described here form the foundation of query optimization in nearly every modern database.
+
+## Key Ideas
+
+### Cost-Based Optimization
+
+The core insight is to use statistics about table sizes and value distributions to estimate the cost of different query execution plans.
+
+### Dynamic Programming Approach
+
+Rather than enumerate all possible plans (which would be exponential), the optimizer uses dynamic programming to build optimal plans incrementally.
+
+## My Notes
+
+(Work in progress - reading through the paper now)
+
+### Join Ordering
+
+One fascinating aspect is how they approach the join ordering problem...
+
+### Statistics and Selectivity
+
+The paper introduces the concept of selectivity factors for predicates...
+
+## Open Questions
+
+- How do modern optimizers improve on these techniques?
+- What are the limitations of cost-based optimization?
+- How do distributed databases handle query optimization?
+
+## Further Reading
+
+- Goetz Graefe's "The Cascades Framework for Query Optimization" (1995)
+- Modern papers on adaptive query execution
