@@ -215,7 +215,7 @@ export default function AnnotationHandler() {
         const range = selection?.getRangeAt(0);
         const rect = range?.getBoundingClientRect();
 
-        if (rect) {
+        if (rect && range) {
           setSelectedText(text);
           setSelectedRange(range.cloneRange());
           setPopupPosition({

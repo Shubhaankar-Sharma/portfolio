@@ -2,6 +2,18 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 
+type EventStatus = 'waiting' | 'processing' | 'queued' | 'dropped' | 'complete';
+
+type Event = {
+  id: number;
+  arrivalTime: number;
+  currentStage: number;
+  stageStartTime: number;
+  status: EventStatus;
+  position: number;
+  dropped: boolean;
+};
+
 const GreenContextSimulation = () => {
   const [isRunning, setIsRunning] = useState(false);
   const [time, setTime] = useState(0);
@@ -44,8 +56,8 @@ const GreenContextSimulation = () => {
       (eventStates as any)[pipelineKey] = {};
     }
 
-    const events = [];
-    const droppedEvents = [];
+    const events: Event[] = [];
+    const droppedEvents: Event[] = [];
 
     const maxEventId = Math.floor(time / eventInterval);
 

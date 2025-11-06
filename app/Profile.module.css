@@ -154,8 +154,17 @@
   line-height: 1;
 }
 
+/* Tablet/Medium screens: Reduce year column width and gaps to prevent overlap */
+@media (max-width: 768px) {
+  .experience {
+    grid-template-columns: 120px 1fr 32px;
+    column-gap: 20px;
+  }
+}
+
+/* Mobile screens: Stack layout vertically */
 @media (max-width: 480px) {
-  
+
   .about .description,
   .experiences,
   .contacts {

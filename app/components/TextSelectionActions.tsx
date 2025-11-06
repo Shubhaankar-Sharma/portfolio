@@ -77,7 +77,7 @@ export default function TextSelectionActions({ initialAnnotations = [] }: TextSe
         const range = selection?.getRangeAt(0);
         const rect = range?.getBoundingClientRect();
 
-        if (rect) {
+        if (rect && range) {
           // Calculate offsets immediately while selection is still active using the Range
           const articleContent = document.querySelector('[class*="content"]');
           if (articleContent && range) {

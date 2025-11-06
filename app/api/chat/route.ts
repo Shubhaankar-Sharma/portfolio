@@ -74,7 +74,6 @@ DO NOT write a short summary. DO NOT ask if user wants more. Create the FULL gui
     model: anthropic('claude-sonnet-4-5-20250929'),
     system: systemPrompt,
     messages,
-    maxTokens: 4096,
   });
 
   return result.toTextStreamResponse();

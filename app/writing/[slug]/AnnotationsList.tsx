@@ -316,7 +316,7 @@ export default function AnnotationsList({ annotations }: { annotations: Annotati
             marker.classList.remove(styles.active);
           });
 
-          const handleClick = (e) => {
+          const handleClick = (e: MouseEvent | TouchEvent) => {
             e.preventDefault();
             e.stopPropagation();
             console.log('Mark clicked, attempting to toggle mobile modal');
@@ -340,7 +340,7 @@ export default function AnnotationsList({ annotations }: { annotations: Annotati
         });
 
         // Close on backdrop click (for mobile)
-        const handleMarkerClick = (e) => {
+        const handleMarkerClick = (e: MouseEvent | TouchEvent) => {
           // Only close if clicking the marker itself (backdrop), not the card
           if (e.target === marker) {
             marker.classList.remove(styles.mobileActive);
@@ -359,7 +359,7 @@ export default function AnnotationsList({ annotations }: { annotations: Annotati
       }, 10);
 
       // Add global click handler to close modal when clicking outside
-      const handleGlobalClick = (e: MouseEvent) => {
+      const handleGlobalClick = (e: MouseEvent | TouchEvent) => {
         const target = e.target as HTMLElement;
 
         // Don't close if clicking on a marker or annotation card
