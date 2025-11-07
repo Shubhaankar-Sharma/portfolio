@@ -76,7 +76,7 @@ export default async function ArticlePage({ params }: Props) {
 
   return (
     <>
-      <Link href="/writing" className={styles.backLink}>
+      <Link href="/reading" className={styles.backLink}>
         ← Back
       </Link>
 

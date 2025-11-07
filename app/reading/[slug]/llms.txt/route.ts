@@ -14,10 +14,12 @@ export async function GET(
     const fileContent = await fs.readFile(filePath, 'utf8');
     const { data, content } = matter(fileContent);
 
+    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://spongeboi.com';
+
     const llmsTxt = `# ${data.title}
 
 ${data.description ? `## Description\n${data.description}\n\n` : ''}${data.date ? `Published: ${data.date}\n` : ''}${data.tags ? `Tags: ${data.tags.join(', ')}\n` : ''}
-URL: https://masonjwang.com/writing/${slug}
+URL: ${baseUrl}/reading/${slug}
 
 ## Content
 

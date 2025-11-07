@@ -107,6 +107,11 @@ const ProfileItem: React.FC<ProfileItemProps> = ({
           <RichText text={experience.description}/>
         </div>
         : null}
+        {experience.notesOn ?
+        <div className={styles.notesOn}>
+          <a href={experience.notesOn}>notes on this →</a>
+        </div>
+        : null}
         {experience.technologies && experience.technologies.length > 0 ?
         <div className={styles.technologies}>
           {experience.technologies.map((tech: string, index: number) => (

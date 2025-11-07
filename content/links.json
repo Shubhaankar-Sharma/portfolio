@@ -5,16 +5,22 @@
       "url": "https://cs.stanford.edu/people/chrismre/cs345/rl/selinger-etal-1979.pdf",
       "authors": "Selinger et al.",
       "year": "1979",
-      "note": "Classic query optimization paper - reading for database systems course"
+      "note": "Classic query optimization paper"
+    },
+    {
+      "title": "The Beginning of Infinity",
+      "url": "https://en.wikipedia.org/wiki/The_Beginning_of_Infinity",
+      "authors": "David Deutsch",
+      "year": "2011"
     }
   ],
   "futureReading": [
     {
-      "title": "The Google File System",
-      "url": "https://static.googleusercontent.com/media/research.google.com/en//archive/gfs-sosp2003.pdf",
-      "authors": "Ghemawat et al.",
-      "year": "2003",
-      "note": "Want to understand distributed storage"
+      "title": "PCT: Probabilistic Concurrency Testing",
+      "url": "https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/asplos277-pct.pdf",
+      "authors": "Burckhardt et al.",
+      "year": "2010",
+      "note": "Microsoft Research"
     }
   ],
   "categories": [
@@ -22,42 +28,82 @@
       "name": "Research Papers",
       "subcategories": [
         {
-          "name": "Systems",
+          "name": "Real-Time Systems",
+          "links": [
+            {
+              "title": "Response-Time Analysis of a Soft Real-time NVIDIA Holoscan Application",
+              "url": "https://arpangujarati.github.io/pdfs/rtss2024_paper.pdf",
+              "authors": "Philip Schowitz, Soham Sinha, Arpan Gujarati",
+              "year": "2024",
+              "note": "RTSS 2024"
+            }
+          ]
+        },
+        {
+          "name": "Concurrency Testing",
+          "links": [
+            {
+              "title": "CHESS: Systematic Testing Tool",
+              "url": "https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/tr-2007-149.pdf",
+              "authors": "Musuvathi, Qadeer, Ball",
+              "year": "2007",
+              "note": "Microsoft Research"
+            },
+            {
+              "title": "DPOR: Dynamic Partial Order Reduction",
+              "url": "https://users.soe.ucsc.edu/~cormac/papers/popl05.pdf",
+              "authors": "Flanagan, Godefroid",
+              "year": "2005",
+              "note": "POPL 2005"
+            }
+          ]
+        },
+        {
+          "name": "Databases",
           "links": [
             {
               "title": "Access Path Selection in a Relational Database Management System",
               "url": "https://cs.stanford.edu/people/chrismre/cs345/rl/selinger-etal-1979.pdf",
               "authors": "Selinger et al.",
               "year": "1979",
-              "note": "The foundational paper on query optimization"
-            }
-          ]
-        },
-        {
-          "name": "AI/ML",
-          "links": [
-            {
-              "title": "Attention Is All You Need",
-              "url": "https://arxiv.org/abs/1706.03762",
-              "authors": "Vaswani et al.",
-              "year": "2017"
+              "note": "Foundational query optimization"
             }
           ]
         }
       ]
     },
     {
-      "name": "Blogs",
+      "name": "Blogs & Articles",
       "links": [
         {
-          "title": "Dan Luu's Blog",
-          "url": "https://danluu.com/",
-          "note": "Systems, performance, and industry takes"
+          "title": "The Slotted Counter Pattern",
+          "url": "https://planetscale.com/blog/the-slotted-counter-pattern",
+          "note": "PlanetScale"
         },
         {
-          "title": "PlanetScale Blog",
-          "url": "https://planetscale.com/blog",
-          "note": "Database engineering and MySQL"
+          "title": "Processes and Threads",
+          "url": "https://planetscale.com/blog/processes-and-threads",
+          "note": "PlanetScale"
+        },
+        {
+          "title": "The Principles of Extreme Fault Tolerance",
+          "url": "https://planetscale.com/blog/the-principles-of-extreme-fault-tolerance",
+          "note": "PlanetScale"
+        },
+        {
+          "title": "Faster Interpreters in Go: Catching Up with C++",
+          "url": "https://planetscale.com/blog/faster-interpreters-in-go-catching-up-with-cpp",
+          "note": "PlanetScale"
+        },
+        {
+          "title": "Database Sharding",
+          "url": "https://planetscale.com/blog/database-sharding",
+          "note": "PlanetScale"
+        },
+        {
+          "title": "Thoughts by a Non-Economist on AI and Economics",
+          "url": "https://windowsontheory.org/2025/11/04/thoughts-by-a-non-economist-on-ai-and-economics/",
+          "note": "Windows on Theory"
         }
       ]
     },
@@ -65,10 +111,115 @@
       "name": "Substacks",
       "links": [
         {
-          "title": "Platformer",
-          "url": "https://www.platformer.news/",
-          "author": "Casey Newton",
-          "note": "Tech policy and platforms"
+          "title": "Distressed Scientists",
+          "url": "https://distressedscientists.substack.com/"
+        },
+        {
+          "title": "Letters from Lossfunk",
+          "url": "https://letters.lossfunk.com/"
+        },
+        {
+          "title": "Probability and Statistics",
+          "url": "https://probabilityandstatistics.substack.com/"
+        },
+        {
+          "title": "François Chollet",
+          "url": "https://fchollet.substack.com/"
+        }
+      ]
+    },
+    {
+      "name": "Sites",
+      "links": [
+        {
+          "title": "Leslie Lamport's Publications",
+          "url": "https://lamport.azurewebsites.net/pubs/pubs.html",
+          "note": "Distributed systems pioneer"
+        },
+        {
+          "title": "Mant Institute",
+          "url": "https://www.mantainstitute.org/about",
+          "note": "Research on transformative technologies"
+        },
+        {
+          "title": "Bell Labs Innovations (1925-1983)",
+          "url": "https://ethw.org/Bell_Telephone_Laboratories,_Inc._List_of_Significant_Innovations_%26_Discoveries_(1925-1983)",
+          "note": "Engineering and Technology History"
+        },
+        {
+          "title": "Ben Green's Lecture Notes",
+          "url": "https://people.maths.ox.ac.uk/greenbj/notes.html",
+          "note": "Oxford mathematics"
+        }
+      ]
+    },
+    {
+      "name": "Books",
+      "subcategories": [
+        {
+          "name": "Read",
+          "links": [
+            {
+              "title": "Jobs",
+              "url": "https://www.simonandschuster.com/books/Steve-Jobs/Walter-Isaacson/9781451648546",
+              "authors": "Walter Isaacson",
+              "year": "2011"
+            },
+            {
+              "title": "Marley and Me",
+              "url": "https://www.harpercollins.com/products/marley-me-john-grogan",
+              "authors": "John Grogan",
+              "year": "2005"
+            },
+            {
+              "title": "Spaceman",
+              "url": "https://www.penguinrandomhouse.com/books/316084/spaceman-by-mike-massimino/",
+              "authors": "Mike Massimino",
+              "year": "2016"
+            },
+            {
+              "title": "The Hidden Pool",
+              "url": "https://www.goodreads.com/book/show/1213768.The_Hidden_Pool",
+              "authors": "Ruskin Bond",
+              "year": "1966"
+            },
+            {
+              "title": "Harry Potter (series)",
+              "url": "https://www.harrypotter.com/",
+              "authors": "J.K. Rowling",
+              "year": "1997-2007",
+              "note": "All 7 books"
+            }
+          ]
+        },
+        {
+          "name": "To-Read",
+          "links": [
+            {
+              "title": "Boom: Bubbles and the End of Stagnation",
+              "url": "https://press.stripe.com/boom",
+              "authors": "Byrne Hobart & Tobias Huber",
+              "year": "2024"
+            },
+            {
+              "title": "Imagining AI: How the World Sees Intelligent Machines",
+              "url": "https://global.oup.com/academic/product/imagining-ai-9780192865366",
+              "authors": "Stephen Cave & Kanta Dihal",
+              "year": "2023"
+            },
+            {
+              "title": "Antifragile: Things That Gain from Disorder",
+              "url": "https://www.penguinrandomhouse.com/books/176227/antifragile-by-nassim-nicholas-taleb/",
+              "authors": "Nassim Nicholas Taleb",
+              "year": "2012"
+            },
+            {
+              "title": "Designing Data-Intensive Applications",
+              "url": "https://dataintensive.net/",
+              "authors": "Martin Kleppmann",
+              "year": "2017"
+            }
+          ]
         }
       ]
     }

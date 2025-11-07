@@ -6,8 +6,8 @@
     "profession": "Backend Dev",
     "location": "Vancouver, Canada",
     "pronouns": "he/him",
-    "byline": "CS student at UBC researching Distributed Systems and ML",
-                   "about": "I'm passionate about building systems that solve real problems. My approach is guided by \"rejecting artificial bounds\" - exceptional versatility is possible when you focus on continuous learning and building.\n\nI've been programming since I was 9, starting with QBasic. I enjoy tackling challenging, often obscure problems. I believe in contributing to communities and creating tools that help people work more effectively.\n\nCurrently doing research on real-time guarantees for edge computing.\n\n**Things I maintain here:**\n\n• **[spongeboi's reading group](/writing)** - my virtual reading group with notes on research papers, essays, and technical writing. includes what I'm currently reading, future reading list, and a curated collection of links",
+    "byline": "I'm currently doing research on probabilistic guarantees in concurrency testing and GPU parallelism in real-time systems",
+                   "about": "I'm currently focusing on systems research: distributed systems, real-time systems, and databases.\n\nI've been programming since I was 9, starting with QBasic, and enjoy tackling interesting problems that could help improve the world meaningfully. Maybe open source is a way to do that in a small way. Here's a diagram by Professor Matt Might from the University of Alberta that really helps visualize the impact you can make by super specializing:\n\n![The Illustrated Guide to a PhD](https://cdn.spongeboi.com/the-illustrated-guide-to-a-phd1.jpg)\n\nI have a great appreciation for all forms of arts and a lot of interest in [epistemology](https://plato.stanford.edu/entries/epistemology/) (the theory of knowledge). I really like [Nietzsche's thoughts around art](https://bigthink.com/high-culture/nietzsche-art-life/). I love Stratocasters and genres like blues, punk rock, sufi, and a lot of indie jazz fusion.\n\nCurrently doing research on probabilistic guarantees in concurrency testing scenarios and [exploring the effect of GPU parallelism in real-time systems](/reading/gpu-scheduling-edge-ai). I'm also very grateful to be interning at [PlanetScale](https://planetscale.com) where I get to work on awesome stuff like [neki](https://neki.dev) (sharded postgres), learn from amazing people about query planning, the sheer scale and complexity of storage orchestration, and make fun side projects :)\n\n**Things I maintain here:**\n\n• **[spongeboi's reading group](/reading)** - a virtual shelf of interesting, fun, and some very essential essays, papers, books, websites, and blogs that I've read/found across the internet",
     "status": {
       "text": null,
       "emoji": null,
@@ -39,7 +39,7 @@
           "heading": "Software Engineering Intern at PlanetScale",
           "url": "https://planetscale.com/",
           "collaborators": [],
-          "description": "- Working on **neki**, PlanetScale's sharded Postgres system\n- Contributing to distributed database infrastructure and sharding architecture",
+          "description": "- Working on **[neki](https://neki.dev)**, PlanetScale's sharded Postgres system\n- Contributing to distributed database infrastructure and sharding architecture",
           "attachments": [],
           "type": "workExperience",
           "title": "Software Engineering Intern",
@@ -128,12 +128,13 @@
           "id": "rtss-2025-paper",
           "year": "2025",
           "heading": "Faster, Exact, More General Response-time Analysis for NVIDIA Holoscan Applications",
-          "url": "/writing/gpu-scheduling-edge-ai",
+          "url": null,
           "collaborators": [],
           "description": "Accepted at the 46th IEEE Real-Time Systems Symposium (RTSS 2025)\n\n**Authors**: Philip Schowitz (The University of British Columbia), Shubhaankar Sharma (The University of British Columbia), Soham Sinha (NVIDIA), Bruce Shepherd (The University of British Columbia), Arpan Gujarati (The University of British Columbia)",
           "attachments": [],
           "type": "papers",
-          "venue": "IEEE RTSS 2025"
+          "venue": "IEEE RTSS 2025",
+          "notesOn": "/reading/gpu-scheduling-edge-ai"
         }
       ]
     },
@@ -485,7 +486,7 @@
           "id": "writings-contact",
           "platform": "Writings",
           "handle": "Research & Articles",
-          "url": "/writing",
+          "url": "/reading",
           "type": "contact"
         },
         {

@@ -50,9 +50,9 @@ export default async function SharePage({ params }: Props) {
   const share = await getShareData(id);
 
   if (!share) {
-    redirect('/writing');
+    redirect('/reading');
   }
 
   // Redirect to the article with the share ID as a query param
-  redirect(`/writing/${share.articleSlug}?highlight=${id}`);
+  redirect(`/reading/${share.articleSlug}?highlight=${id}`);
 }

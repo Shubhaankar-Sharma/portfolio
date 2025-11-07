@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import styles from './writing.module.css';
+import styles from './reading.module.css';
 import type { WritingItem, LinksData } from './page';
 import { formatDate } from '../utils/dateFormat';
 
@@ -54,9 +54,9 @@ export default function WritingClient({ items, linksData }: WritingClientProps) 
       <div className={styles.header}>
         <h1>spongeboi's reading group</h1>
         <p className={styles.subtitle}>
-          Thoughts and links to awesome research papers, essays, and technical writing.
+          A virtual shelf of interesting, fun, and some very essential essays, papers, books, websites, and blogs that I've read/found across the internet.
         </p>
-        <a href="/writing/feed.xml" className={styles.rssLink}>RSS</a>
+        <a href="/reading/feed.xml" className={styles.rssLink}>RSS</a>
       </div>
 
       {linksData.onMyDesk && linksData.onMyDesk.length > 0 && (
@@ -88,7 +88,7 @@ export default function WritingClient({ items, linksData }: WritingClientProps) 
 
       {linksData.futureReading && linksData.futureReading.length > 0 && (
         <div className={styles.futureSection}>
-          <h2 className={styles.sectionTitle}>Future Reading</h2>
+          <h2 className={styles.sectionTitle}>Upcoming Reading</h2>
           <div className={styles.linksList}>
             {linksData.futureReading.map((link, idx) => (
               <a
@@ -209,7 +209,7 @@ export default function WritingClient({ items, linksData }: WritingClientProps) 
         <h2 className={styles.sectionTitle}>Writing</h2>
         <div className={styles.list}>
           {items.map((item) => (
-            <Link key={item.slug} href={`/writing/${item.slug}`} className={styles.item}>
+            <Link key={item.slug} href={`/reading/${item.slug}`} className={styles.item}>
               <span className={styles.date}>{formatDate(item.date)}</span>
               <h3 className={styles.title}>{item.title}</h3>
               {item.description && (

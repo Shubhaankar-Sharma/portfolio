@@ -79,7 +79,9 @@ async function getLinks(): Promise<LinksData> {
 }
 
 export default async function WritingPage() {
-  const items = await getWritingItems();
+  const allItems = await getWritingItems();
+  // Filter out drafts - only show published items
+  const items = allItems.filter(item => item.status === 'published');
   const linksData = await getLinks();
 
   // Get all unique tags

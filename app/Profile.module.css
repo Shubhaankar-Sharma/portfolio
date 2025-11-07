@@ -79,12 +79,50 @@
 }
 
 .description p a {
-  border-bottom: 1px solid var(--grey3);
-  transition: border-color 0.15s ease;
+  position: relative;
+  text-decoration: none;
+  background: linear-gradient(
+    to right,
+    var(--grey1),
+    var(--grey1)
+  ) no-repeat;
+  background-size: 0% 1px;
+  background-position: left bottom;
+  transition: background-size 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  padding-bottom: 2px;
+}
+
+.description p a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--grey3) 20%,
+    var(--grey3) 80%,
+    transparent
+  );
+  opacity: 0.5;
 }
 
 .description p a:hover {
-  border-bottom-color: var(--grey1);
+  background-size: 100% 1px;
+}
+
+.description p a:hover::after {
+  opacity: 0;
+}
+
+.description img {
+  max-width: 400px;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 16px 0;
 }
 
 .year {
@@ -135,6 +173,24 @@
 
 .location ~ .description {
   margin-top: calc((var(--font-size) * var(--line-height)) / 2);
+}
+
+.notesOn {
+  margin-top: calc((var(--font-size) * var(--line-height)) / 2);
+  color: var(--grey2);
+  font-size: 14px;
+}
+
+.notesOn a {
+  color: var(--grey2);
+  text-decoration: none;
+  border-bottom: 1px solid var(--grey3);
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.notesOn a:hover {
+  color: var(--grey1);
+  border-bottom-color: var(--grey1);
 }
 
 .technologies {

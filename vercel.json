@@ -1,0 +1,44 @@
+{
+  "rewrites": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "cv.spongeboi.com"
+        }
+      ],
+      "destination": "/cv"
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "cv.shubhaankar.com"
+        }
+      ],
+      "destination": "/cv"
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "reading.spongeboi.com"
+        }
+      ],
+      "destination": "/reading"
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "reading.shubhaankar.com"
+        }
+      ],
+      "destination": "/reading"
+    }
+  ]
+}

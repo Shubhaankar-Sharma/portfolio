@@ -32,17 +32,17 @@ export async function GET() {
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>spongeboi's reading group</title>
-    <link>${baseUrl}/writing</link>
+    <link>${baseUrl}/reading</link>
     <description>Thoughts and links to awesome research papers, essays, and technical writing.</description>
     <language>en</language>
-    <atom:link href="${baseUrl}/writing/feed.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="${baseUrl}/reading/feed.xml" rel="self" type="application/rss+xml" />
     ${sortedItems
       .map(
         (item) => `
     <item>
       <title>${escapeXml(item.title)}</title>
-      <link>${baseUrl}/writing/${item.slug}</link>
-      <guid>${baseUrl}/writing/${item.slug}</guid>
+      <link>${baseUrl}/reading/${item.slug}</link>
+      <guid>${baseUrl}/reading/${item.slug}</guid>
       <pubDate>${new Date(item.date).toUTCString()}</pubDate>
       <description>${escapeXml(item.description)}</description>
     </item>`
