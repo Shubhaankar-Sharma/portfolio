@@ -1,7 +1,7 @@
 import { ImageResponse } from 'next/og'
+import { readFileSync } from 'fs';
+import { join } from 'path';
 import profileData from '../public/content/profileData.json';
-
-export const runtime = 'edge'
 
 export const alt = profileData.general.byline;
 export const size = {
@@ -12,9 +12,9 @@ export const size = {
 export const contentType = 'image/png'
 
 export default async function Image() {
-  const imageSrc = await fetch(new URL('../public/content/media/profilePhoto.jpg', import.meta.url)).then(
-    (res) => res.arrayBuffer()
-  )
+  const imagePath = join(process.cwd(), 'public/content/media/profilePhoto.jpg');
+  const imageBuffer = readFileSync(imagePath);
+  const base64Image = `data:image/jpeg;base64,${imageBuffer.toString('base64')}`;
 
   return new ImageResponse(
     (
@@ -28,7 +28,7 @@ export default async function Image() {
           justifyContent: 'center',
         }}
       >
-        <img src={imageSrc as any} height="400" style={{ borderRadius: '50%' }} />
+        <img src={base64Image} height="400" style={{ borderRadius: '50%' }} />
       </div>
     ),
     {
