@@ -9,8 +9,13 @@ type RichTextProps = {
 };
 
 const Link: React.FC<React.JSX.IntrinsicElements['a']> = memo(({ href, children }) => {
+  // If no href, just render children as text
+  if (!href) {
+    return <>{children}</>;
+  }
+
   // Check if it's an internal link
-  const isInternal = href?.startsWith('/');
+  const isInternal = href.startsWith('/');
 
   // Add neki emoji after links to neki.dev
   if (href === 'https://neki.dev') {
