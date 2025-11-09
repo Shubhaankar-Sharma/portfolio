@@ -1,5 +1,7 @@
 import { memo } from "react";
 import Markdown from 'react-markdown';
+import NextLink from 'next/link';
+import rehypeRaw from 'rehype-raw';
 import NekiEmoji from './components/NekiEmoji';
 
 type RichTextProps = {
@@ -7,6 +9,9 @@ type RichTextProps = {
 };
 
 const Link: React.FC<React.JSX.IntrinsicElements['a']> = memo(({ href, children }) => {
+  // Check if it's an internal link
+  const isInternal = href?.startsWith('/');
+
   // Add neki emoji after links to neki.dev
   if (href === 'https://neki.dev') {
     return (
@@ -16,6 +21,12 @@ const Link: React.FC<React.JSX.IntrinsicElements['a']> = memo(({ href, children 
       </a>
     );
   }
+
+  // Use Next.js Link for internal links
+  if (isInternal) {
+    return <NextLink href={href}>{children}</NextLink>;
+  }
+
   return <a href={href} target='_blank'>{children}</a>;
 });
 
@@ -27,7 +38,12 @@ const RichText: React.FC<RichTextProps> = ({
   text
 }) => {
   return (
-    <Markdown components={components as any}>{text}</Markdown>
+    <Markdown
+      components={components as any}
+      rehypePlugins={[rehypeRaw]}
+    >
+      {text}
+    </Markdown>
   )
 }
 

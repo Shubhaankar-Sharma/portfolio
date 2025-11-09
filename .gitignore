@@ -9,3 +9,4 @@ dist
 .cursor
 .next/
 /lib/generated/prisma
+.emails/

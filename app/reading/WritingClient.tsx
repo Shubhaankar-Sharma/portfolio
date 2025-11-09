@@ -14,6 +14,8 @@ type WritingClientProps = {
 
 export default function WritingClient({ items, linksData }: WritingClientProps) {
   const [openFolders, setOpenFolders] = useState<Set<string>>(new Set());
+  const [email, setEmail] = useState('');
+  const [submitted, setSubmitted] = useState(false);
 
   const toggleFolder = (path: string) => {
     const newOpenFolders = new Set(openFolders);
@@ -48,6 +50,31 @@ export default function WritingClient({ items, linksData }: WritingClientProps) 
     return catOpen && subsOpen;
   });
 
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch('/api/reading-group', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      if (response.ok) {
+        setSubmitted(true);
+        setEmail('');
+      } else {
+        const data = await response.json();
+        alert(data.error || 'Something went wrong. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error submitting email:', error);
+      alert('Something went wrong. Please try again.');
+    }
+  };
+
   return (
     <div className={styles.container}>
       <Link href="/" className={styles.homeLink}>← home</Link>
@@ -56,7 +83,30 @@ export default function WritingClient({ items, linksData }: WritingClientProps) 
         <p className={styles.subtitle}>
           A virtual shelf of interesting, fun, and some very essential essays, papers, books, websites, and blogs that I've read/found across the internet.
         </p>
+        <p className={styles.callToAction}>
+          Please <a href="mailto:hi@spongeboi.com">email me</a> or DM me things you think people should read!
+        </p>
         <a href="/reading/feed.xml" className={styles.rssLink}>RSS</a>
+      </div>
+
+      <div className={styles.emailSignup}>
+        <h3>Join the Email Group</h3>
+        <p>Sign up to discuss papers, your work, and cool things with others.</p>
+        {!submitted ? (
+          <form onSubmit={handleSubmit} className={styles.signupForm}>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="your@email.com"
+              required
+              className={styles.emailInput}
+            />
+            <button type="submit" className={styles.submitButton}>Sign up</button>
+          </form>
+        ) : (
+          <p className={styles.successMessage}>Thanks! You'll hear from me soon.</p>
+        )}
       </div>
 
       {linksData.onMyDesk && linksData.onMyDesk.length > 0 && (

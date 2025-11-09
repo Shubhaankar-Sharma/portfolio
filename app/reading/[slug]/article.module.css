@@ -163,6 +163,16 @@
   font-style: italic;
 }
 
+.content mark {
+  background-color: rgba(255, 235, 59, 0.3);
+  padding: 2px 4px;
+  border-radius: 2px;
+}
+
+[data-theme="dark"] .content mark {
+  background-color: rgba(255, 235, 59, 0.2);
+}
+
 .content img {
   max-width: 100%;
   height: auto;

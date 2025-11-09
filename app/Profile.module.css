@@ -80,41 +80,25 @@
 
 .description p a {
   position: relative;
-  text-decoration: none;
-  background: linear-gradient(
+  text-decoration: underline;
+  text-decoration-color: var(--grey3);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  text-decoration-skip-ink: auto;
+  background-image: linear-gradient(
     to right,
     var(--grey1),
     var(--grey1)
-  ) no-repeat;
-  background-size: 0% 1px;
-  background-position: left bottom;
-  transition: background-size 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  padding-bottom: 2px;
-}
-
-.description p a::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    var(--grey3) 20%,
-    var(--grey3) 80%,
-    transparent
   );
-  opacity: 0.5;
+  background-size: 0% 1px;
+  background-repeat: no-repeat;
+  background-position: left bottom 0px;
+  transition: background-size 0.3s cubic-bezier(0.4, 0, 0.2, 1), text-decoration-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .description p a:hover {
   background-size: 100% 1px;
-}
-
-.description p a:hover::after {
-  opacity: 0;
+  text-decoration-color: transparent;
 }
 
 .description img {

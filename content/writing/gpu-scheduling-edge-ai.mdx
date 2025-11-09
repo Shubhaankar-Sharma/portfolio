@@ -1,122 +1,61 @@
 ---
-title: "My First Research Internship: GPU Scheduling for Real-Time Edge AI"
-description: "Reflections on my experience working on real-time systems research, including setbacks, breakthroughs, and lessons learned."
-date: "2025-01-15"
-tags: ["research", "experience", "real-time systems"]
+title: "Working on Timing Guarantees for AI in Healthcare"
+description: "Research on making AI-assisted surgery predictable and safe, and what I learned about confirmation bias and scientific thinking."
+date: "2025-11-08"
+tags: ["research", "real-time systems", "healthcare"]
 image: "https://cdn.spongeboi.com/holoscan-art.png"
 ---
 
 import GreenContextSimulation from '../../app/components/GreenContextSimulation'
 
-## Background
+## Context
 
-Modern hardware is capable of running powerful AI/ML computations even on smaller form-factor devices. NVIDIA's Jetson and IGX platforms enable sophisticated neural networks to run locally rather than in the cloud.
+<mark>Imagine a surgeon performing a delicate operation wearing AR glasses that overlay AI predicted organ positions onto the live surgical feed. Systems like these could go from assistance to performing minor surgeries in a lot of situations.</mark> <mark>We could deploy such robots in underdeveloped regions with shortage on trained doctors and help a lot of people.</mark> These tools run locally without needing internet. Industrialization of full surgical robots is way out in the future though. Right now assistance tools help in education, preserve context during surgeries, and help doctors make better decisions, for example which maneuvers to perform when.
 
-These edge AI capabilities have tremendous applications in medicine, autonomous vehicles, and robotics. These applications require on-premise processing for privacy and latency. In surgical assistance, systems must respond in real-time and cannot send patient data to cloud servers.
+These systems need to be reliable. A lag of even a few milliseconds during surgery could be catastrophic. My work with Dr. Arpan Gujarati, Philip Schowitz, and others focused on exactly this problem. Applications like [ORSI Multi AI AR](https://nvidia-holoscan.github.io/holohub/applications/orsi/orsi_segmentation_ar/) run on NVIDIA's Holoscan SDK.
 
-One such application is **ORSI Multi AI AR**, which overlays AI-predicted organ positions onto live endoscopy feeds during surgery. These applications run on edge computers like NVIDIA IGX Orin, built on frameworks such as NVIDIA's Holoscan SDK, which orchestrates real-time data processing through graph-based pipelines.
+I was drawn to this project because it had real impact potential. I sat through so many surgery videos to benchmark these applications.
 
-## The Research Problem
+Fair warning: the following sections get a bit technical.
 
-One key challenge here is: **how can we make the performance of NVIDIA GPUs predictable for our edge applications?** This is extremely important for cyber-physical system (CPS) applications, as timing is part of the application's safety specification. In mission-critical applications like surgical assistance software, inconsistent frame delivery or unpredictable latency can affect reliability and safety.
+## The Work
 
-While Holoscan has benchmarks, ensuring predictable real-time behavior requires deeper timing analysis. Dr. Arpan Gujarati's research group previously published work on statically analyzing CPU-based systems, developing an algorithmic approach to determine maximum end-to-end time given worst-case response times (WCRTs) of individual nodes in the application graph. In 2024-2025, this analysis was improved, and got accepted at RTSS 2025 as **["Faster, Exact, More General Response-time Analysis for NVIDIA Holoscan Applications"](https://2025.rtss.org/program/index.html)** (Philip Schowitz, Shubhaankar Sharma, Soham Sinha, Bruce Shepherd, Arpan Gujarati).
+My work spanned two interconnected research directions. This contributed to a paper accepted at RTSS 2025: ["Faster, Exact, More General Response-time Analysis for NVIDIA Holoscan Applications"](https://2025.rtss.org/program/index.html) (Philip Schowitz, Shubhaankar Sharma, Soham Sinha, Bruce Shepherd, Arpan Gujarati).
 
-![RTSS 2025 Artifact Evaluated Badge](https://cdn.spongeboi.com/Screenshot%202025-10-22%20at%207.30.56%E2%80%AFPM.png)
+**Timing Analysis**
 
-My work spanned two interconnected research directions: completing the improved timing analysis and investigating GPU partitioning to reuse these analyses with GPUs as the computational unit.
+I needed to validate the theory with real-world data. This meant benchmarking Holoscan applications on NVIDIA IGX Orin hardware to determine WCRT values (worst-case response time). These benchmarks ran for days.
 
-## Problem 1: Timing Analysis & Verification
+I developed an artifact that automated WCRT measurements using UPPAAL (a formal verification tool). This got accepted at RTSS 2025. (GitHub Repository: [rt-holoscan-artifacts](https://github.com/ubc-systopia/rt-holoscan-artifacts))
 
-I had volunteered on this project for three months before the internship, developing foundational knowledge of Holoscan. When I joined as a research intern, the Research Group had already developed the theoretical framework for static timing analysis and were submitting it to RTSS 2025.
+**GPU Scheduling**
 
-My contribution focused on **empirical validation**: benchmarking Holoscan applications to determine WCRT values on NVIDIA IGX Orin. These profiling experiments were extensive, often taking 6+ hours to capture worst-case behavior.
+The second half of my internship and ongoing work focuses on a different question: could we reduce latency and jitter by changing how the GPU allocates resources? CPUs have 8-16 cores. GPUs have thousands of parallel streaming multiprocessors (SMs). Holoscan has unique queueing behavior we could exploit. We wanted to guarantee the system won't take longer than X milliseconds with minimal variance in output timing.
 
-I developed and packaged an artifact that automated WCRT measurements and generated system-level timing analyses using UPPAAL, a formal verification tool. This workflow was submitted and accepted as an artifact to RTSS 2025, enabling other researchers to reproduce our methodology.
+Tracing operations in a GPU-accelerated pipeline is complex. <mark>The CPU and GPU operate on different clocks. The pipeline can move ahead on the CPU while earlier tasks execute on the GPU, sometimes the CPU is three iterations ahead.</mark> I created a Python script to recreate CPU iterations and their related GPU kernel executions, and understand GPU kernel scheduling time.
 
-**GitHub Repository**: [rt-holoscan-artifacts](https://github.com/ubc-systopia/rt-holoscan-artifacts)
+After developing a metrics analysis framework, I could quickly analyze proposed policies. However, the first experiment design proved infeasible (exponential runtime scaling). After two months of work, this was disappointing. <mark>I had fallen victim to confirmation bias. When I got results that matched my expectations, I didn't dig deeper to verify them.</mark>
 
-## Problem 2: GPU Scheduling Policy Optimization
+We redesigned the experiment with linear runtime scaling. After several iterations, our policy reduced application jitter, providing more consistent outputs and better P99 latency.
 
-The remaining three months of my internship focused on investigating whether better GPU resource allocation could reduce latency and jitter. The problem is analogous to CPU thread allocation but more complex: while CPUs have a handful of cores, **GPUs have thousands of parallel streaming multiprocessors (SMs)**.
+## Interactive Demo
 
-We hypothesized that a custom SM allocation policy exploiting Holoscan's unique queueing behavior could reduce jitter and improve predictability.
-
-### The Experimentation Process
-
-I led the experimentation through multiple iterations, writing CUDA kernels, developing Holoscan application code, and creating analysis pipelines using NumPy and Pandas. We used **NSight Systems** to profile GPU and CPU execution.
-
-Tracing operations is nontrivial—the CPU and GPU operate on different clocks with different timescales. The pipeline can move ahead on the CPU while earlier tasks execute on the GPU; the CPU could be three iterations ahead. Understanding which iterations ran when was essential to verify Holoscan's behavior.
-
-I maintained a detailed mental model of the application, which helped me predict GPU scheduling behavior and propose experiment designs. By anticipating how kernels should behave, we identified issues in the expected parallelism behavior.
-
-### The Setback
-
-After developing a metrics analysis framework, I could quickly analyze proposed policies. However, the first experiment design proved infeasible—individual kernels had exponential runtime scaling, limiting potential improvements. **After two months of work, this was disappointing.**
-
-### The Breakthrough
-
-We redesigned the experiment with kernels having linear runtime scaling. After several iterations, we got results matching theoretical expectations. **Our policy reduced application jitter**, providing more consistent outputs and better P99 latency, improving reliability in surgical applications.
-
-## Interactive Demonstration: Green Context Policy
-
-Below is an interactive simulation showing how our <mark>Green Context (pGC) policy improves frame delivery consistency</mark> compared to the default nGC allocation policy.
-
-The simulation demonstrates two pipeline policies processing events (frames) through a 5-stage pipeline:
-
-**Understanding the Visualization:**
-- **Events (circles)** represent video frames moving through the pipeline
-- **Processing (blue/green circles)** shows active computation
-- **Queued (yellow circles)** indicates frames waiting for the next stage
-- **Dropped (red boxes)** shows frames that were discarded due to queue overflow
-- Each stage can only process one event at a time
-- Queue capacity is limited to 1 event per stage
+Below is an interactive simulation showing how our Green Context (pGC) policy improves frame delivery consistency compared to the default nGC policy. This is novel work still in progress. The simulation shows two pipeline policies processing events through a 5-stage pipeline.
 
 <GreenContextSimulation />
 
-### Why Default Policy (nGC) Drops Frames
+The default nGC policy creates unbalanced compute allocation. Fast stages process frames quickly while the bottleneck stage creates backpressure. When busy with a queued frame, new frames drop. Result: inconsistent output, dropped frames.
 
-The default nGC policy creates an <mark>unbalanced compute allocation</mark>:
-- **Fast stages** (Source: 5ms, Middle0: 8ms) process frames quickly
-- **Bottleneck stage** (Middle1: 35ms) creates severe backpressure
-- **Queue overflow**: When Middle1 is busy and the queue already has 1 waiting frame, new frames are dropped
-- **Result**: Inconsistent output, dropped frames, unreliable video feed
+Our pGC policy achieves balanced allocation with consistent processing (~22ms across all stages). No bottlenecks, the queue never overflows. Result: zero frame drops, consistent output.
 
-### Why Green Context Policy (pGC) Succeeds
+<mark>The critical insight: by managing GPU streaming multiprocessor allocation, we can make event processing consistent along the pipeline.</mark> The default policy drops frames because unbalanced stages process at mismatched rates, causing queue overflow.
 
-Our pGC policy achieves <mark>balanced compute allocation</mark>:
-- **Consistent processing** (~22ms across all stages)
-- **No bottlenecks**: All stages complete at similar rates
-- **Queue never overflows**: Balanced throughput means no backpressure
-- **Result**: Zero frame drops, consistent video quality, predictable behavior
+## Reflections
 
-### Key Results
+This internship opened doors to a whole new world. <mark>I learnt that research requires strong theoretical foundations. Theory should predict what you expect to see. When reality deviates, that's where discoveries happen.</mark> Before this, I thought I understood the scientific method. I didn't. <mark>Confirmation bias is incredibly powerful. Even when you know about it, you can still fall victim to it.</mark> You see the patterns you want to see. Peer review, reproducibility, and publishing artifacts help mitigate this.
 
-Our Green Context policy achieves:
-- **Zero frame drops** in balanced workloads
-- **Reduced P99 latency** through consistent stage processing times
-- **Improved predictability** for real-time guarantees
-- **Better resource utilization** by balancing GPU compute allocation
+Through this research, I started diving deep into epistemology. How do we know what we know? How does our perception deceive us? <mark>I discovered [Bell Labs](https://ethw.org/Bell_Telephone_Laboratories,_Inc._List_of_Significant_Innovations_%26_Discoveries_(1925-1983)). I learned about the invisible engineers whose work shapes our entire modern world. The transistor. Unix. C. Information theory. All from one lab.</mark> You can have a profound impact by diving deep into specialized research.
 
-**The critical insight:** <mark>By appropriately managing GPU streaming multiprocessor (SM) allocation, we can make event processing consistent along the pipeline.</mark> With limited cache/queue sizes in Holoscan, the default policy drops frames because unbalanced stages process at mismatched rates, causing queue overflow at bottleneck points.
+What struck me was how deep every field goes. I'm experiencing this at PlanetScale, where I'm working on [neki](https://neki.dev) (a sharded Postgres system). I'm diving into SQL databases: query planning, storage orchestration, it's endless. I'm also working on research around probabilistic concurrency testing. We're still working on deeper investigations into GPU scheduling policies at Systopia. We have one paper published at RTSS 2025.
 
-## Research Experience and Takeaways
-
-The most valuable lesson came from our setback with the first experiment design. When I got results that appeared to match my expectations, I didn't dig deeper to verify them—I had fallen victim to **confirmation bias**. These results turned out to be wrong, and we had spent two months pursuing a dead end.
-
-This taught me that **research requires a strong theoretical foundation before conducting experiments**. Theory should predict what you expect to see, and when reality deviates, that's when the most interesting discoveries happen—but only if you have the theory to compare against.
-
-### Skills Developed
-
-Beyond technical skills in CUDA programming and GPU architecture, I developed crucial research skills:
-
-- Maintaining detailed mental models of complex systems
-- Designing experiments to isolate key behaviors
-- Presenting complex research in simple terms
-- The discipline to question results even when they confirm what I want to believe
-
-## Conclusion
-
-This research demonstrates that thoughtful GPU resource management can significantly improve the reliability of edge AI systems in critical applications. By developing policies that balance compute allocation across pipeline stages, we can reduce frame drops and improve timing predictability—essential properties for surgical assistance and other safety-critical cyber-physical systems.
-
-The accepted RTSS 2025 artifact enables other researchers to build on this work, and our findings on GPU scheduling policies open new directions for optimizing real-time edge AI applications.
+After seeing the mind blowing work people do, I'm grateful that I found people in my life who have supported me on this journey, and given me opportunities like this that allow me to work on things that truly intrigue me and can also lead to small contributions to science. I hope I can do that throughout my life.
