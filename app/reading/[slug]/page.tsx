@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { Metadata } from 'next';
 import GreenContextSimulation from '../../components/GreenContextSimulation';
 import ClickableImage from '../../components/ClickableImage';
-import { formatDate } from '../../utils/dateFormat';
+import { formatDate, calculateReadingTime } from '../../utils/dateFormat';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import remarkGfm from 'remark-gfm';
@@ -101,24 +101,36 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function ArticlePage({ params }: Props) {
   const { slug } = await params;
   const { frontmatter, content } = await getArticle(slug);
+  const readingTime = calculateReadingTime(content);
 
   return (
     <>
       <Link href="/reading" className={styles.backLink}>
-        ← Back
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10 12L6 8L10 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+        Back
       </Link>
-
-      {frontmatter.image && (
-        <div className={styles.heroImage}>
-          <img src={frontmatter.image} alt={frontmatter.title} />
-        </div>
-      )}
 
       <div className={styles.container}>
         <article className={styles.article}>
           <header className={styles.header}>
             <h1 className={styles.title}>{frontmatter.title}</h1>
-            <span className={styles.date}>{formatDate(frontmatter.date)}</span>
+            {frontmatter.description && (
+              <p className={styles.description}>{frontmatter.description}</p>
+            )}
+            <div className={styles.metadata}>
+              <span className={styles.date}>{formatDate(frontmatter.date)}</span>
+              <span className={styles.separator}>·</span>
+              <span className={styles.readingTime}>{readingTime} min read</span>
+            </div>
+            {frontmatter.tags && frontmatter.tags.length > 0 && (
+              <div className={styles.tags}>
+                {frontmatter.tags.map((tag: string) => (
+                  <span key={tag} className={styles.tag}>{tag}</span>
+                ))}
+              </div>
+            )}
           </header>
 
           <div className={styles.content}>
