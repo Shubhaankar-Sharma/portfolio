@@ -77,7 +77,12 @@ export default function WritingClient({ items, linksData }: WritingClientProps) 
 
   return (
     <div className={styles.container}>
-      <Link href="/" className={styles.homeLink}>← home</Link>
+      <Link href="/" className={styles.homeLink}>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10 12L6 8L10 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+        Back
+      </Link>
       <div className={styles.header}>
         <h1>spongeboi's reading group</h1>
         <p className={styles.subtitle}>

@@ -65,10 +65,22 @@
 }
 
 .experience {
-  display: grid;
-  grid-template-columns: 180px 1fr 32px;
-  column-gap: 36px;
-  align-items: baseline;
+  display: flex;
+  gap: clamp(20px, 4vw, 36px);
+  align-items: flex-start;
+  width: 100%;
+}
+
+.experienceWithLogo,
+.experienceNoLogo {
+  /* Same styles for both */
+}
+
+.experienceContent {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 .description {
@@ -113,8 +125,8 @@
   color: var(--grey3);
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
+  flex: 0 0 clamp(80px, 15vw, 180px);
 }
-
 
 .titleRow {
   display: flex;
@@ -141,7 +153,8 @@
   overflow: hidden;
   background-color: transparent;
   padding: 3px;
-  align-self: baseline;
+  flex: 0 0 32px;
+  margin-top: 2px;
 }
 
 .logo img {
@@ -194,11 +207,10 @@
   line-height: 1;
 }
 
-/* Tablet/Medium screens: Reduce year column width and gaps to prevent overlap */
+/* Tablet/Medium screens: Hide logo */
 @media (max-width: 768px) {
-  .experience {
-    grid-template-columns: 120px 1fr 32px;
-    column-gap: 20px;
+  .logo {
+    display: none;
   }
 }
 
@@ -212,16 +224,13 @@
   }
 
   .experience {
-    grid-template-columns: 1fr;
+    flex-direction: column;
     gap: 8px;
-  }
-
-  .experience .logo {
-    display: none;
   }
 
   .year {
     font-size: 14px;
+    flex: 0 0 auto;
   }
 
   .titleRow {

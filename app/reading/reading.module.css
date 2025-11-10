@@ -3,24 +3,34 @@
   width: 100%;
   max-width: 720px;
   margin: 0 auto;
-  padding: clamp(48px, 8vw, 80px) 24px;
+  padding: clamp(80px, 12vw, 120px) 24px clamp(48px, 8vw, 80px);
 }
 
 .homeLink {
   position: fixed;
   left: 32px;
   top: 32px;
-  font-size: 13px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   color: var(--grey3);
-  text-decoration: underline;
-  text-underline-offset: 2px;
+  font-size: 13px;
   font-family: var(--font-ibm-plex-mono), monospace;
-  transition: color 0.15s ease;
+  padding: 8px 12px;
+  border-radius: 6px;
+  background-color: transparent;
+  transition: all 0.2s ease;
   z-index: 10;
+  text-decoration: none;
 }
 
 .homeLink:hover {
   color: var(--grey1);
+  background-color: var(--wash2);
+}
+
+.homeLink svg {
+  flex-shrink: 0;
 }
 
 .header {
@@ -263,12 +273,19 @@
 
 @media (max-width: 768px) {
   .homeLink {
-    left: 20px;
-    top: 20px;
+    left: 16px;
+    top: 16px;
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+
+  .homeLink svg {
+    width: 14px;
+    height: 14px;
   }
 
   .container {
-    padding: clamp(48px, 8vw, 96px) 20px;
+    padding: clamp(72px, 10vw, 96px) 20px clamp(48px, 8vw, 80px);
   }
 
   .header {

@@ -85,8 +85,11 @@ const ProfileItem: React.FC<ProfileItemProps> = ({
   } else {
     title = experience.heading
   }
+
+  const hasLogo = !!experience.logo;
+
   return (
-    <div className={styles.experience}>
+    <div className={`${styles.experience} ${hasLogo ? styles.experienceWithLogo : styles.experienceNoLogo}`}>
       <div className={styles.year}>
         {experience.year}
       </div>
@@ -123,7 +126,7 @@ const ProfileItem: React.FC<ProfileItemProps> = ({
           <Attachments attachments={experience.attachments}/>
         : null}
       </div>
-      {experience.logo ?
+      {hasLogo && (
         <div className={styles.logo}>
           <Image
             src={experience.logo}
@@ -133,7 +136,7 @@ const ProfileItem: React.FC<ProfileItemProps> = ({
             style={experience.logo === '/content/media/ubclogo.png' ? { filter: 'brightness(0) saturate(100%) invert(13%) sepia(70%) saturate(1000%) hue-rotate(162deg) brightness(95%) contrast(98%)' } : undefined}
           />
         </div>
-      : <div></div>}
+      )}
     </div>
   )
 }

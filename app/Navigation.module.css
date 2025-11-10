@@ -122,25 +122,9 @@
   }
 }
 
-/* On mobile, keep it minimal on the right side */
+/* On mobile, hide navigation entirely */
 @media (max-width: 768px) {
   .navigation {
-    right: 8px;
-  }
-
-  .navItems {
-    gap: 6px;
-  }
-
-  .navItem {
-    padding: 6px 8px;
-  }
-
-  .navLabel {
-    font-size: 11px;
-  }
-
-  .navDot {
     display: none;
   }
 }
