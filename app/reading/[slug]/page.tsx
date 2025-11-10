@@ -3,6 +3,7 @@ import path from 'path';
 import matter from 'gray-matter';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import Link from 'next/link';
+import { Metadata } from 'next';
 import GreenContextSimulation from '../../components/GreenContextSimulation';
 import ClickableImage from '../../components/ClickableImage';
 import { formatDate } from '../../utils/dateFormat';
@@ -69,6 +70,32 @@ export async function generateStaticParams() {
   } catch {
     return [];
   }
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const { frontmatter } = await getArticle(slug);
+
+  return {
+    title: frontmatter.title,
+    description: frontmatter.description,
+    openGraph: {
+      title: frontmatter.title,
+      description: frontmatter.description,
+      images: frontmatter.image ? [
+        {
+          url: frontmatter.image,
+          alt: frontmatter.title,
+        }
+      ] : [],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: frontmatter.title,
+      description: frontmatter.description,
+      images: frontmatter.image ? [frontmatter.image] : [],
+    },
+  };
 }
 
 export default async function ArticlePage({ params }: Props) {
