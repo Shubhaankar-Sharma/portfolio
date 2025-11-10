@@ -4,6 +4,7 @@ import matter from 'gray-matter';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import Link from 'next/link';
 import GreenContextSimulation from '../../components/GreenContextSimulation';
+import ClickableImage from '../../components/ClickableImage';
 import { formatDate } from '../../utils/dateFormat';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
@@ -98,6 +99,7 @@ export default async function ArticlePage({ params }: Props) {
               source={content}
               components={{
                 GreenContextSimulation,
+                ClickableImage,
               }}
               options={{
                 mdxOptions: {

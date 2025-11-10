@@ -1,0 +1,42 @@
+.imageContainer {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.clickableImage {
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+  width: 100%;
+  height: auto;
+}
+
+.imageContainer:hover .clickableImage {
+  opacity: 0.9;
+}
+
+.zoomIndicator {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background: rgba(0, 0, 0, 0.75);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+  backdrop-filter: blur(4px);
+}
+
+.imageContainer:hover .zoomIndicator {
+  opacity: 1;
+}
+
+.zoomIndicator svg {
+  flex-shrink: 0;
+}

@@ -9,17 +9,10 @@ export default function ThemeToggle() {
 
   useEffect(() => {
     setMounted(true);
-    // Check localStorage or system preference
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark' || savedTheme === 'light') {
-      setTheme(savedTheme);
-      document.documentElement.setAttribute('data-theme', savedTheme);
-    } else {
-      // Default to light mode
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      const defaultTheme = prefersDark ? 'dark' : 'light';
-      setTheme(defaultTheme);
-      document.documentElement.setAttribute('data-theme', defaultTheme);
+    // Read the theme that was already set by the blocking script
+    const currentTheme = document.documentElement.getAttribute('data-theme') as 'light' | 'dark';
+    if (currentTheme) {
+      setTheme(currentTheme);
     }
   }, []);
 

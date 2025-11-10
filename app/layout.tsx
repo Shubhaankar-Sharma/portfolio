@@ -31,7 +31,25 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                const savedTheme = localStorage.getItem('theme');
+                if (savedTheme === 'dark' || savedTheme === 'light') {
+                  document.documentElement.setAttribute('data-theme', savedTheme);
+                } else {
+                  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                  const defaultTheme = prefersDark ? 'dark' : 'light';
+                  document.documentElement.setAttribute('data-theme', defaultTheme);
+                }
+              })();
+            `,
+          }}
+        />
+      </head>
       <body className={`${ibmPlexSans.variable} ${ibmPlexMono.variable} font-sans`}>
         <ThemeToggle />
         {children}
