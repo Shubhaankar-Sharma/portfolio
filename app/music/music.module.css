@@ -34,6 +34,7 @@
   font-weight: 400;
   margin-bottom: 16px;
   letter-spacing: -0.02em;
+  color: var(--grey1);
 }
 
 .subtitle {
@@ -52,7 +53,7 @@
   font-size: 16px;
   font-weight: 500;
   margin-bottom: 20px;
-  color: var(--grey1);
+  color: var(--accent-secondary);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   font-size: 12px;
@@ -111,6 +112,10 @@
 
 .nowPlayingCard:hover {
   border-color: var(--grey3);
+}
+
+.nowPlayingCard:hover .musicTitle {
+  color: var(--accent);
 }
 
 .albumArt {

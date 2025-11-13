@@ -14,6 +14,7 @@ import rehypeHighlight from 'rehype-highlight';
 import 'katex/dist/katex.min.css';
 import 'highlight.js/styles/github-dark.css';
 import styles from './article.module.css';
+import ArticleNav from './ArticleNav';
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -100,11 +101,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ArticlePage({ params }: Props) {
   const { slug } = await params;
-  const { frontmatter, content } = await getArticle(slug);
+  const { frontmatter, content, headings } = await getArticle(slug);
   const readingTime = calculateReadingTime(content);
 
   return (
     <>
+      <ArticleNav headings={headings} />
       <Link href="/reading" className={styles.backLink}>
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M10 12L6 8L10 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -139,6 +141,16 @@ export default async function ArticlePage({ params }: Props) {
               components={{
                 GreenContextSimulation,
                 ClickableImage,
+                h1: ({ children, ...props }) => {
+                  const text = String(children);
+                  const id = text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+                  return <h1 id={id} {...props}>{children}</h1>;
+                },
+                h2: ({ children, ...props }) => {
+                  const text = String(children);
+                  const id = text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+                  return <h2 id={id} {...props}>{children}</h2>;
+                },
               }}
               options={{
                 mdxOptions: {

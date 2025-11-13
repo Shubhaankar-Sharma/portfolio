@@ -17,7 +17,7 @@
 }
 
 .backLink:hover {
-  color: var(--grey1);
+  color: var(--accent);
   background-color: var(--wash2);
 }
 
@@ -43,14 +43,21 @@
   width: 100%;
   max-width: 680px;
   margin: 0 auto;
-  padding: 32px 40px 120px;
+  padding: 80px 40px 120px;
   position: relative;
+}
+
+/* Add margin on large screens to prevent overlap with navigation */
+@media (min-width: 1025px) {
+  .container {
+    margin-right: 360px;
+  }
 }
 
 @media (max-width: 1024px) {
   .container {
     max-width: 640px;
-    padding: 32px 32px 96px;
+    padding: 72px 32px 96px;
   }
 
   .backLink {
@@ -152,7 +159,7 @@
   font-weight: 500;
   margin-top: 48px;
   margin-bottom: 16px;
-  color: var(--grey1);
+  color: var(--accent-secondary);
   letter-spacing: -0.01em;
 }
 
@@ -161,7 +168,7 @@
   font-weight: 500;
   margin-top: 32px;
   margin-bottom: 12px;
-  color: var(--grey1);
+  color: var(--accent-secondary);
   letter-spacing: -0.01em;
 }
 
@@ -181,14 +188,14 @@
 .content a {
   color: var(--grey1);
   text-decoration: underline;
-  text-decoration-color: var(--grey3);
+  text-decoration-color: var(--accent);
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
-  transition: text-decoration-color 0.15s ease;
+  transition: color 0.15s ease;
 }
 
 .content a:hover {
-  text-decoration-color: var(--grey1);
+  color: var(--accent);
 }
 
 .content code {
@@ -289,7 +296,7 @@
 
 @media (max-width: 768px) {
   .container {
-    padding: 32px 20px 80px;
+    padding: 64px 20px 80px;
   }
 
   .backLink {

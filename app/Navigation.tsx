@@ -11,67 +11,82 @@ const Navigation: React.FC<NavigationProps> = ({ sections }) => {
   const [activeSection, setActiveSection] = useState<string>("");
 
   useEffect(() => {
-    let lastUpdate = 0;
-    const UPDATE_INTERVAL = 100; // Only update every 100ms
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + window.innerHeight / 3;
+      const documentHeight = document.documentElement.scrollHeight;
+      const windowHeight = window.innerHeight;
+      const scrollBottom = window.scrollY + windowHeight;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const now = Date.now();
-        if (now - lastUpdate < UPDATE_INTERVAL) {
-          return; // Skip this update if too soon
+      // If we're at the bottom of the page, activate the last section
+      if (scrollBottom >= documentHeight - 50) {
+        const lastSection = sections[sections.length - 1];
+        if (activeSection !== lastSection) {
+          setActiveSection(lastSection);
         }
-        lastUpdate = now;
+        return;
+      }
 
-        // Find the most visible section
-        let maxRatio = 0;
-        let bestSection = "";
+      // Find which section is currently in view
+      let foundSection = false;
+      for (const sectionId of sections) {
+        const element = document.getElementById(sectionId);
+        if (!element) continue;
 
-        // Query all sections to get their current intersection state
-        sections.forEach((sectionId) => {
+        const rect = element.getBoundingClientRect();
+        const elementTop = window.scrollY + rect.top;
+        const elementBottom = elementTop + rect.height;
+
+        if (scrollPosition >= elementTop && scrollPosition < elementBottom) {
+          if (activeSection !== sectionId) {
+            setActiveSection(sectionId);
+          }
+          foundSection = true;
+          break;
+        }
+      }
+
+      // If no section found and we're scrolled past the first section,
+      // try to find the closest section above current scroll position
+      if (!foundSection) {
+        for (let i = sections.length - 1; i >= 0; i--) {
+          const sectionId = sections[i];
           const element = document.getElementById(sectionId);
-          if (!element) return;
+          if (!element) continue;
 
           const rect = element.getBoundingClientRect();
-          const viewportHeight = window.innerHeight;
+          const elementTop = window.scrollY + rect.top;
 
-          // Calculate how much of the section is visible
-          const visibleTop = Math.max(0, rect.top);
-          const visibleBottom = Math.min(viewportHeight, rect.bottom);
-          const visibleHeight = Math.max(0, visibleBottom - visibleTop);
-          const ratio = visibleHeight / rect.height;
-
-          if (ratio > maxRatio && ratio > 0) {
-            maxRatio = ratio;
-            bestSection = sectionId;
+          if (scrollPosition >= elementTop) {
+            if (activeSection !== sectionId) {
+              setActiveSection(sectionId);
+            }
+            break;
           }
-        });
-
-        if (bestSection && bestSection !== activeSection) {
-          setActiveSection(bestSection);
         }
-      },
-      {
-        threshold: [0, 0.5, 1],
-        rootMargin: "0px",
       }
-    );
+    };
 
-    sections.forEach((section) => {
-      const element = document.getElementById(section);
-      if (element) {
-        observer.observe(element);
+    // Set initial active section
+    handleScroll();
+
+    // Add scroll listener with throttling
+    let ticking = false;
+    const scrollListener = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
       }
-    });
+    };
+
+    window.addEventListener('scroll', scrollListener, { passive: true });
 
     return () => {
-      sections.forEach((section) => {
-        const element = document.getElementById(section);
-        if (element) {
-          observer.unobserve(element);
-        }
-      });
+      window.removeEventListener('scroll', scrollListener);
     };
-  }, [sections]);
+  }, [sections, activeSection]);
 
   const handleClick = (section: string) => {
     const element = document.getElementById(section);
@@ -90,22 +105,20 @@ const Navigation: React.FC<NavigationProps> = ({ sections }) => {
   return (
     <nav className={styles.navigation}>
       <div className={styles.navItems}>
-        {sections.map((section) => {
+        {sections.map((section, index) => {
           const sectionName = formatSectionName(section);
+          const isActive = activeSection === section;
           return (
             <button
               key={section}
               onClick={() => handleClick(section)}
-              className={`${styles.navItem} ${
-                activeSection === section ? styles.active : ""
-              }`}
+              className={`${styles.navItem} ${isActive ? styles.active : ""}`}
               aria-label={`Navigate to ${sectionName}`}
-              data-section={sectionName}
             >
-              <span className={styles.navDot}></span>
-              <span className={styles.navLabel}>
-                {sectionName}
-              </span>
+              <span className={styles.bracket}>[</span>
+              <span className={styles.indicator}>{isActive ? 'x' : ' '}</span>
+              <span className={styles.bracket}>]</span>
+              <span className={styles.navLabel}>{sectionName}</span>
             </button>
           );
         })}

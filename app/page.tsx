@@ -7,12 +7,16 @@ export default async function Home() {
   const file = await fs.readFile(process.cwd() + '/public/content/profileData.json', 'utf8');
   const cv = JSON.parse(file);
 
-  // Build section IDs for navigation
-  const sections = ["about"];
-  cv.allCollections.forEach((collection: any) => {
-    const sectionId = collection.name.toLowerCase().replace(/\s+/g, '-');
-    sections.push(sectionId);
-  });
+  // Build section IDs for navigation (exclude Projects and Open Source Work)
+  const sections = ["about", "sitemap"];
+  cv.allCollections
+    .filter((collection: any) =>
+      !["Projects", "Open Source Work"].includes(collection.name)
+    )
+    .forEach((collection: any) => {
+      const sectionId = collection.name.toLowerCase().replace(/\s+/g, '-');
+      sections.push(sectionId);
+    });
 
   return (
     <div className={styles.page}>

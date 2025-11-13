@@ -1,164 +1,126 @@
 import Image from "next/image";
 import RichText from "./RichText";
 import Arrow12 from "./Arrow12";
-import styles from "./Profile.module.css";
 import Attachments from "./Attachments";
+import styles from "./Profile.module.css";
 
 type ProfileProps = {
   cv: any,
 };
-const Profile: React.FC<ProfileProps> = ({
-  cv
-}) => {
+
+const Profile: React.FC<ProfileProps> = ({ cv }) => {
   return (
     <div className={styles.profile}>
-      <div className={styles.profileHeader}>
-        <div className={styles.profilePhoto}>
-          <Image src={cv.general.profilePhoto} alt="" width={92} height={92} />
+      {/* Simple header */}
+      <header className={styles.header}>
+        <h1>{cv.general.displayName}</h1>
+        <p className={styles.byline}>{cv.general.byline}</p>
+      </header>
+
+      {/* About */}
+      <section id="about" className={styles.section}>
+        <h2 className={styles.sectionTitle}>About</h2>
+        <div className={styles.aboutContent}>
+          <ul>
+            <li>I spend most of my time learning more about systems - distributed systems, databases, real time systems</li>
+            <li>I love working on problems that seem really intriguing and impactful</li>
+            <li>I am a bit obsessed with music, I listen to all genres, but I love blues, punk, alt, indie jazz, sufi and indian folk music</li>
+            <li>Right now I'm researching probabilistic guarantees in concurrency testing and exploring how GPU parallelism affects real-time systems</li>
+          </ul>
         </div>
-        <div className={styles.profileInfo}>
-          <h1>{cv.general.displayName}</h1>
-          <div className={styles.byline}>{cv.general.byline}</div>
-          {cv.general.website ?
-            <a className={styles.website}>{cv.general.website}</a>
-          : null}
+      </section>
+
+      {/* Sitemap */}
+      <section id="sitemap" className={styles.section}>
+        <h2 className={styles.sectionTitle}>Sitemap</h2>
+        <div className={styles.sitemap}>
+          <a href="/reading" className={styles.sitemapLink}>Reading & Writing</a>
+          <a href="/projects" className={styles.sitemapLink}>Projects & Open Source</a>
         </div>
-      </div>
+      </section>
 
-      {cv.general.about ?
-        <section id="about" className={`${styles.profileSection} ${styles.about}`}>
-          <h3>About</h3>
-          <div className={styles.description}>
-            <RichText text={cv.general.about}/>
-          </div>
-        </section>
-      : null}
-
-      {cv.allCollections.map((collection: any, index: number) => {
-        // Different colors for different sections
-        let sectionSquiggleClass = "squiggle-blue"; // default
-        if (collection.name === "Experience") sectionSquiggleClass = "squiggle-blue";
-        else if (collection.name === "Education") sectionSquiggleClass = "squiggle-purple";
-        else if (collection.name === "Papers") sectionSquiggleClass = "squiggle-cyan";
-        else if (collection.name === "Open Source Work") sectionSquiggleClass = "squiggle-green";
-        else if (collection.name === "Projects") sectionSquiggleClass = "squiggle-orange";
-        else if (collection.name === "Awards") sectionSquiggleClass = "squiggle-red";
-        else if (collection.name === "Links") sectionSquiggleClass = "squiggle-blue";
-
-        // Create ID from collection name (lowercase, replace spaces with hyphens)
+      {/* Render all collections except Projects and Open Source Work */}
+      {cv.allCollections
+        .filter((collection: any) =>
+          !["Projects", "Open Source Work"].includes(collection.name)
+        )
+        .map((collection: any) => {
         const sectionId = collection.name.toLowerCase().replace(/\s+/g, '-');
 
         return (
-          <section key={collection.name} id={sectionId} className={styles.profileSection}>
-            <h3 className={sectionSquiggleClass}>{collection.name}</h3>
-            <div className={collection.name === "Links" ? styles.contacts : styles.experiences}>
-              {collection.items.map((experience: any, itemIndex: number) => {
+          <section key={collection.name} id={sectionId} className={styles.section}>
+            <h2 className={styles.sectionTitle}>{collection.name}</h2>
 
+            <div className={styles.items}>
+              {collection.items.map((item: any, idx: number) => {
                 if (collection.name === "Links") {
-                  return <ContactItem key={experience.id || experience.url || itemIndex} experience={experience}/>
+                  return (
+                    <a key={item.id || idx} href={item.url} target="_blank" className={styles.contactLink}>
+                      <span className={styles.contactPlatform}>{item.platform}</span>
+                      <span className={styles.contactHandle}>{item.handle}</span>
+                    </a>
+                  );
                 }
 
                 return (
-                  <ProfileItem key={experience.id || experience.heading || itemIndex} experience={experience}/>
-                )
+                  <div key={item.id || idx} className={styles.item}>
+                    <div className={styles.itemMeta}>
+                      {item.year}
+                    </div>
+                    <div className={styles.itemContent}>
+                      {item.logo && (
+                        <div className={styles.itemLogo}>
+                          <Image src={item.logo} alt="" width={40} height={40} />
+                        </div>
+                      )}
+                      <div className={styles.itemMain}>
+                        <div className={styles.itemHeader}>
+                          {item.url ? (
+                            <a href={item.url} target="_blank" className={styles.itemTitle}>
+                              {item.heading || item.title}
+                            </a>
+                          ) : (
+                            <h3 className={styles.itemTitle}>{item.heading || item.title}</h3>
+                          )}
+                        </div>
+
+                        {(item.company || item.institution || item.location) && (
+                          <div className={styles.itemSubtitle}>
+                            {item.company || item.institution}
+                            {item.location && <span className={styles.location}> · {item.location}</span>}
+                          </div>
+                        )}
+
+                        {item.description && (
+                          <div className={styles.itemDescription}>
+                            <RichText text={item.description} />
+                          </div>
+                        )}
+
+                        {item.technologies && item.technologies.length > 0 && collection.name !== "Experience" && (
+                          <div className={styles.technologies}>
+                            {item.technologies.map((tech: string, i: number) => (
+                              <span key={i} className={styles.tech}>{tech}</span>
+                            ))}
+                          </div>
+                        )}
+
+                        {item.attachments && item.attachments.length > 0 && (
+                          <div className={styles.attachments}>
+                            <Attachments attachments={item.attachments} />
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                );
               })}
             </div>
           </section>
-        )
+        );
       })}
     </div>
   );
 };
-
-type ProfileItemProps = {
-  experience: any,
-};
-const ProfileItem: React.FC<ProfileItemProps> = ({
-  experience
-}) => {
-
-  let title;
-  if (experience.url) {
-    title = <>
-      <a href={experience.url} target="_blank">{experience.heading}</a><span className={styles.linkArrow}>&#xfeff;<Arrow12 fill="var(--grey1)"/></span>
-    </>
-  } else {
-    title = experience.heading
-  }
-
-  const hasLogo = !!experience.logo;
-
-  return (
-    <div className={`${styles.experience} ${hasLogo ? styles.experienceWithLogo : styles.experienceNoLogo}`}>
-      <div className={styles.year}>
-        {experience.year}
-      </div>
-      <div className={styles.experienceContent}>
-        <div className={styles.titleRow}>
-          <div className={styles.title}>
-            {title}
-          </div>
-        </div>
-        {experience.location ?
-        <div className={styles.location}>{experience.location}</div>
-        : null}
-        {experience.institution ?
-        <div className={styles.location}>{experience.institution}</div>
-        : null}
-        {experience.description ?
-        <div className={styles.description}>
-          <RichText text={experience.description}/>
-        </div>
-        : null}
-        {experience.notesOn ?
-        <div className={styles.notesOn}>
-          <a href={experience.notesOn}>notes on this →</a>
-        </div>
-        : null}
-        {experience.technologies && experience.technologies.length > 0 ?
-        <div className={styles.technologies}>
-          {experience.technologies.map((tech: string, index: number) => (
-            <span key={index} className={styles.technology}>{tech}</span>
-          ))}
-        </div>
-        : null}
-        {experience.attachments && experience.attachments.length > 0 ?
-          <Attachments attachments={experience.attachments}/>
-        : null}
-      </div>
-      {hasLogo && (
-        <div className={styles.logo}>
-          <Image
-            src={experience.logo}
-            alt=""
-            width={32}
-            height={32}
-            style={experience.logo === '/content/media/ubclogo.png' ? { filter: 'brightness(0) saturate(100%) invert(13%) sepia(70%) saturate(1000%) hue-rotate(162deg) brightness(95%) contrast(98%)' } : undefined}
-          />
-        </div>
-      )}
-    </div>
-  )
-}
-
-type ContactItemProps = {
-  experience: any,
-};
-const ContactItem: React.FC<ContactItemProps> = ({
-  experience
-}) => {
-  return (
-    <div className={styles.experience}>
-      <div className={styles.year}>
-        <span>{experience.platform}</span>
-      </div>
-      <div className={styles.experienceContent}>
-        <div className={styles.title}>
-          <a href={experience.url} target="_blank">{experience.handle}</a><span className={styles.linkArrow}>&#xfeff;<Arrow12 fill="var(--grey1)"/></span>
-        </div>
-      </div>
-    </div>
-  )
-}
 
 export default Profile;

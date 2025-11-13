@@ -1,11 +1,15 @@
 :root {
-  --font-size: 15px;
-  --line-height: 1.7;
+  --font-size: 17px;
+  --line-height: 1.65;
+
+  /* Accent color */
+  --accent: #10b981;
+  --accent-secondary: #4a4340; /* grey2 - change to #ff6b35 for orange */
 
   /* Light mode - chalky, warm tones */
   --background: #f5f1e8;
   --grey1: #2b2622;
-  --grey2: #5a534d;
+  --grey2: #4a4340;
   --grey3: #8a8379;
   --wash1: #eae5dc;
   --wash2: #ebe7de;
@@ -23,7 +27,7 @@
   /* Dark mode - chalky, muted tones */
   --background: #1a1816;
   --grey1: #e8e2d9;
-  --grey2: #b8b0a7;
+  --grey2: #cac4bb;
   --grey3: #7a736a;
   --wash1: #252220;
   --wash2: #2d2926;
