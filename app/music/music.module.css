@@ -59,6 +59,34 @@
   font-size: 12px;
 }
 
+.sectionHeader {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: opacity 0.15s ease;
+}
+
+.sectionHeader:hover {
+  opacity: 0.7;
+}
+
+.sectionHeader .sectionTitle {
+  margin-bottom: 0;
+}
+
+.sectionToggle {
+  font-size: 12px;
+  color: var(--grey3);
+  font-family: var(--font-ibm-plex-mono), monospace;
+  transition: color 0.15s ease;
+}
+
 .musicList {
   display: flex;
   flex-direction: column;

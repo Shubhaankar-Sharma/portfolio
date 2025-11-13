@@ -1,29 +1,329 @@
 {
-  "recommendations": [
+  "playlists": [
+    {
+      "title": "Dreamscape",
+      "description": "A collection of songs that i found very dreamy and ethereal",
+      "url": "https://open.spotify.com/playlist/4h1ufgO97Z0D4ZA1fTF13v",
+      "type": "playlist"
+    },
+    {
+      "title": "Frank Ocean",
+      "description": "My choice of frank ocean songs",
+      "url": "https://open.spotify.com/playlist/61udFcnhXwtspA2wwgbow4",
+      "type": "playlist"
+    },
+    {
+      "title": "R&B",
+      "description": "My r&b playlist",
+      "url": "https://open.spotify.com/playlist/2uZrUPNChK5PcFq8YzWwaF",
+      "type": "playlist"
+    },
+    {
+      "title": "Em uma praia",
+      "description": "Portuguese songs i love",
+      "url": "https://open.spotify.com/playlist/5ZObYWTuis5R6M4uHaJcsd",
+      "type": "playlist"
+    },
+    {
+      "title": "Chill DHH",
+      "description": "Desi hip hop songs i really like",
+      "url": "https://open.spotify.com/playlist/1EdyJxhmHEceimppJnJv1u",
+      "type": "playlist"
+    },
+    {
+      "title": "Fast paced euphoria",
+      "description": "A collection of songs for those hyped up moments",
+      "url": "https://open.spotify.com/playlist/573EhuJxrKeo24CUGq2N8L",
+      "type": "playlist"
+    }
+  ],
+  "albums": [
+    {
+      "title": "Where the Light Is: Live in LA",
+      "artist": "John Mayer",
+      "year": "2008",
+      "albumArt": "https://i.scdn.co/image/ab67616d0000b2735cf436176a3f481087a3bcf1",
+      "note": "One of the best live performances period, there was literally no flaw",
+      "url": "https://open.spotify.com/album/4Dgxy95K9BWkDUvQPTaYBb",
+      "type": "album"
+    },
+    {
+      "title": "BETA",
+      "artist": "Peter Cat Recording Co.",
+      "year": "2019",
+      "albumArt": "https://i.scdn.co/image/ab67616d0000b273c7d8c5e5e5b8e5f5e5e5e5e5",
+      "note": "One of my favourite indian bands experimenting with a lot of sounds",
+      "url": "https://open.spotify.com/album/5RyDQJIkTOl0QMeFZz8UGe",
+      "type": "album"
+    },
+    {
+      "title": "The Crux Deluxe",
+      "artist": "Djo",
+      "year": "2022",
+      "albumArt": "https://i.scdn.co/image/ab67616d0000b2733oaSSUc7HkXIpTb4NGLKDt",
+      "note": "Insane talent, this gives me beatles queen daft punk had a kid vibes lol",
+      "url": "https://open.spotify.com/album/3oaSSUc7HkXIpTb4NGLKDt",
+      "type": "album"
+    },
+    {
+      "title": "Skylight",
+      "artist": "Pinegrove",
+      "year": "2018",
+      "albumArt": "https://i.scdn.co/image/ab67616d0000b2732KnTVnBnvVzbUTAz9szifu",
+      "note": "A very underrated band with an amazing drummer",
+      "url": "https://open.spotify.com/album/2KnTVnBnvVzbUTAz9szifu",
+      "type": "album"
+    },
     {
       "title": "In Rainbows",
       "artist": "Radiohead",
       "year": "2007",
-      "albumArt": "https://upload.wikimedia.org/wikipedia/en/1/14/Inrainbowscover.png",
-      "note": "Perfect album, no skips",
-      "links": {
-        "spotify": "https://open.spotify.com/album/5vkqYmiPBYLaalcmjujWxK",
-        "appleMusic": "https://music.apple.com/us/album/in-rainbows/1109714933",
-        "tidal": "https://tidal.com/browse/album/17522267",
-        "youtube": "https://music.youtube.com/playlist?list=OLAK5uy_nkuHJaJIQdKb1aXLaQ9Y2fYvVQxGmKNkY"
-      }
+      "albumArt": "https://i.scdn.co/image/ab67616d0000b2735vkqYmiPBYLaalcmjujWxK",
+      "note": "Obviously",
+      "url": "https://open.spotify.com/album/5vkqYmiPBYLaalcmjujWxK",
+      "type": "album"
     },
     {
-      "title": "Blonde",
+      "title": "Born and Raised",
+      "artist": "John Mayer",
+      "year": "2012",
+      "albumArt": "https://i.scdn.co/image/ab67616d0000b2736S0BIiWtnqU0PtumXMpin0",
+      "note": "One of the best storytelling albums - especially walt grace's submarine test",
+      "url": "https://open.spotify.com/album/6S0BIiWtnqU0PtumXMpin0",
+      "type": "album"
+    },
+    {
+      "title": "Parachutes",
+      "artist": "Coldplay",
+      "year": "2000",
+      "albumArt": "https://i.scdn.co/image/ab67616d0000b2736ZG5lRT77aJ3btmArcykra",
+      "note": "My favourite sound from coldplay",
+      "url": "https://open.spotify.com/album/6ZG5lRT77aJ3btmArcykra",
+      "type": "album"
+    },
+    {
+      "title": "Racing Mount Pleasant",
+      "artist": "Racing Mount Pleasant",
+      "year": "2023",
+      "albumArt": "https://i.scdn.co/image/ab67616d0000b273037axs2AfEPUD5LtjfFYSv",
+      "note": "One of the best upcoming bands imo",
+      "url": "https://open.spotify.com/album/037axs2AfEPUD5LtjfFYSv",
+      "type": "album"
+    },
+    {
+      "title": "Nayaab",
+      "artist": "Seedhe Maut",
+      "year": "2023",
+      "albumArt": "https://i.scdn.co/image/ab67616d0000b2735SZjSdWntcF9lUxWwW4Q9I",
+      "note": "One of the best storytelling rap concept albums",
+      "url": "https://open.spotify.com/album/5SZjSdWntcF9lUxWwW4Q9I",
+      "type": "album"
+    },
+    {
+      "title": "The Freewheelin' Bob Dylan",
+      "artist": "Bob Dylan",
+      "year": "1963",
+      "albumArt": "https://i.scdn.co/image/ab67616d0000b2730o1uFxZ1VTviqvNaYkTJek",
+      "note": "Love the lyricism",
+      "url": "https://open.spotify.com/album/0o1uFxZ1VTviqvNaYkTJek",
+      "type": "album"
+    },
+    {
+      "title": "Live At Electric Lady",
+      "artist": "Yebba",
+      "year": "2023",
+      "albumArt": "https://i.scdn.co/image/ab67616d0000b2734RpVh9c6cdTcUP0qhw8ycF",
+      "note": "Insane performance, composition and sound design",
+      "url": "https://open.spotify.com/album/4RpVh9c6cdTcUP0qhw8ycF",
+      "type": "album"
+    },
+    {
+      "title": "twelvefour",
+      "artist": "The Paper Kites",
+      "year": "2015",
+      "albumArt": "https://i.scdn.co/image/ab67616d0000b2731f3jCFgt3cXyaPr854eQ2t",
+      "note": "A very underrated indie band with a unique sound",
+      "url": "https://open.spotify.com/album/1f3jCFgt3cXyaPr854eQ2t",
+      "type": "album"
+    },
+    {
+      "title": "Abbey Road",
+      "artist": "The Beatles",
+      "year": "1969",
+      "albumArt": "https://i.scdn.co/image/ab67616d0000b2730ETFjACtuP2ADo6LFhL6HN",
+      "note": "A perfect album",
+      "url": "https://open.spotify.com/album/0ETFjACtuP2ADo6LFhL6HN",
+      "type": "album"
+    },
+    {
+      "title": "Viva La Vida (Prospekt's March Edition)",
+      "artist": "Coldplay",
+      "year": "2008",
+      "albumArt": "https://i.scdn.co/image/ab67616d0000b27371pRFAwHBLrjKYRG7V1Q2o",
+      "note": "Every song is amazing, Violet Hill, Death and all his friends, Prospekt's March",
+      "url": "https://open.spotify.com/album/71pRFAwHBLrjKYRG7V1Q2o",
+      "type": "album"
+    },
+    {
+      "title": "channel ORANGE",
       "artist": "Frank Ocean",
-      "year": "2016",
-      "albumArt": "https://upload.wikimedia.org/wikipedia/en/a/a0/Blonde_-_Frank_Ocean.jpeg",
-      "note": "Beautiful, introspective album",
-      "links": {
-        "spotify": "https://open.spotify.com/album/3mH6qwIy9crq0I9YQbOuDf",
-        "appleMusic": "https://music.apple.com/us/album/blonde/1146195596",
-        "youtube": "https://music.youtube.com/playlist?list=OLAK5uy_lrKKgTBKcx8D2V7ZLYvT7f8_4u3mTJ-1M"
-      }
+      "year": "2012",
+      "albumArt": "https://i.scdn.co/image/ab67616d0000b273392p3shh2jkxUxY2VHvlH8",
+      "note": "Perfect album with crazy storytelling",
+      "url": "https://open.spotify.com/album/392p3shh2jkxUxY2VHvlH8",
+      "type": "album"
+    },
+    {
+      "title": "Wish You Were Here",
+      "artist": "Pink Floyd",
+      "year": "1975",
+      "albumArt": "https://i.scdn.co/image/ab67616d0000b2730bCAjiUamIFqKJsekOYuRw",
+      "note": "My favourite pink floyd album, cause this is what got me into pink floyd, and i listened to this on an ipod with the old apple earphones, and idky that was one of the best listening experiences in my life, could never recreate it",
+      "url": "https://open.spotify.com/album/0bCAjiUamIFqKJsekOYuRw",
+      "type": "album"
+    },
+    {
+      "title": "Rockstar",
+      "artist": "A.R. Rahman",
+      "year": "2011",
+      "albumArt": "https://i.scdn.co/image/ab67616d0000b2733RZxrS2dDZlbsYtMRM89v8",
+      "note": "Every song is good, idk how ar rehman does it, and insane production as well",
+      "url": "https://open.spotify.com/album/3RZxrS2dDZlbsYtMRM89v8",
+      "type": "album"
+    },
+    {
+      "title": "Circles",
+      "artist": "Mac Miller",
+      "year": "2020",
+      "albumArt": "https://i.scdn.co/image/ab67616d0000b2735sY6UIQ32GqwMLAfSNEaXb",
+      "note": "A very heartfelt album",
+      "url": "https://open.spotify.com/album/5sY6UIQ32GqwMLAfSNEaXb",
+      "type": "album"
+    },
+    {
+      "title": "Can't Buy a Thrill",
+      "artist": "Steely Dan",
+      "year": "1972",
+      "albumArt": "https://i.scdn.co/image/ab67616d0000b2736DlSUW5gmq6Byc3osKDJ2p",
+      "note": "",
+      "url": "https://open.spotify.com/album/6DlSUW5gmq6Byc3osKDJ2p",
+      "type": "album"
+    },
+    {
+      "title": "Both Sides of the Sky",
+      "artist": "Jimi Hendrix",
+      "year": "2018",
+      "albumArt": "https://i.scdn.co/image/ab67616d0000b2730EfHWQeb3T1UJw9KrqN407",
+      "note": "",
+      "url": "https://open.spotify.com/album/0EfHWQeb3T1UJw9KrqN407",
+      "type": "album"
+    },
+    {
+      "title": "Dog Eared",
+      "artist": "Billy Marten",
+      "year": "2023",
+      "albumArt": "https://i.scdn.co/image/ab67616d0000b27379zQn0JeZ9tVX2T0VvpDGi",
+      "note": "A very new sound",
+      "url": "https://open.spotify.com/album/79zQn0JeZ9tVX2T0VvpDGi",
+      "type": "album"
+    },
+    {
+      "title": "Dire Straits",
+      "artist": "Dire Straits",
+      "year": "1978",
+      "albumArt": "https://i.scdn.co/image/ab67616d0000b2732rCS6Xwx32V27pvgFzLzlT",
+      "note": "",
+      "url": "https://open.spotify.com/album/2rCS6Xwx32V27pvgFzLzlT",
+      "type": "album"
+    },
+    {
+      "title": "Patchwork",
+      "artist": "Passenger",
+      "year": "2020",
+      "albumArt": "https://i.scdn.co/image/ab67616d0000b27365f1t781sotHbcAco6nnZN",
+      "note": "A very underrated album",
+      "url": "https://open.spotify.com/album/65f1t781sotHbcAco6nnZN",
+      "type": "album"
+    },
+    {
+      "title": "First Works",
+      "artist": "54 Ultra",
+      "year": "2024",
+      "albumArt": "https://i.scdn.co/image/ab67616d0000b2732rvks9tXdJp1hj8NY3wsAz",
+      "note": "An artist with a very unique nostalgic sound",
+      "url": "https://open.spotify.com/album/2rvks9tXdJp1hj8NY3wsAz",
+      "type": "album"
+    },
+    {
+      "title": "Delhi-6",
+      "artist": "A.R. Rahman",
+      "year": "2009",
+      "albumArt": "https://i.scdn.co/image/ab67616d0000b2732oEJvIPxiVWejbACLjq6Lh",
+      "note": "Oof the sound is insane",
+      "url": "https://open.spotify.com/album/2oEJvIPxiVWejbACLjq6Lh",
+      "type": "album"
+    }
+  ],
+  "recentFinds": [
+    {
+      "title": "Noctune",
+      "artist": "Wild Nothing",
+      "url": "https://open.spotify.com/track/1Vgb7D76Y5QcIGheZgHnSt",
+      "type": "track"
+    },
+    {
+      "title": "Dreams",
+      "artist": "Fleetwood Mac",
+      "url": "https://open.spotify.com/track/7ihVeKd4RjiZ3y12nDhPZO",
+      "type": "track"
+    },
+    {
+      "title": "Unknown Track",
+      "artist": "Unknown Artist",
+      "url": "https://open.spotify.com/track/3oP2vxUR2bjFCrU9YolGnM",
+      "type": "track"
+    },
+    {
+      "title": "Unknown Track",
+      "artist": "Unknown Artist",
+      "url": "https://open.spotify.com/track/1x0Q0nvWYbJCrmsPZNHIkb",
+      "type": "track"
+    },
+    {
+      "title": "Unknown Track",
+      "artist": "Unknown Artist",
+      "url": "https://open.spotify.com/track/1iUpSRmgnbTRqU0Pb217qI",
+      "type": "track"
+    },
+    {
+      "title": "Unknown Track",
+      "artist": "Unknown Artist",
+      "url": "https://open.spotify.com/track/5KPXcfXaGOaWUqOHLDXFRP",
+      "type": "track"
+    },
+    {
+      "title": "Unknown Track",
+      "artist": "Unknown Artist",
+      "url": "https://open.spotify.com/track/6RmefriEmuqmToFqMlvwlF",
+      "type": "track"
+    },
+    {
+      "title": "Unknown Track",
+      "artist": "Unknown Artist",
+      "url": "https://open.spotify.com/track/2b7zdV4i5vEaRlZAkiIAR5",
+      "type": "track"
+    },
+    {
+      "title": "Unknown Track",
+      "artist": "Unknown Artist",
+      "url": "https://open.spotify.com/track/6kZqCqD1r08sJAQ1TjuEpM",
+      "type": "track"
+    },
+    {
+      "title": "Unknown Track",
+      "artist": "Unknown Artist",
+      "url": "https://open.spotify.com/track/6Pwiut77nYLas41QLalwNm",
+      "type": "track"
     }
   ]
 }

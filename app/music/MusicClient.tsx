@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import styles from './music.module.css';
-import type { MusicData } from './page';
+import type { MusicData, MusicItem } from './page';
 
 type MusicClientProps = {
   musicData: MusicData;
@@ -20,6 +20,7 @@ type NowPlaying = {
 
 export default function MusicClient({ musicData }: MusicClientProps) {
   const [nowPlaying, setNowPlaying] = useState<NowPlaying | null>(null);
+  const [openSections, setOpenSections] = useState<Set<string>>(new Set(['recentFinds']));
 
   useEffect(() => {
     const fetchNowPlaying = async () => {
@@ -38,13 +39,74 @@ export default function MusicClient({ musicData }: MusicClientProps) {
     return () => clearInterval(interval);
   }, []);
 
+  const toggleSection = (section: string) => {
+    const newOpenSections = new Set(openSections);
+    if (newOpenSections.has(section)) {
+      newOpenSections.delete(section);
+    } else {
+      newOpenSections.add(section);
+    }
+    setOpenSections(newOpenSections);
+  };
+
+  const renderMusicItem = (item: MusicItem, idx: number) => {
+    return (
+      <a
+        key={idx}
+        href={item.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={styles.recommendationItem}
+      >
+        {item.albumArt && (
+          <img src={item.albumArt} alt={item.title} className={styles.albumArt} />
+        )}
+        <div className={styles.recommendationInfo}>
+          <span className={styles.musicTitle}>{item.title}</span>
+          {item.artist && (
+            <span className={styles.musicMeta}>
+              {item.artist}
+              {item.year && ` • ${item.year}`}
+            </span>
+          )}
+          {(item.note || item.description) && (
+            <span className={styles.musicNote}>{item.note || item.description}</span>
+          )}
+        </div>
+      </a>
+    );
+  };
+
+  const renderSection = (title: string, items: MusicItem[] | undefined, sectionKey: string) => {
+    if (!items || items.length === 0) return null;
+
+    const isOpen = openSections.has(sectionKey);
+
+    return (
+      <div className={styles.recommendationsSection}>
+        <button
+          onClick={() => toggleSection(sectionKey)}
+          className={styles.sectionHeader}
+        >
+          <h2 className={styles.sectionTitle}>{title}</h2>
+          <span className={styles.sectionToggle}>{isOpen ? '▼' : '▶'}</span>
+        </button>
+        {isOpen && (
+          <div className={styles.recommendationsList}>
+            {items.map((item, idx) => renderMusicItem(item, idx))}
+          </div>
+        )}
+      </div>
+    );
+  };
+
   return (
     <div className={styles.container}>
       <Link href="/" className={styles.homeLink}>← home</Link>
       <div className={styles.header}>
         <h1>spongeboi's music corner</h1>
         <p className={styles.subtitle}>
-          Music recommendations and thoughts on what I'm listening to.
+          My favorite playlists, albums, and recent musical discoveries.
         </p>
       </div>
 
@@ -73,52 +135,9 @@ export default function MusicClient({ musicData }: MusicClientProps) {
         )}
       </div>
 
-      {musicData.recommendations && musicData.recommendations.length > 0 && (
-        <div className={styles.recommendationsSection}>
-          <h2 className={styles.sectionTitle}>Recommendations</h2>
-          <div className={styles.recommendationsList}>
-            {musicData.recommendations.map((item, idx) => (
-              <div key={idx} className={styles.recommendationItem}>
-                {item.albumArt && (
-                  <img src={item.albumArt} alt={item.title} className={styles.albumArt} />
-                )}
-                <div className={styles.recommendationInfo}>
-                  <span className={styles.musicTitle}>{item.title}</span>
-                  <span className={styles.musicMeta}>
-                    {item.artist}
-                    {item.year && `, ${item.year}`}
-                  </span>
-                  {item.note && <span className={styles.musicNote}>{item.note}</span>}
-                  {item.links && (
-                    <div className={styles.platformLinks}>
-                      {item.links.spotify && (
-                        <a href={item.links.spotify} target="_blank" rel="noopener noreferrer" className={styles.platformLink}>
-                          Spotify
-                        </a>
-                      )}
-                      {item.links.appleMusic && (
-                        <a href={item.links.appleMusic} target="_blank" rel="noopener noreferrer" className={styles.platformLink}>
-                          Apple Music
-                        </a>
-                      )}
-                      {item.links.tidal && (
-                        <a href={item.links.tidal} target="_blank" rel="noopener noreferrer" className={styles.platformLink}>
-                          Tidal
-                        </a>
-                      )}
-                      {item.links.youtube && (
-                        <a href={item.links.youtube} target="_blank" rel="noopener noreferrer" className={styles.platformLink}>
-                          YouTube
-                        </a>
-                      )}
-                    </div>
-                  )}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
+      {renderSection('Recent Finds', musicData.recentFinds, 'recentFinds')}
+      {renderSection('Playlists', musicData.playlists, 'playlists')}
+      {renderSection('Albums I Love', musicData.albums, 'albums')}
     </div>
   );
 }

@@ -35,6 +35,7 @@
   --wash1: #252220;
   --wash2: #2d2926;
   --transparentBorder: rgba(255, 255, 255, 0.08);
+  --accent-secondary: #b8b0a5;
 }
 
 * {
@@ -79,7 +80,7 @@ mark {
 }
 
 [data-theme="dark"] mark {
-  background-color: rgba(255, 235, 59, 0.2);
+  background-color: rgba(255, 193, 7, 0.15);
 }
 
 

@@ -39,12 +39,14 @@ export async function GET() {
     const response = await getNowPlaying();
 
     if (response.status === 204 || response.status > 400) {
+      console.log('Spotify API: No song playing or error', response.status);
       return NextResponse.json({ isPlaying: false });
     }
 
     const song = await response.json();
 
     if (!song.item) {
+      console.log('Spotify API: No item in response');
       return NextResponse.json({ isPlaying: false });
     }
 
@@ -64,6 +66,7 @@ export async function GET() {
       songUrl,
     });
   } catch (error) {
-    return NextResponse.json({ isPlaying: false });
+    console.error('Spotify API Error:', error);
+    return NextResponse.json({ isPlaying: false, error: String(error) });
   }
 }

@@ -7,8 +7,8 @@
 
 const readline = require('readline');
 
-const CLIENT_ID = '2d7a592332ad480b8792f84acf0b6c99';
-const CLIENT_SECRET = '7fca4d4c8260468e9a7ffef89d9d5185';
+const CLIENT_ID = process.env.SPOTIFY_CLIENT_ID || 'YOUR_CLIENT_ID';
+const CLIENT_SECRET = process.env.SPOTIFY_CLIENT_SECRET || 'YOUR_CLIENT_SECRET';
 
 const rl = readline.createInterface({
   input: process.stdin,
