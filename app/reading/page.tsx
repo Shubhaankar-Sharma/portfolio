@@ -1,7 +1,17 @@
 import { promises as fs } from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
+import { Metadata } from 'next';
 import WritingClient from './WritingClient';
+
+export const metadata: Metadata = {
+  title: 'Writing & Reading',
+  description: 'Technical articles, research notes, and curated reading list covering systems programming, distributed systems, AI, and more.',
+  openGraph: {
+    title: 'Writing & Reading',
+    description: 'Technical articles, research notes, and curated reading list covering systems programming, distributed systems, AI, and more.',
+  },
+};
 
 export type WritingItem = {
   slug: string;

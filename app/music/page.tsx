@@ -1,6 +1,16 @@
 import { promises as fs } from 'fs';
 import path from 'path';
+import { Metadata } from 'next';
 import MusicClient from './MusicClient';
+
+export const metadata: Metadata = {
+  title: 'Music',
+  description: 'Music recommendations, playlists, and what I\'m currently listening to on Spotify.',
+  openGraph: {
+    title: 'Music',
+    description: 'Music recommendations, playlists, and what I\'m currently listening to on Spotify.',
+  },
+};
 
 export type MusicItem = {
   title: string;

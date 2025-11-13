@@ -76,13 +76,21 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const { frontmatter } = await getArticle(slug);
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://shubhaankar.com';
 
   return {
     title: frontmatter.title,
     description: frontmatter.description,
+    alternates: {
+      canonical: `${baseUrl}/reading/${slug}`,
+    },
     openGraph: {
       title: frontmatter.title,
       description: frontmatter.description,
+      url: `${baseUrl}/reading/${slug}`,
+      type: 'article',
+      publishedTime: frontmatter.date,
+      authors: ['Shubhaankar Sharma'],
       images: frontmatter.image ? [
         {
           url: frontmatter.image,
@@ -103,9 +111,34 @@ export default async function ArticlePage({ params }: Props) {
   const { slug } = await params;
   const { frontmatter, content, headings } = await getArticle(slug);
   const readingTime = calculateReadingTime(content);
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://shubhaankar.com';
+
+  // Structured data for Google
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: frontmatter.title,
+    description: frontmatter.description,
+    image: frontmatter.image ? `${baseUrl}${frontmatter.image}` : undefined,
+    datePublished: frontmatter.date,
+    dateModified: frontmatter.date,
+    author: {
+      '@type': 'Person',
+      name: 'Shubhaankar Sharma',
+      url: baseUrl,
+    },
+    publisher: {
+      '@type': 'Person',
+      name: 'Shubhaankar Sharma',
+    },
+  };
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
       <ArticleNav headings={headings} />
       <Link href="/reading" className={styles.backLink}>
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
