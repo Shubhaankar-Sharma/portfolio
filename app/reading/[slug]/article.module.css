@@ -47,13 +47,6 @@
   position: relative;
 }
 
-/* Add margin on large screens to prevent overlap with navigation */
-@media (min-width: 1025px) {
-  .container {
-    margin-right: 360px;
-  }
-}
-
 @media (max-width: 1024px) {
   .container {
     max-width: 640px;
