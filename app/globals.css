@@ -21,6 +21,9 @@
   --squiggle-green: #859900;
   --squiggle-orange: #cb4b16;
   --squiggle-cyan: #2aa198;
+
+  /* Layout spacing for navigation */
+  --nav-offset: 160px;
 }
 
 [data-theme="dark"] {
