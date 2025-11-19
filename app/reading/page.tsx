@@ -2,6 +2,7 @@ import { promises as fs } from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { Metadata } from 'next';
+import { headers } from 'next/headers';
 import WritingClient from './WritingClient';
 
 export const metadata: Metadata = {
@@ -99,5 +100,9 @@ export default async function WritingPage() {
     new Set(items.flatMap(item => item.tags))
   ).sort();
 
-  return <WritingClient items={items} allTags={allTags} linksData={linksData} />;
+  // Check if we're in standalone mode (subdomain access)
+  const headersList = await headers();
+  const isStandalone = headersList.get('x-standalone-mode') === 'true';
+
+  return <WritingClient items={items} allTags={allTags} linksData={linksData} isStandalone={isStandalone} />;
 }
