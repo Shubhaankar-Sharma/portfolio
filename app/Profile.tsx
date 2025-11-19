@@ -35,7 +35,6 @@ const Profile: React.FC<ProfileProps> = ({ cv }) => {
         <h2 className={styles.sectionTitle}>Sitemap</h2>
         <div className={styles.sitemap}>
           <a href="/reading" className={styles.sitemapLink}>Reading & Writing</a>
-          <a href="/music" className={styles.sitemapLink}>Music</a>
           <a href="/projects" className={styles.sitemapLink}>Projects & Open Source</a>
         </div>
       </section>
