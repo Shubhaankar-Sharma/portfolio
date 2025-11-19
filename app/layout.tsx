@@ -17,12 +17,20 @@ const ibmPlexMono = IBM_Plex_Mono({
 })
 
 export async function generateMetadata(): Promise<Metadata> {
-  const file = await fs.readFile(process.cwd() + '/public/content/profileData.json', 'utf8');
-  const cv = JSON.parse(file);
-  return {
-    title: cv.general.displayName,
-    description: cv.general.byline || '',
-  };
+  try {
+    const file = await fs.readFile(process.cwd() + '/public/content/profileData.json', 'utf8');
+    const cv = JSON.parse(file);
+    return {
+      title: cv.general.displayName,
+      description: cv.general.byline || '',
+    };
+  } catch (error) {
+    // Fallback metadata for routes that don't need profileData (like subdomains)
+    return {
+      title: 'Shubhaankar Sharma',
+      description: 'Portfolio and writings',
+    };
+  }
 }
 
 export default function RootLayout({
