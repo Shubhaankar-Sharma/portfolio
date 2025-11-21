@@ -104,6 +104,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: frontmatter.description,
       images: frontmatter.image ? [frontmatter.image] : [],
     },
+    other: {
+      'fediverse:creator': '@spongeboi@discuss.systems',
+    },
   };
 }
 

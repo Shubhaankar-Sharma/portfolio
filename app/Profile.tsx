@@ -55,7 +55,13 @@ const Profile: React.FC<ProfileProps> = ({ cv }) => {
               {collection.items.map((item: any, idx: number) => {
                 if (collection.name === "Links") {
                   return (
-                    <a key={item.id || idx} href={item.url} target="_blank" className={styles.contactLink}>
+                    <a
+                      key={item.id || idx}
+                      href={item.url}
+                      target="_blank"
+                      className={styles.contactLink}
+                      {...(item.rel && { rel: item.rel })}
+                    >
                       <span className={styles.contactPlatform}>{item.platform}</span>
                       <span className={styles.contactHandle}>{item.handle}</span>
                     </a>

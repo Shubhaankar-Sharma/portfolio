@@ -530,6 +530,14 @@
           "handle": "Flickr Album",
           "url": "https://flickr.com/photos/spongeboi/albums/72177720327477170/",
           "type": "contact"
+        },
+        {
+          "id": "mastodon-contact",
+          "platform": "Mastodon",
+          "handle": "@spongeboi",
+          "url": "https://discuss.systems/@spongeboi",
+          "type": "contact",
+          "rel": "me"
         }
       ]
     }
