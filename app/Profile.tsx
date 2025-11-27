@@ -14,6 +14,9 @@ const Profile: React.FC<ProfileProps> = ({ cv }) => {
       {/* Simple header */}
       <header className={styles.header}>
         <h1>{cv.general.displayName}</h1>
+        {cv.general.displayNameDevanagari && (
+          <p className={styles.nameDevanagari}>{cv.general.displayNameDevanagari}</p>
+        )}
         <p className={styles.byline}>{cv.general.byline}</p>
       </header>
 
