@@ -1,28 +1,4 @@
 {
-  "onMyDesk": [
-    {
-      "title": "Access Path Selection in a Relational Database Management System",
-      "url": "https://cs.stanford.edu/people/chrismre/cs345/rl/selinger-etal-1979.pdf",
-      "authors": "Selinger et al.",
-      "year": "1979",
-      "note": "Classic query optimization paper"
-    },
-    {
-      "title": "The Beginning of Infinity",
-      "url": "https://en.wikipedia.org/wiki/The_Beginning_of_Infinity",
-      "authors": "David Deutsch",
-      "year": "2011"
-    }
-  ],
-  "futureReading": [
-    {
-      "title": "PCT: Probabilistic Concurrency Testing",
-      "url": "https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/asplos277-pct.pdf",
-      "authors": "Burckhardt et al.",
-      "year": "2010",
-      "note": "Microsoft Research"
-    }
-  ],
   "categories": [
     {
       "name": "Research Papers",
@@ -55,6 +31,27 @@
               "authors": "Flanagan, Godefroid",
               "year": "2005",
               "note": "POPL 2005"
+            },
+            {
+              "title": "PCT: A Randomized Scheduler with Probabilistic Guarantees of Finding Bugs",
+              "url": "https://www.cs.rutgers.edu/~santosh.nagarakatte/papers/asplos2010.pdf",
+              "authors": "Burckhardt, Kothari, Musuvathi, Nagarakatte",
+              "year": "2010",
+              "note": "ASPLOS 2010"
+            },
+            {
+              "title": "Industrial-Strength Controlled Concurrency Testing for C# Programs with Coyote",
+              "url": "https://pdeligia.github.io/lib/papers/coyote_tacas23.pdf",
+              "authors": "Deligiannis et al.",
+              "year": "2023",
+              "note": "TACAS 2023 — Microsoft Coyote"
+            },
+            {
+              "title": "FlyMC: Highly Scalable Testing of Complex Interleavings in Distributed Systems",
+              "url": "https://ucare.cs.uchicago.edu/projects/FlyMC/",
+              "authors": "Lukman et al.",
+              "year": "2019",
+              "note": "EuroSys 2019"
             }
           ]
         },
@@ -150,76 +147,6 @@
           "title": "Ben Green's Lecture Notes",
           "url": "https://people.maths.ox.ac.uk/greenbj/notes.html",
           "note": "Oxford mathematics"
-        }
-      ]
-    },
-    {
-      "name": "Books",
-      "subcategories": [
-        {
-          "name": "Read",
-          "links": [
-            {
-              "title": "Jobs",
-              "url": "https://www.simonandschuster.com/books/Steve-Jobs/Walter-Isaacson/9781451648546",
-              "authors": "Walter Isaacson",
-              "year": "2011"
-            },
-            {
-              "title": "Marley and Me",
-              "url": "https://www.harpercollins.com/products/marley-me-john-grogan",
-              "authors": "John Grogan",
-              "year": "2005"
-            },
-            {
-              "title": "Spaceman",
-              "url": "https://mikemassimino.com/spaceman/",
-              "authors": "Mike Massimino",
-              "year": "2016"
-            },
-            {
-              "title": "The Hidden Pool",
-              "url": "https://www.goodreads.com/book/show/1213768.The_Hidden_Pool",
-              "authors": "Ruskin Bond",
-              "year": "1966"
-            },
-            {
-              "title": "Harry Potter (series)",
-              "url": "https://www.harrypotter.com/",
-              "authors": "J.K. Rowling",
-              "year": "1997-2007",
-              "note": "All 7 books"
-            }
-          ]
-        },
-        {
-          "name": "To-Read",
-          "links": [
-            {
-              "title": "Boom: Bubbles and the End of Stagnation",
-              "url": "https://press.stripe.com/boom",
-              "authors": "Byrne Hobart & Tobias Huber",
-              "year": "2024"
-            },
-            {
-              "title": "Imagining AI: How the World Sees Intelligent Machines",
-              "url": "https://global.oup.com/academic/product/imagining-ai-9780192865366",
-              "authors": "Stephen Cave & Kanta Dihal",
-              "year": "2023"
-            },
-            {
-              "title": "Antifragile: Things That Gain from Disorder",
-              "url": "https://www.penguinrandomhouse.com/books/176227/antifragile-by-nassim-nicholas-taleb/",
-              "authors": "Nassim Nicholas Taleb",
-              "year": "2012"
-            },
-            {
-              "title": "Designing Data-Intensive Applications",
-              "url": "https://dataintensive.net/",
-              "authors": "Martin Kleppmann",
-              "year": "2017"
-            }
-          ]
         }
       ]
     }
