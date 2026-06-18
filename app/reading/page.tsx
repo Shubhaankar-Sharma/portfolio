@@ -21,7 +21,21 @@ export type WritingItem = {
   description: string;
   tags: string[];
   status: 'published' | 'draft' | 'research';
+  externalUrl?: string;
 };
+
+// Articles hosted elsewhere (e.g. Substack) — linked externally rather than rendered natively.
+const externalArticles: WritingItem[] = [
+  {
+    slug: 'maybe-everything-is-hit-and-trial',
+    title: 'Maybe Everything is Hit & Trial',
+    date: '2026-05-31',
+    description: '"You\'re wrong, and that\'s perfect" — variation and selection across biological, intellectual, and cosmic systems.',
+    tags: [],
+    status: 'published',
+    externalUrl: 'https://spongeboi.substack.com/p/maybe-everything-is-hit-and-trial',
+  },
+];
 
 export type Link = {
   title: string;
@@ -91,8 +105,10 @@ async function getLinks(): Promise<LinksData> {
 
 export default async function WritingPage() {
   const allItems = await getWritingItems();
-  // Filter out drafts - only show published items
-  const items = allItems.filter(item => item.status === 'published');
+  // Merge in externally-hosted articles, then filter out drafts - only show published items
+  const items = [...allItems, ...externalArticles]
+    .filter(item => item.status === 'published')
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
   const linksData = await getLinks();
 
   // Get all unique tags

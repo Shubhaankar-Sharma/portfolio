@@ -266,15 +266,33 @@ export default function WritingClient({ items, linksData, isStandalone = false }
       <div className={styles.writingSection}>
         <h2 className={styles.sectionTitle}>Writing</h2>
         <div className={styles.list}>
-          {items.map((item) => (
-            <Link key={item.slug} href={`/reading/${item.slug}`} className={styles.item}>
-              <span className={styles.date}>{formatDate(item.date)}</span>
-              <h3 className={styles.title}>{item.title}</h3>
-              {item.description && (
-                <p className={styles.description}>{item.description}</p>
-              )}
-            </Link>
-          ))}
+          {items.map((item) =>
+            item.externalUrl ? (
+              <a
+                key={item.slug}
+                href={item.externalUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.item}
+              >
+                <span className={styles.date}>{formatDate(item.date)}</span>
+                <h3 className={styles.title}>
+                  {item.title} <span className={styles.externalIcon} aria-label="External link">↗</span>
+                </h3>
+                {item.description && (
+                  <p className={styles.description}>{item.description}</p>
+                )}
+              </a>
+            ) : (
+              <Link key={item.slug} href={`/reading/${item.slug}`} className={styles.item}>
+                <span className={styles.date}>{formatDate(item.date)}</span>
+                <h3 className={styles.title}>{item.title}</h3>
+                {item.description && (
+                  <p className={styles.description}>{item.description}</p>
+                )}
+              </Link>
+            )
+          )}
         </div>
 
         {items.length === 0 && (

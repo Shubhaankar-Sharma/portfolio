@@ -105,6 +105,12 @@
   line-height: 1.4;
 }
 
+.externalIcon {
+  font-size: 13px;
+  color: var(--grey2);
+  vertical-align: middle;
+}
+
 .description {
   font-size: 14px;
   color: var(--grey2);
